@@ -1,501 +1,501 @@
-Gender,Extra_Courses,Previous_Grade,Motivation_Level,G3,Parent_Education_Level,Absences,Study_Time_per_Week,Age,Internet_Access,passed
-Male,Yes,81.9,Low,71.1,Tertiary,14,14.9,17,Yes,1
-Female,Yes,72.2,Medium,68.8,Tertiary,8,12.7,16,Yes,1
-Male,Yes,58.6,High,41.5,Tertiary,6,18.1,17,No,0
-Male,No,88.8,High,60.5,Secondary,1,12.5,18,No,1
-Male,Yes,81.1,High,62.8,Secondary,14,10.4,15,No,1
-Female,Yes,49.8,Medium,63.9,Secondary,12,8.1,17,No,1
-Male,No,94.7,Medium,74.8,Tertiary,8,18.9,15,Yes,1
-Male,Yes,89.4,High,72.0,Secondary,9,3.5,15,No,1
-Male,No,97.0,Medium,76.5,Primary,1,18.8,16,No,1
-Female,No,83.5,Medium,85.9,Primary,2,16.9,16,No,1
-Male,Yes,76.8,Medium,88.8,Secondary,10,4.3,18,Yes,1
-Male,No,65.1,High,83.1,Primary,12,12.2,19,No,1
-Male,Yes,96.0,High,97.3,Primary,9,17.6,15,Yes,1
-Male,No,92.0,Low,41.1,Tertiary,13,12.3,19,No,0
-Female,No,42.7,High,51.7,Secondary,1,18.3,18,Yes,1
-Male,Yes,41.6,High,40.5,Secondary,2,19.0,15,Yes,0
-Female,No,62.6,Low,78.8,Tertiary,5,9.6,15,No,1
-Female,No,88.6,Medium,93.9,Primary,8,8.8,20,Yes,1
-Female,No,99.2,High,54.6,Primary,8,18.9,19,Yes,1
-Male,No,49.0,Low,95.6,Secondary,6,14.2,17,No,1
-Female,No,75.6,Medium,43.6,Primary,11,4.1,16,No,0
-Male,Yes,62.9,Medium,96.1,Tertiary,2,2.8,17,No,1
-Female,No,98.2,High,61.1,Tertiary,3,12.2,19,Yes,1
-Female,Yes,90.5,High,46.1,Secondary,5,18.7,16,Yes,0
-Female,No,90.3,High,69.2,Tertiary,10,17.2,17,Yes,1
-Female,Yes,68.1,Medium,55.4,Tertiary,4,14.2,20,No,1
-Female,Yes,64.9,High,57.1,Secondary,1,4.5,16,Yes,1
-Female,No,56.4,High,58.4,Tertiary,12,6.6,15,Yes,1
-Female,No,43.4,Medium,88.2,Tertiary,5,17.8,17,Yes,1
-Female,No,91.9,High,72.3,Tertiary,2,5.3,16,Yes,1
-Male,Yes,88.8,Low,58.7,Primary,13,7.0,20,Yes,1
-Male,No,100.0,Medium,76.6,Secondary,7,4.3,16,Yes,1
-Female,Yes,99.8,Medium,83.0,Secondary,1,14.2,16,Yes,1
-Female,Yes,73.3,Low,56.4,Secondary,0,19.0,20,No,1
-Female,Yes,86.1,Low,64.8,Primary,8,6.8,17,No,1
-Male,No,96.7,Medium,47.3,Primary,13,10.6,18,No,0
-Female,No,91.0,Medium,50.9,Secondary,11,13.4,17,Yes,1
-Male,Yes,54.8,High,80.9,Primary,2,20.0,19,Yes,1
-Male,Yes,67.0,Low,50.9,Secondary,10,3.9,20,No,1
-Male,No,47.7,Medium,71.5,Primary,0,11.0,17,Yes,1
-Male,Yes,97.2,Medium,82.5,Tertiary,6,8.9,16,No,1
-Male,No,76.4,High,46.4,Tertiary,12,17.6,20,Yes,0
-Female,Yes,53.7,Medium,74.0,Secondary,14,10.6,15,Yes,1
-Female,No,80.3,Medium,55.4,Primary,9,4.0,17,No,1
-Female,Yes,77.1,High,97.8,Primary,4,13.4,20,No,1
-Female,No,61.5,Medium,69.0,Tertiary,4,15.9,17,No,1
-Female,Yes,46.8,Medium,88.4,Tertiary,13,2.1,20,No,1
-Male,No,80.3,Low,73.0,Primary,0,17.5,16,No,1
-Female,No,71.2,High,42.6,Primary,14,5.3,15,Yes,0
-Female,Yes,86.3,Low,78.0,Primary,14,11.9,15,Yes,1
-Male,Yes,71.2,High,97.1,Primary,8,9.5,19,Yes,1
-Female,No,91.1,Medium,76.1,Primary,6,15.0,20,No,1
-Male,Yes,73.1,High,89.2,Primary,7,8.7,17,No,1
-Female,No,73.7,High,93.1,Secondary,8,17.7,15,No,1
-Male,Yes,92.6,High,53.7,Primary,5,15.1,15,No,1
-Female,No,64.2,Medium,52.7,Tertiary,11,13.7,18,No,1
-Female,No,48.0,High,76.7,Secondary,4,16.3,18,No,1
-Male,No,41.7,Medium,64.7,Primary,5,15.6,15,Yes,1
-Male,No,85.3,Medium,90.4,Tertiary,10,2.6,20,Yes,1
-Male,No,77.2,Medium,94.0,Secondary,1,9.1,19,Yes,1
-Male,No,82.2,High,61.2,Tertiary,3,18.8,15,Yes,1
-Male,Yes,52.8,High,54.2,Primary,2,4.3,16,Yes,1
-Male,Yes,48.2,High,86.8,Primary,12,15.3,17,No,1
-Male,Yes,40.9,Medium,56.5,Primary,6,19.5,19,No,1
-Male,No,61.0,Medium,89.4,Primary,8,2.9,16,No,1
-Female,No,75.4,High,65.4,Secondary,4,14.3,19,No,1
-Female,No,63.5,Medium,80.1,Secondary,5,10.4,16,No,1
-Male,No,66.2,Low,45.7,Tertiary,9,12.4,17,No,0
-Female,Yes,94.2,Medium,77.4,Primary,13,3.5,17,Yes,1
-Female,Yes,60.9,Medium,67.1,Tertiary,11,2.8,18,No,1
-Female,No,70.8,Medium,75.2,Secondary,11,14.0,20,No,1
-Female,Yes,87.0,Medium,50.1,Primary,1,16.8,16,No,1
-Male,Yes,63.8,Low,84.2,Primary,2,16.1,18,No,1
-Female,No,77.3,Low,91.8,Secondary,2,11.8,16,Yes,1
-Male,Yes,91.7,High,53.0,Secondary,11,3.8,18,Yes,1
-Female,No,97.0,Medium,45.7,Secondary,11,14.4,17,No,0
-Female,Yes,48.8,Medium,41.4,Secondary,14,6.4,19,Yes,0
-Female,No,95.6,Medium,78.5,Secondary,8,18.4,18,Yes,1
-Male,No,69.5,Medium,76.4,Primary,14,17.1,16,No,1
-Female,No,55.5,High,72.8,Secondary,6,14.8,16,No,1
-Male,No,67.5,High,53.9,Primary,7,19.1,20,No,1
-Female,Yes,98.8,Low,63.5,Primary,10,2.6,17,No,1
-Male,No,69.6,Medium,75.7,Secondary,9,15.3,16,No,1
-Female,No,59.7,High,69.8,Secondary,10,7.9,15,Yes,1
-Male,No,78.0,High,99.3,Primary,8,18.3,19,No,1
-Male,Yes,54.4,Medium,48.2,Secondary,5,6.8,18,No,0
-Female,No,44.6,Medium,81.7,Secondary,3,15.0,20,No,1
-Male,Yes,47.7,Low,64.3,Secondary,11,17.8,19,Yes,1
-Female,No,47.7,High,65.7,Tertiary,0,2.7,17,No,1
-Female,Yes,49.1,Medium,83.1,Primary,7,9.2,20,No,1
-Female,Yes,48.3,High,81.5,Tertiary,6,15.7,18,No,1
-Female,No,78.5,Medium,99.5,Secondary,1,10.2,18,Yes,1
-Female,Yes,50.9,Medium,47.7,Tertiary,7,6.8,15,No,0
-Female,No,60.7,Medium,46.2,Secondary,11,6.0,17,No,0
-Female,No,93.8,Medium,83.5,Tertiary,4,4.4,20,No,1
-Female,No,68.4,Low,74.7,Secondary,6,17.4,20,Yes,1
-Female,Yes,80.1,Medium,56.4,Tertiary,3,12.4,16,No,1
-Female,Yes,50.3,Low,44.8,Tertiary,4,3.4,15,No,0
-Female,No,51.5,High,45.1,Tertiary,7,8.9,15,No,0
-Male,No,42.5,Medium,93.7,Primary,0,8.6,20,Yes,1
-Male,Yes,50.1,Low,51.5,Tertiary,0,5.3,20,No,1
-Female,No,56.7,High,59.4,Primary,14,9.8,19,No,1
-Female,No,50.6,High,53.6,Secondary,3,8.0,19,No,1
-Female,No,45.3,High,61.3,Tertiary,2,8.2,19,Yes,1
-Female,Yes,47.2,High,44.2,Secondary,12,15.3,15,Yes,0
-Female,Yes,67.6,Low,71.1,Secondary,9,6.0,16,No,1
-Female,Yes,52.4,Medium,44.1,Tertiary,11,13.6,18,Yes,0
-Female,No,61.9,High,88.0,Primary,1,12.3,19,Yes,1
-Female,No,70.2,Medium,54.0,Tertiary,11,12.2,16,Yes,1
-Male,No,81.4,Low,72.4,Secondary,2,13.9,17,No,1
-Female,Yes,42.4,High,92.8,Secondary,10,11.9,19,No,1
-Male,No,88.0,Medium,79.1,Tertiary,14,17.8,18,Yes,1
-Female,No,77.7,Medium,72.0,Primary,14,14.2,17,Yes,1
-Female,No,44.9,Medium,59.5,Primary,10,11.8,17,Yes,1
-Male,No,92.4,Medium,60.0,Secondary,13,16.9,18,No,1
-Female,Yes,95.3,Medium,80.2,Secondary,10,12.9,19,No,1
-Male,Yes,43.7,Low,99.6,Primary,0,7.2,15,Yes,1
-Female,No,56.6,High,79.7,Tertiary,0,5.7,18,Yes,1
-Female,Yes,88.4,Medium,73.5,Secondary,5,4.7,18,Yes,1
-Male,Yes,84.9,Low,83.8,Primary,4,18.2,18,Yes,1
-Female,No,51.1,High,67.9,Secondary,7,14.8,17,No,1
-Male,No,52.6,High,43.6,Tertiary,1,18.9,16,Yes,0
-Female,Yes,62.2,High,73.7,Primary,3,12.9,15,No,1
-Male,No,69.1,High,97.5,Secondary,7,10.5,19,Yes,1
-Male,Yes,77.1,Medium,50.5,Tertiary,11,3.1,19,Yes,1
-Female,No,62.1,Medium,81.4,Secondary,5,14.1,16,Yes,1
-Female,Yes,67.8,Low,52.1,Tertiary,0,12.5,18,Yes,1
-Male,No,84.8,Medium,72.1,Tertiary,14,19.8,15,Yes,1
-Female,Yes,42.2,Medium,45.8,Primary,3,6.3,19,No,0
-Female,Yes,55.1,Medium,67.0,Tertiary,0,11.6,20,Yes,1
-Female,Yes,82.8,High,85.4,Secondary,12,13.7,19,Yes,1
-Male,No,93.7,Medium,60.9,Tertiary,1,13.6,18,Yes,1
-Male,Yes,70.7,Low,79.9,Tertiary,4,12.1,20,No,1
-Male,Yes,71.9,Medium,87.7,Primary,13,16.0,16,No,1
-Male,No,46.4,Medium,95.6,Tertiary,7,5.7,15,No,1
-Male,No,66.8,Low,54.1,Tertiary,7,15.1,16,No,1
-Male,Yes,72.0,High,64.0,Secondary,10,13.2,16,Yes,1
-Male,Yes,54.5,Medium,49.1,Primary,2,18.1,15,Yes,0
-Male,No,56.2,Medium,99.5,Primary,10,17.2,15,Yes,1
-Male,No,62.6,Medium,95.6,Primary,12,7.7,19,No,1
-Female,No,41.2,High,72.4,Tertiary,3,7.0,19,Yes,1
-Male,No,59.3,Medium,90.5,Primary,9,19.7,15,Yes,1
-Female,No,52.7,Medium,71.3,Tertiary,10,11.5,20,No,1
-Female,Yes,59.6,Medium,77.4,Tertiary,13,18.3,17,No,1
-Female,No,47.2,Medium,45.3,Secondary,5,4.9,19,No,0
-Male,Yes,93.4,High,85.3,Secondary,10,13.6,17,Yes,1
-Male,Yes,75.6,High,47.7,Secondary,10,16.6,20,Yes,0
-Male,Yes,80.7,Medium,89.6,Secondary,9,19.1,15,No,1
-Male,No,87.4,High,86.9,Secondary,2,8.1,20,Yes,1
-Female,Yes,69.9,High,82.5,Tertiary,1,15.0,19,No,1
-Male,Yes,45.2,High,42.2,Tertiary,5,11.7,16,No,0
-Male,No,72.2,High,58.2,Primary,10,3.1,15,Yes,1
-Male,Yes,75.2,Medium,55.8,Tertiary,12,14.4,18,No,1
-Male,Yes,84.7,Medium,61.6,Tertiary,14,14.4,17,No,1
-Male,No,65.9,Medium,45.3,Secondary,4,18.8,20,No,0
-Female,Yes,47.7,High,96.2,Tertiary,13,11.0,15,Yes,1
-Male,Yes,57.0,Low,73.2,Secondary,9,6.1,20,No,1
-Female,Yes,61.8,High,58.3,Primary,4,2.8,15,No,1
-Male,No,78.8,High,63.8,Primary,9,9.5,19,No,1
-Female,No,74.2,Low,66.8,Tertiary,12,7.4,19,No,1
-Male,No,61.4,High,76.0,Primary,4,15.7,19,No,1
-Male,Yes,99.2,Low,70.9,Tertiary,9,8.4,20,No,1
-Female,Yes,76.3,Medium,95.2,Primary,11,19.1,18,No,1
-Female,No,54.2,High,69.8,Secondary,4,19.3,19,Yes,1
-Female,Yes,46.1,Low,99.5,Secondary,2,13.2,15,Yes,1
-Male,Yes,49.2,High,91.1,Secondary,6,18.7,19,No,1
-Female,No,54.8,High,52.5,Secondary,5,15.7,16,Yes,1
-Male,No,49.6,Medium,95.8,Tertiary,3,11.8,19,Yes,1
-Male,Yes,51.2,Low,47.0,Primary,1,5.2,20,No,0
-Female,Yes,57.1,Medium,89.0,Tertiary,11,10.3,18,Yes,1
-Female,Yes,50.4,Medium,62.8,Secondary,8,12.1,16,No,1
-Male,No,93.8,High,92.7,Tertiary,0,17.6,20,No,1
-Male,No,44.8,Medium,92.1,Primary,12,10.7,20,No,1
-Female,No,71.5,Medium,88.4,Tertiary,12,18.2,20,No,1
-Female,No,64.6,Medium,87.4,Primary,10,14.1,15,No,1
-Female,Yes,98.9,Medium,58.3,Tertiary,14,4.5,20,Yes,1
-Male,No,46.7,High,44.9,Primary,13,19.9,15,No,0
-Male,No,63.9,Low,64.2,Primary,3,11.5,20,Yes,1
-Male,No,98.2,High,50.4,Secondary,0,9.1,17,No,1
-Male,No,91.9,Medium,81.7,Primary,12,13.9,16,No,1
-Male,No,89.0,High,60.8,Secondary,5,4.0,17,No,1
-Male,Yes,55.5,Medium,98.5,Secondary,3,13.5,20,Yes,1
-Female,Yes,50.3,Medium,78.5,Secondary,4,11.0,16,No,1
-Male,No,80.1,High,89.3,Tertiary,4,9.3,16,No,1
-Male,Yes,95.8,Low,48.0,Tertiary,8,19.2,18,No,0
-Male,No,73.4,High,91.7,Tertiary,0,11.4,17,No,1
-Female,No,74.3,Medium,95.4,Tertiary,12,5.9,18,Yes,1
-Male,Yes,56.8,Low,69.2,Primary,1,10.3,16,No,1
-Male,Yes,86.2,Medium,76.4,Primary,12,18.5,15,Yes,1
-Female,No,51.2,High,85.9,Tertiary,5,5.2,16,No,1
-Male,No,59.4,Low,50.5,Primary,4,5.9,18,Yes,1
-Male,No,65.5,Medium,70.2,Primary,10,2.2,17,Yes,1
-Male,Yes,70.5,Medium,63.9,Secondary,6,2.3,20,No,1
-Male,No,54.5,Medium,48.8,Secondary,2,16.9,20,No,0
-Male,No,46.9,Low,62.1,Secondary,2,15.2,17,Yes,1
-Female,No,76.6,High,44.1,Secondary,9,8.4,20,No,0
-Female,Yes,57.3,High,41.5,Primary,1,14.6,20,No,0
-Female,No,74.9,High,48.1,Tertiary,12,9.1,18,No,0
-Male,No,49.3,High,97.8,Primary,2,19.2,17,Yes,1
-Male,Yes,68.9,Low,73.0,Primary,9,19.4,19,No,1
-Male,No,72.0,High,97.9,Primary,0,9.1,15,No,1
-Female,No,43.1,Low,65.9,Secondary,4,17.4,15,No,1
-Male,Yes,60.2,Low,58.7,Secondary,13,15.9,20,Yes,1
-Male,No,48.1,Medium,70.4,Secondary,14,7.6,15,No,1
-Female,Yes,43.8,Medium,66.4,Tertiary,11,6.2,17,Yes,1
-Male,Yes,99.4,High,46.3,Primary,4,10.2,17,No,0
-Female,No,59.3,Medium,78.4,Tertiary,11,16.1,16,Yes,1
-Female,No,88.6,Medium,53.0,Secondary,10,19.3,16,No,1
-Female,No,55.3,Medium,77.2,Tertiary,6,15.7,15,No,1
-Male,No,80.9,High,79.0,Primary,3,17.4,19,Yes,1
-Male,Yes,85.6,Medium,49.1,Primary,2,12.9,16,Yes,0
-Male,No,75.7,Medium,43.7,Secondary,0,17.0,16,Yes,0
-Male,Yes,68.3,Low,86.8,Secondary,11,16.1,17,No,1
-Male,No,64.7,High,67.6,Tertiary,14,8.8,19,No,1
-Male,No,60.9,Medium,43.5,Secondary,7,11.9,20,No,0
-Male,No,95.8,Medium,99.7,Secondary,12,16.5,15,No,1
-Female,Yes,89.8,Low,43.5,Primary,2,2.8,16,Yes,0
-Male,No,97.9,Medium,81.7,Secondary,12,16.5,19,No,1
-Female,No,47.5,Medium,99.0,Secondary,14,5.2,19,No,1
-Male,No,83.9,Medium,54.4,Primary,1,11.3,15,No,1
-Male,No,96.3,High,48.5,Primary,10,16.5,19,No,0
-Male,Yes,50.9,Low,47.3,Tertiary,3,6.6,19,No,0
-Female,No,44.0,Medium,58.2,Secondary,2,6.4,19,No,1
-Female,Yes,84.5,High,46.1,Primary,12,9.2,16,No,0
-Female,Yes,74.5,Medium,81.5,Tertiary,0,18.1,15,Yes,1
-Female,Yes,90.5,Medium,43.7,Tertiary,2,2.0,19,No,0
-Male,Yes,48.4,Medium,70.6,Secondary,11,18.2,19,No,1
-Female,Yes,87.7,Medium,99.8,Secondary,1,4.8,16,No,1
-Male,Yes,52.1,High,88.8,Tertiary,7,19.8,15,No,1
-Male,No,49.8,Medium,76.9,Primary,5,19.2,17,Yes,1
-Female,Yes,49.9,High,58.4,Tertiary,8,10.9,16,Yes,1
-Female,Yes,88.9,Medium,77.4,Secondary,7,11.2,15,Yes,1
-Female,Yes,79.9,Medium,71.6,Primary,9,10.7,19,Yes,1
-Female,No,71.4,Low,65.6,Primary,2,13.4,15,Yes,1
-Female,No,61.5,Medium,47.8,Tertiary,4,3.6,15,Yes,0
-Female,Yes,92.6,Medium,93.2,Secondary,6,2.6,20,No,1
-Female,No,63.5,High,67.0,Tertiary,4,3.0,15,Yes,1
-Female,Yes,89.0,Medium,51.7,Tertiary,7,10.0,17,Yes,1
-Male,Yes,66.3,High,62.1,Tertiary,11,7.0,15,No,1
-Female,No,62.6,Low,64.8,Primary,4,13.2,17,Yes,1
-Female,Yes,67.8,High,89.7,Primary,0,19.9,19,No,1
-Male,No,58.1,High,84.0,Secondary,4,9.0,17,No,1
-Female,No,84.9,High,86.2,Secondary,3,12.3,19,Yes,1
-Male,Yes,70.2,High,40.7,Tertiary,5,9.5,19,No,0
-Male,Yes,53.9,High,65.0,Tertiary,2,17.3,17,Yes,1
-Female,No,94.0,Medium,68.9,Tertiary,14,18.2,16,Yes,1
-Male,Yes,63.0,Low,41.2,Secondary,10,17.8,18,No,0
-Male,Yes,72.6,Low,55.6,Primary,4,19.5,15,No,1
-Male,Yes,94.4,High,85.6,Primary,1,2.5,20,Yes,1
-Male,No,77.5,Medium,48.2,Tertiary,10,17.1,18,No,0
-Female,No,47.0,High,72.1,Tertiary,5,15.5,15,No,1
-Male,Yes,96.4,Medium,52.9,Tertiary,12,6.1,15,Yes,1
-Female,No,77.7,Low,40.7,Tertiary,14,19.2,19,Yes,0
-Male,No,60.1,Low,54.5,Secondary,11,4.7,15,No,1
-Male,No,48.4,Medium,98.6,Primary,5,14.2,20,Yes,1
-Male,No,87.6,Medium,88.1,Tertiary,4,6.0,15,Yes,1
-Male,No,77.2,Medium,97.6,Secondary,5,9.8,17,Yes,1
-Female,Yes,72.0,Medium,69.3,Tertiary,10,14.9,18,Yes,1
-Female,Yes,93.6,Low,46.6,Tertiary,6,12.1,17,Yes,0
-Male,Yes,87.3,Medium,72.9,Primary,11,9.7,20,Yes,1
-Male,No,49.1,Medium,67.3,Tertiary,4,7.9,15,Yes,1
-Female,No,58.7,High,90.7,Primary,0,17.1,20,No,1
-Male,Yes,54.9,Medium,45.9,Primary,7,4.6,19,Yes,0
-Male,No,84.6,Medium,69.3,Primary,3,9.7,17,No,1
-Male,Yes,42.0,Low,49.0,Secondary,8,18.3,17,No,0
-Female,Yes,74.2,Low,59.5,Secondary,13,17.2,16,No,1
-Female,Yes,85.7,Medium,84.2,Primary,9,9.2,15,Yes,1
-Female,No,92.6,Medium,68.6,Tertiary,11,15.7,19,Yes,1
-Male,No,60.5,Medium,62.6,Primary,5,16.8,17,No,1
-Male,Yes,89.3,Medium,63.7,Tertiary,0,18.0,17,Yes,1
-Female,Yes,46.6,Medium,67.6,Primary,2,11.8,19,No,1
-Female,Yes,90.8,High,87.1,Tertiary,2,5.7,20,Yes,1
-Female,Yes,47.6,High,93.5,Secondary,9,6.6,20,Yes,1
-Female,No,63.8,Low,97.3,Tertiary,11,7.3,15,No,1
-Male,No,87.8,Medium,87.2,Primary,11,12.7,16,No,1
-Female,Yes,49.0,Low,58.9,Secondary,3,2.6,17,No,1
-Male,Yes,53.8,Medium,81.3,Tertiary,5,13.4,16,Yes,1
-Female,No,83.3,High,66.3,Tertiary,14,8.6,20,No,1
-Male,No,83.2,Low,55.3,Tertiary,6,7.3,20,Yes,1
-Female,Yes,78.5,Medium,90.5,Tertiary,9,17.8,18,Yes,1
-Female,Yes,81.6,Medium,42.3,Tertiary,3,10.3,15,Yes,0
-Female,Yes,72.6,High,94.1,Secondary,5,3.7,18,No,1
-Female,No,55.1,Medium,67.7,Secondary,10,16.9,18,No,1
-Male,No,60.7,Low,78.2,Secondary,0,2.9,18,No,1
-Female,No,50.9,Medium,79.6,Secondary,13,15.1,15,Yes,1
-Male,Yes,94.5,Medium,93.7,Primary,7,15.9,15,Yes,1
-Male,Yes,75.0,Low,78.2,Secondary,6,8.3,19,No,1
-Male,No,64.1,Medium,76.8,Tertiary,14,16.8,16,Yes,1
-Male,No,67.7,Low,44.0,Tertiary,10,11.3,16,Yes,0
-Female,Yes,96.8,Low,71.1,Secondary,10,10.3,19,No,1
-Male,No,49.2,Medium,49.0,Tertiary,8,2.8,19,No,0
-Male,No,75.2,Low,84.2,Secondary,2,7.2,20,No,1
-Male,Yes,70.4,Medium,70.7,Tertiary,1,18.8,18,Yes,1
-Female,No,76.7,Medium,80.8,Primary,0,9.1,19,Yes,1
-Female,Yes,41.1,High,42.5,Primary,2,11.8,17,Yes,0
-Female,Yes,92.3,Medium,45.1,Secondary,4,11.6,16,Yes,0
-Female,Yes,95.9,Low,83.0,Secondary,13,12.6,19,Yes,1
-Male,Yes,73.9,Low,44.3,Secondary,10,3.1,17,No,0
-Male,Yes,81.8,Medium,44.3,Tertiary,1,8.5,17,Yes,0
-Female,Yes,95.3,High,40.7,Secondary,11,15.0,17,Yes,0
-Male,Yes,82.4,Low,97.4,Primary,2,5.6,20,Yes,1
-Male,No,49.2,High,84.3,Tertiary,14,5.7,20,No,1
-Male,Yes,74.6,Low,61.2,Secondary,14,2.2,17,No,1
-Female,Yes,76.4,Medium,57.8,Tertiary,14,9.9,20,No,1
-Female,No,65.4,High,61.0,Tertiary,3,17.9,18,Yes,1
-Male,No,84.2,High,86.5,Secondary,6,2.9,17,No,1
-Female,No,96.1,High,79.7,Tertiary,12,5.4,18,No,1
-Female,Yes,95.5,High,51.1,Primary,2,7.6,18,No,1
-Female,No,67.1,Medium,50.4,Primary,14,15.2,17,Yes,1
-Female,Yes,46.8,High,45.9,Tertiary,8,13.5,16,No,0
-Female,Yes,99.1,Low,79.6,Secondary,7,9.5,17,Yes,1
-Male,Yes,90.3,High,85.9,Tertiary,3,15.7,17,Yes,1
-Female,Yes,47.5,Medium,55.9,Primary,12,13.0,20,No,1
-Male,No,95.3,High,41.3,Tertiary,0,18.1,17,Yes,0
-Male,No,92.2,Medium,44.9,Tertiary,0,16.7,16,No,0
-Female,Yes,71.1,Medium,98.1,Primary,0,6.6,20,Yes,1
-Male,Yes,75.5,Medium,57.7,Tertiary,0,6.9,15,No,1
-Male,Yes,63.9,High,86.2,Tertiary,7,4.3,15,No,1
-Male,No,43.3,Low,77.5,Secondary,2,8.1,18,No,1
-Female,Yes,60.1,Low,62.9,Secondary,14,20.0,18,Yes,1
-Female,Yes,88.2,Medium,52.3,Primary,5,9.3,16,No,1
-Male,No,40.3,Low,47.3,Primary,2,6.0,19,Yes,0
-Female,No,60.0,High,76.9,Primary,10,15.7,15,No,1
-Female,Yes,63.9,Medium,86.5,Secondary,4,11.8,18,Yes,1
-Female,No,72.2,High,78.6,Primary,12,4.7,15,Yes,1
-Female,No,95.2,Medium,71.8,Primary,14,8.9,16,No,1
-Male,Yes,60.8,Low,42.5,Primary,13,9.5,16,No,0
-Male,No,60.8,High,98.1,Secondary,12,15.6,19,No,1
-Female,Yes,84.3,Medium,87.9,Tertiary,14,2.4,19,No,1
-Female,No,67.1,Medium,57.6,Primary,6,6.8,20,No,1
-Male,Yes,53.5,Medium,98.8,Tertiary,1,11.3,16,Yes,1
-Male,Yes,67.1,High,76.1,Primary,5,6.8,18,No,1
-Female,Yes,48.5,Medium,74.9,Tertiary,12,13.3,15,No,1
-Male,No,50.6,High,84.9,Secondary,5,10.7,17,Yes,1
-Female,Yes,69.9,High,88.7,Secondary,10,8.5,19,No,1
-Female,No,65.1,Medium,79.4,Primary,2,19.1,17,No,1
-Male,Yes,94.9,Low,47.7,Tertiary,5,13.4,18,Yes,0
-Male,Yes,61.7,Medium,60.3,Secondary,9,4.3,19,No,1
-Female,No,74.8,Low,95.7,Primary,9,12.1,17,No,1
-Female,Yes,77.9,Low,53.5,Primary,13,16.1,18,No,1
-Male,Yes,40.8,Medium,62.3,Secondary,4,14.8,15,Yes,1
-Female,No,79.8,Medium,65.9,Secondary,11,5.1,18,No,1
-Male,Yes,50.7,High,66.4,Primary,1,19.5,20,Yes,1
-Female,Yes,97.7,High,76.8,Tertiary,8,10.1,19,No,1
-Male,Yes,48.9,High,96.6,Tertiary,7,4.9,16,Yes,1
-Male,Yes,64.9,Medium,54.4,Tertiary,2,5.2,15,No,1
-Male,No,45.1,Medium,47.3,Primary,7,3.8,17,Yes,0
-Female,No,99.8,Medium,51.8,Secondary,13,16.5,19,Yes,1
-Female,Yes,70.1,High,93.2,Primary,8,4.2,16,Yes,1
-Male,No,75.7,Low,78.7,Secondary,13,4.3,18,Yes,1
-Female,Yes,44.0,High,57.2,Tertiary,14,17.3,16,Yes,1
-Male,No,85.0,Medium,89.0,Tertiary,2,8.2,19,Yes,1
-Male,Yes,52.6,Medium,91.7,Secondary,2,2.6,19,No,1
-Female,Yes,93.9,High,90.8,Secondary,1,2.9,20,No,1
-Female,Yes,52.3,Medium,95.1,Primary,7,4.6,20,Yes,1
-Male,Yes,51.4,High,55.1,Tertiary,9,5.8,16,Yes,1
-Female,Yes,42.2,High,85.3,Primary,0,14.0,18,Yes,1
-Female,Yes,68.3,Medium,67.6,Primary,7,4.8,16,Yes,1
-Male,No,73.9,Medium,90.5,Primary,6,4.1,19,No,1
-Male,Yes,43.9,Medium,83.7,Tertiary,13,15.8,19,Yes,1
-Female,No,86.5,High,86.6,Primary,6,14.1,17,No,1
-Male,Yes,67.2,Medium,79.4,Primary,2,9.8,20,No,1
-Male,No,71.5,Medium,50.6,Primary,0,11.9,17,Yes,1
-Female,No,66.4,Medium,72.7,Primary,3,7.6,15,Yes,1
-Male,No,64.0,High,99.1,Primary,8,10.7,19,No,1
-Male,Yes,73.6,Low,96.2,Primary,4,11.1,17,No,1
-Female,Yes,49.3,High,42.6,Tertiary,0,9.0,16,Yes,0
-Female,No,50.9,High,49.9,Primary,14,18.3,20,Yes,0
-Male,Yes,91.7,Low,47.9,Secondary,4,2.3,20,Yes,0
-Male,No,96.8,Medium,83.6,Primary,12,16.1,18,No,1
-Female,Yes,62.4,High,89.1,Primary,7,4.2,16,No,1
-Female,No,56.2,Low,52.8,Tertiary,7,16.4,18,Yes,1
-Female,No,78.6,High,70.4,Tertiary,4,13.1,17,No,1
-Female,Yes,64.5,Medium,90.4,Secondary,11,17.2,15,No,1
-Male,No,41.5,Medium,84.0,Secondary,8,3.8,16,Yes,1
-Female,Yes,49.4,High,72.5,Tertiary,14,12.1,16,Yes,1
-Female,No,83.0,Medium,75.4,Tertiary,0,11.0,16,No,1
-Male,No,79.5,Medium,70.5,Primary,3,14.7,18,No,1
-Female,Yes,41.6,Medium,57.9,Tertiary,2,11.6,17,Yes,1
-Male,Yes,53.3,Medium,73.9,Secondary,1,11.7,16,Yes,1
-Female,Yes,53.9,Low,81.3,Primary,14,9.7,16,Yes,1
-Female,No,80.3,Medium,92.4,Secondary,7,7.6,20,Yes,1
-Female,Yes,41.2,High,78.2,Primary,6,10.7,15,Yes,1
-Male,No,46.2,Medium,85.7,Tertiary,8,4.1,20,No,1
-Male,No,88.0,Medium,49.6,Secondary,1,19.3,20,No,0
-Female,Yes,50.7,Medium,67.7,Primary,13,14.9,15,No,1
-Male,Yes,79.2,High,40.6,Primary,13,19.1,17,No,0
-Male,No,54.3,Low,54.8,Tertiary,3,6.1,20,Yes,1
-Male,No,46.0,High,83.6,Tertiary,13,17.8,17,Yes,1
-Male,Yes,54.6,Medium,99.5,Tertiary,14,16.6,20,Yes,1
-Male,Yes,83.3,Medium,46.0,Secondary,5,14.2,19,No,0
-Male,Yes,91.3,Low,64.1,Primary,10,13.3,15,No,1
-Female,Yes,89.8,Low,88.0,Tertiary,2,7.7,20,No,1
-Female,Yes,63.8,Medium,52.2,Secondary,7,16.7,19,Yes,1
-Male,No,80.1,Medium,73.3,Secondary,2,11.0,18,No,1
-Female,No,52.3,High,84.0,Secondary,13,3.3,19,Yes,1
-Female,No,57.6,Medium,77.0,Tertiary,11,7.6,16,Yes,1
-Female,No,93.8,Medium,51.3,Tertiary,12,18.8,20,Yes,1
-Female,Yes,40.8,Medium,61.3,Primary,12,17.3,19,Yes,1
-Male,Yes,45.1,High,87.0,Primary,1,19.7,17,Yes,1
-Female,Yes,52.5,Low,73.3,Tertiary,12,13.3,18,Yes,1
-Female,No,41.6,Low,40.3,Secondary,12,6.5,20,No,0
-Male,No,50.9,Low,85.7,Secondary,2,4.9,16,Yes,1
-Male,Yes,75.0,High,42.1,Secondary,10,5.4,19,Yes,0
-Female,Yes,65.3,Medium,84.7,Primary,5,2.4,18,No,1
-Female,No,93.6,Medium,52.1,Secondary,1,9.0,20,Yes,1
-Female,No,89.0,High,97.5,Primary,7,5.4,18,No,1
-Female,Yes,60.5,High,62.1,Primary,0,9.4,16,No,1
-Female,Yes,55.6,Medium,59.6,Secondary,6,18.8,19,No,1
-Female,No,62.8,High,48.9,Secondary,1,9.7,18,Yes,0
-Male,Yes,75.4,Medium,58.3,Tertiary,9,17.8,18,Yes,1
-Female,Yes,56.1,Low,92.6,Tertiary,11,12.9,15,No,1
-Female,Yes,77.4,Medium,99.8,Secondary,5,6.4,18,Yes,1
-Male,No,64.6,Low,62.1,Primary,11,8.4,15,Yes,1
-Male,No,73.1,Medium,66.9,Primary,1,3.5,19,No,1
-Male,No,66.2,High,83.3,Primary,1,8.0,20,No,1
-Male,No,57.7,Low,93.2,Primary,9,14.2,20,Yes,1
-Female,No,96.9,Low,75.6,Primary,12,3.3,19,No,1
-Female,No,85.8,Medium,63.5,Tertiary,7,5.7,19,No,1
-Female,No,48.4,High,64.8,Secondary,14,8.9,17,No,1
-Female,Yes,92.1,Medium,81.7,Tertiary,14,19.7,19,Yes,1
-Female,Yes,69.2,Medium,40.2,Primary,11,16.1,18,Yes,0
-Female,Yes,93.7,Low,77.2,Primary,1,15.2,20,Yes,1
-Male,Yes,88.0,Low,61.3,Primary,6,4.1,16,No,1
-Female,Yes,65.5,High,87.7,Primary,2,16.1,20,Yes,1
-Male,Yes,41.3,High,45.6,Secondary,7,16.1,15,No,0
-Male,Yes,56.1,Low,75.3,Primary,6,12.8,20,Yes,1
-Female,No,72.5,High,68.9,Secondary,13,19.8,17,Yes,1
-Male,No,78.0,Medium,78.5,Primary,7,7.9,19,No,1
-Female,Yes,55.5,High,43.9,Secondary,13,18.9,19,Yes,0
-Male,Yes,48.4,Medium,74.8,Tertiary,6,18.5,20,No,1
-Female,No,90.1,Medium,73.7,Primary,10,2.2,16,Yes,1
-Male,Yes,99.1,Medium,73.6,Secondary,5,10.1,16,Yes,1
-Female,Yes,71.5,Medium,76.2,Tertiary,12,19.6,17,No,1
-Female,No,50.3,Low,80.6,Primary,6,3.9,15,No,1
-Female,Yes,56.3,Low,88.3,Primary,4,11.9,20,No,1
-Female,No,41.1,Medium,56.2,Primary,6,19.6,19,Yes,1
-Female,Yes,94.9,High,89.5,Secondary,0,12.0,20,Yes,1
-Male,No,47.1,Medium,69.9,Secondary,0,5.4,17,Yes,1
-Male,No,74.6,Medium,44.6,Tertiary,8,12.5,18,No,0
-Male,No,56.4,High,43.5,Secondary,13,5.7,18,No,0
-Female,Yes,73.3,Low,60.1,Secondary,4,11.4,17,No,1
-Male,No,79.1,Medium,87.1,Primary,12,3.3,19,Yes,1
-Female,Yes,89.8,Medium,82.5,Primary,4,12.9,17,Yes,1
-Female,Yes,52.4,High,87.3,Primary,2,11.3,19,No,1
-Male,Yes,40.7,Low,71.0,Primary,4,15.3,16,Yes,1
-Male,Yes,48.2,Medium,66.4,Primary,2,13.4,17,No,1
-Female,No,94.0,High,48.8,Primary,8,11.9,19,Yes,0
-Male,No,92.4,High,59.7,Primary,8,14.4,17,Yes,1
-Female,Yes,75.8,Medium,66.0,Tertiary,5,4.6,17,No,1
-Female,Yes,76.0,Medium,45.3,Tertiary,14,12.7,19,Yes,0
-Female,No,79.9,Medium,53.2,Tertiary,0,5.1,19,Yes,1
-Female,Yes,50.5,High,75.9,Tertiary,6,18.7,15,No,1
-Female,No,94.9,Medium,84.1,Primary,6,3.2,17,No,1
-Male,Yes,65.1,Low,99.9,Tertiary,13,9.7,18,Yes,1
-Male,Yes,63.0,High,96.0,Primary,9,14.5,17,No,1
-Female,No,71.1,Medium,78.6,Tertiary,9,10.2,17,Yes,1
-Female,Yes,42.8,Medium,65.3,Secondary,3,3.7,19,No,1
-Male,No,50.0,Medium,78.2,Tertiary,7,12.0,17,Yes,1
-Male,Yes,84.3,Medium,87.1,Tertiary,5,13.5,20,Yes,1
-Female,Yes,45.0,Medium,47.1,Primary,3,14.7,17,No,0
-Male,Yes,76.2,Medium,64.6,Tertiary,3,8.7,20,Yes,1
-Female,No,54.7,Low,90.4,Secondary,1,12.1,18,Yes,1
-Male,Yes,63.4,Medium,63.0,Primary,13,10.1,19,No,1
-Female,Yes,57.3,High,74.3,Primary,1,14.1,17,No,1
-Male,Yes,61.3,Low,75.3,Tertiary,11,12.5,20,Yes,1
-Female,Yes,83.1,High,51.1,Primary,13,11.5,20,No,1
-Male,No,57.8,Medium,61.7,Primary,3,6.5,20,No,1
-Male,No,74.0,High,60.1,Primary,4,2.0,16,Yes,1
-Female,Yes,68.6,High,41.6,Primary,7,5.1,15,Yes,0
-Male,No,79.8,Medium,41.5,Primary,14,4.1,18,No,0
-Female,Yes,96.2,High,89.9,Primary,5,10.1,17,No,1
-Male,Yes,84.0,High,56.4,Secondary,13,13.0,16,No,1
-Female,Yes,52.9,Medium,71.1,Tertiary,14,5.8,17,Yes,1
-Male,No,41.9,Medium,57.9,Secondary,3,18.9,17,Yes,1
-Female,No,55.7,Medium,96.4,Primary,12,2.1,19,Yes,1
-Male,No,75.7,High,55.6,Primary,10,15.9,19,Yes,1
-Female,No,43.1,High,65.8,Tertiary,6,13.3,19,Yes,1
-Male,No,69.8,High,92.4,Secondary,7,8.7,16,Yes,1
-Female,No,75.8,Medium,90.5,Tertiary,1,2.9,17,Yes,1
-Female,No,60.1,High,51.2,Secondary,11,13.3,15,No,1
-Female,No,86.3,Low,88.2,Primary,6,8.9,18,No,1
-Male,No,46.4,Medium,67.5,Tertiary,14,18.9,19,Yes,1
-Female,Yes,44.5,Low,69.0,Tertiary,13,11.8,19,Yes,1
-Male,No,83.7,Medium,48.0,Primary,1,18.9,17,Yes,0
-Female,No,69.7,Medium,44.8,Tertiary,1,6.0,17,No,0
-Male,No,81.3,Medium,83.7,Secondary,7,15.1,16,Yes,1
-Female,No,66.1,Medium,69.8,Secondary,1,13.1,16,No,1
-Male,No,54.8,Medium,66.2,Secondary,14,15.3,19,No,1
-Male,No,89.1,Medium,83.8,Secondary,10,5.9,17,No,1
-Female,No,88.0,Medium,85.9,Primary,8,14.0,15,No,1
-Male,No,81.7,Medium,49.5,Tertiary,11,11.0,18,No,0
-Male,No,56.3,Medium,76.6,Secondary,0,15.4,17,Yes,1
-Female,No,75.4,Low,48.1,Primary,14,7.9,17,Yes,0
-Male,No,61.7,Medium,85.1,Tertiary,8,18.0,20,No,1
-Male,Yes,45.5,Medium,79.4,Tertiary,14,3.5,16,Yes,1
-Male,Yes,95.0,Medium,97.4,Primary,0,16.5,18,No,1
-Female,No,48.2,Medium,44.1,Primary,9,17.5,19,No,0
-Male,No,97.0,Medium,43.4,Secondary,12,16.7,17,Yes,0
-Female,Yes,66.8,High,56.9,Tertiary,9,11.2,19,Yes,1
+Previous_Grade	Absences	Study_Time_per_Week	Age	passed	Gender_Male	Extra_Courses_Yes	Internet_Access_Yes	Motivation_Level_High	Motivation_Level_Low	Motivation_Level_Medium	Parent_Education_Level_Primary	Parent_Education_Level_Secondary	Parent_Education_Level_Tertiary	G3
+81.9	14	14.9	17	1	1	1	1	0	1	0	0	0	1	68.72700594
+72.2	8	12.7	16	1	0	1	1	0	0	1	0	0	1	97.53571532
+58.6	6	18.1	17	0	1	1	0	1	0	0	0	0	1	36.5264977
+88.8	1	12.5	18	1	1	0	0	1	0	0	0	1	0	79.93292421
+81.1	14	10.4	15	1	1	1	0	1	0	0	0	1	0	57.80093202
+49.8	12	8.1	17	1	0	1	0	0	0	1	0	1	0	57.79972602
+94.7	8	18.9	15	1	1	0	1	0	0	1	0	0	1	52.90418061
+89.4	9	3.5	15	1	1	1	0	1	0	0	0	1	0	93.30880729
+97	1	18.8	16	1	1	0	0	0	0	1	1	0	0	80.05575059
+83.5	2	16.9	16	1	0	0	0	0	0	1	1	0	0	85.40362889
+76.8	10	4.3	18	1	1	1	1	0	0	1	0	1	0	51.02922471
+65.1	12	12.2	19	1	1	0	0	1	0	0	1	0	0	98.49549261
+96	9	17.6	15	1	1	1	1	1	0	0	1	0	0	91.62213204
+92	13	12.3	19	0	1	0	0	0	1	0	0	0	1	10.59572162
+42.7	1	18.3	18	1	0	0	1	1	0	0	0	1	0	59.09124836
+41.6	2	19	15	0	1	1	1	1	0	0	0	1	0	9.151885042
+62.6	5	9.6	15	1	0	0	0	0	1	0	0	0	1	65.21211215
+88.6	8	8.8	20	1	0	0	1	0	0	1	1	0	0	76.23782158
+99.2	8	18.9	19	1	0	0	1	1	0	0	1	0	0	71.59725093
+49	6	14.2	17	1	1	0	0	0	1	0	0	1	0	64.56145701
+75.6	11	4.1	16	0	0	0	0	0	0	1	1	0	0	30.53145945
+62.9	2	2.8	17	1	1	1	0	0	0	1	0	0	1	56.97469303
+98.2	3	12.2	19	1	0	0	1	1	0	0	0	0	1	64.60723243
+90.5	5	18.7	16	0	0	1	1	1	0	0	0	1	0	18.28145598
+90.3	10	17.2	17	1	0	0	1	1	0	0	0	0	1	72.80349921
+68.1	4	14.2	20	1	0	1	0	0	0	1	0	0	1	89.25879807
+64.9	1	4.5	16	1	0	1	1	1	0	0	0	1	0	59.98368911
+56.4	12	6.6	15	1	0	0	1	1	0	0	0	0	1	75.71172192
+43.4	5	17.8	17	1	0	0	1	0	0	1	0	0	1	79.62072844
+91.9	2	5.3	16	1	0	0	1	1	0	0	0	0	1	52.32252064
+88.8	13	7	20	1	1	1	1	0	1	0	1	0	0	80.3772426
+100	7	4.3	16	1	1	0	1	0	0	1	0	1	0	58.52620618
+99.8	1	14.2	16	1	0	1	1	0	0	1	0	1	0	53.25257965
+73.3	0	19	20	1	0	1	0	0	1	0	0	1	0	97.44427686
+86.1	8	6.8	17	1	0	1	0	0	1	0	1	0	0	98.28160165
+96.7	13	10.6	18	0	1	0	0	0	0	1	1	0	0	40.33902767
+91	11	13.4	17	1	0	0	1	0	0	1	0	1	0	65.23068846
+54.8	2	20	19	1	1	1	1	1	0	0	1	0	0	54.8836057
+67	10	3.9	20	1	1	1	0	0	1	0	0	1	0	84.21165133
+47.7	0	11	17	1	1	0	1	0	0	1	1	0	0	72.00762469
+97.2	6	8.9	16	1	1	1	0	0	0	1	0	0	1	56.10191174
+76.4	12	17.6	20	0	1	0	1	1	0	0	0	0	1	24.70932781
+53.7	14	10.6	15	1	0	1	1	0	0	1	0	1	0	51.71942606
+80.3	9	4	17	1	0	0	0	0	0	1	1	0	0	95.4660201
+77.1	4	13.4	20	1	0	1	0	1	0	0	1	0	0	62.93899908
+61.5	4	15.9	17	1	0	0	0	0	0	1	0	0	1	83.12611422
+46.8	13	2.1	20	1	0	1	0	0	0	1	0	0	1	65.5855538
+80.3	0	17.5	16	1	1	0	0	0	1	0	1	0	0	76.00340106
+71.2	14	5.3	15	0	0	0	1	1	0	0	1	0	0	27.28084294
+86.3	14	11.9	15	1	0	1	1	0	1	0	1	0	0	59.24272278
+71.2	8	9.5	19	1	1	1	1	1	0	0	1	0	0	98.47923139
+91.1	6	15	20	1	0	0	0	0	0	1	1	0	0	88.75664117
+73.1	7	8.7	17	1	1	1	0	1	0	0	1	0	0	96.97494708
+73.7	8	17.7	15	1	0	0	0	1	0	0	0	1	0	94.74136752
+92.6	5	15.1	15	1	1	1	0	1	0	0	1	0	0	79.89499894
+64.2	11	13.7	18	1	0	0	0	0	0	1	0	0	1	96.09371175
+48	4	16.3	18	1	0	0	0	1	0	0	0	1	0	54.4246251
+41.7	5	15.6	15	1	1	0	1	0	0	1	1	0	0	59.79914312
+85.3	10	2.6	20	1	1	0	1	0	0	1	0	0	1	52.26136445
+77.2	1	9.1	19	1	1	0	1	0	0	1	0	1	0	66.26651654
+82.2	3	18.8	15	1	1	0	1	1	0	0	0	0	1	69.43386448
+52.8	2	4.3	16	1	1	1	1	1	0	0	1	0	0	63.56745159
+48.2	12	15.3	17	1	1	1	0	1	0	0	1	0	0	91.43687546
+40.9	6	19.5	19	1	1	1	0	0	0	1	1	0	0	67.83766633
+61	8	2.9	16	1	1	0	0	0	0	1	1	0	0	64.04672548
+75.4	4	14.3	19	1	0	0	0	1	0	0	0	1	0	77.13480416
+63.5	5	10.4	16	1	0	0	0	0	0	1	0	1	0	57.04621125
+66.2	9	12.4	17	0	1	0	0	0	1	0	0	0	1	40.02962934
+94.2	13	3.5	17	1	0	1	1	0	0	1	1	0	0	53.72753218
+60.9	11	2.8	18	1	0	1	0	0	0	1	0	0	1	99.34434683
+70.8	11	14	20	1	0	0	0	0	0	1	0	1	0	88.61223846
+87	1	16.8	16	1	0	1	0	0	0	1	1	0	0	59.93578408
+63.8	2	16.1	18	1	1	1	0	0	1	0	1	0	0	50.27610586
+77.3	2	11.8	16	1	0	0	1	0	1	0	0	1	0	90.77307142
+91.7	11	3.8	18	1	1	1	1	1	0	0	0	1	0	85.34286719
+97	11	14.4	17	0	0	0	0	0	0	1	0	1	0	36.37745769
+48.8	14	6.4	19	0	0	1	1	0	0	1	0	1	0	38.4863903
+95.6	8	18.4	18	1	0	0	1	0	0	1	0	1	0	53.70223259
+69.5	14	17.1	16	1	1	0	0	0	0	1	1	0	0	67.92328643
+55.5	6	14.8	16	1	0	0	0	1	0	0	0	1	0	55.79345298
+67.5	7	19.1	20	1	1	0	0	1	0	0	1	0	0	93.15517129
+98.8	10	2.6	17	1	0	1	0	0	1	0	1	0	0	81.16490634
+69.6	9	15.3	16	1	1	0	0	0	0	1	0	1	0	66.54490124
+59.7	10	7.9	15	1	0	0	1	1	0	0	0	1	0	53.17791751
+78	8	18.3	19	1	1	0	0	1	0	0	1	0	0	65.54911609
+54.4	5	6.8	18	0	1	1	0	0	0	1	0	1	0	16.22664777
+44.6	3	15	20	1	0	0	0	0	0	1	0	1	0	86.48030892
+47.7	11	17.8	19	1	1	1	1	0	1	0	0	1	0	81.87787357
+47.7	0	2.7	17	1	0	0	0	1	0	0	0	0	1	94.36063713
+49.1	7	9.2	20	1	0	1	0	0	0	1	1	0	0	73.61074626
+48.3	6	15.7	18	1	0	1	0	1	0	0	0	0	1	55.9797123
+78.5	1	10.2	18	1	0	0	1	0	0	1	0	1	0	85.66223936
+50.9	7	6.8	15	0	0	1	0	0	0	1	0	0	1	37.96317393
+60.7	11	6	17	0	0	0	0	0	0	1	0	1	0	28.00773216
+93.8	4	4.4	20	1	0	0	0	0	0	1	0	0	1	88.548359
+68.4	6	17.4	20	1	0	0	1	0	1	0	0	1	0	74.68977982
+80.1	3	12.4	16	1	0	1	0	0	0	1	0	0	1	76.13664147
+50.3	4	3.4	15	0	0	1	0	0	1	0	0	0	1	21.33429682
+51.5	7	8.9	15	0	0	0	0	1	0	0	0	0	1	1.268414425
+42.5	0	8.6	20	1	1	0	1	0	0	1	1	0	0	55.39457135
+50.1	0	5.3	20	1	1	1	0	0	1	0	0	0	1	51.57145928
+56.7	14	9.8	19	1	0	0	0	1	0	0	1	0	0	81.82052056
+50.6	3	8	19	1	0	0	0	1	0	0	0	1	0	65.71779905
+45.3	2	8.2	19	1	0	0	1	1	0	0	0	0	1	75.42853456
+47.2	12	15.3	15	0	0	1	1	1	0	0	0	1	0	45.28756705
+67.6	9	6	16	1	0	1	0	0	1	0	0	1	0	62.46461146
+52.4	11	13.6	18	0	0	1	1	0	0	1	0	0	1	20.47810786
+61.9	1	12.3	19	1	0	0	1	1	0	0	1	0	0	87.77755693
+70.2	11	12.2	16	1	0	0	1	0	0	1	0	0	1	61.43990827
+81.4	2	13.9	17	1	1	0	0	0	1	0	0	1	0	53.84899549
+42.4	10	11.9	19	1	0	1	0	1	0	0	0	1	0	64.48757265
+88	14	17.8	18	1	1	0	1	0	0	1	0	0	1	58.06106436
+77.7	14	14.2	17	1	0	0	1	0	0	1	1	0	0	96.48488262
+44.9	10	11.8	17	1	0	0	1	0	0	1	1	0	0	90.40601898
+92.4	13	16.9	18	1	1	0	0	0	0	1	0	1	0	81.67018783
+95.3	10	12.9	19	1	0	1	0	0	0	1	0	1	0	93.57302951
+43.7	0	7.2	15	1	1	1	1	0	1	0	1	0	0	90.18360384
+56.6	0	5.7	18	1	0	0	1	1	0	0	0	0	1	59.32850294
+88.4	5	4.7	18	1	0	1	1	0	0	1	0	1	0	94.62794992
+84.9	4	18.2	18	1	1	1	1	0	1	0	1	0	0	76.9671121
+51.1	7	14.8	17	1	0	0	0	1	0	0	0	1	0	90.37200776
+52.6	1	18.9	16	0	1	0	1	1	0	0	0	0	1	44.71495587
+62.2	3	12.9	15	1	0	1	0	1	0	0	1	0	0	65.90017375
+69.1	7	10.5	19	1	1	0	1	1	0	0	0	1	0	55.50259623
+77.1	11	3.1	19	1	1	1	1	0	0	1	0	0	1	61.39675813
+62.1	5	14.1	16	1	0	0	1	0	0	1	0	1	0	71.35538943
+67.8	0	12.5	18	1	0	1	1	0	1	0	0	0	1	90.9007383
+84.8	14	19.8	15	1	1	0	1	0	0	1	0	0	1	93.03652916
+42.2	3	6.3	19	0	0	1	0	0	0	1	1	0	0	0.346911314
+55.1	0	11.6	20	1	0	1	1	0	0	1	0	0	1	75.53736513
+82.8	12	13.7	19	1	0	1	1	1	0	0	0	1	0	70.87055016
+93.7	1	13.6	18	1	1	0	1	0	0	1	0	0	1	61.10539052
+70.7	4	12.1	20	1	1	1	0	0	1	0	0	0	1	55.99326837
+71.9	13	16	16	1	1	1	0	0	0	1	1	0	0	66.88075857
+46.4	7	5.7	15	1	1	0	0	0	0	1	0	0	1	97.1454852
+66.8	7	15.1	16	1	1	0	0	0	1	0	0	0	1	66.1601466
+72	10	13.2	16	1	1	1	1	1	0	0	0	1	0	75.93953109
+54.5	2	18.1	15	0	1	1	1	0	0	1	1	0	0	35.08064605
+56.2	10	17.2	15	1	1	0	1	0	0	1	1	0	0	68.18148012
+62.6	12	7.7	19	1	1	0	0	0	0	1	1	0	0	98.58910414
+41.2	3	7	19	1	0	0	1	1	0	0	0	0	1	98.12236475
+59.3	9	19.7	15	1	1	0	1	0	0	1	1	0	0	62.58911479
+52.7	10	11.5	20	1	0	0	0	0	0	1	0	0	1	74.86242529
+59.6	13	18.3	17	1	0	1	0	0	0	1	0	0	1	65.04391549
+47.2	5	4.9	19	0	0	0	0	0	0	1	0	1	0	14.21354067
+93.4	10	13.6	17	1	1	1	1	1	0	0	0	1	0	51.84434737
+75.6	10	16.6	20	0	1	1	1	1	0	0	0	1	0	30.41726027
+80.7	9	19.1	15	1	1	1	0	0	0	1	0	1	0	75.13395116
+87.4	2	8.1	20	1	1	0	1	1	0	0	0	1	0	52.57393756
+69.9	1	15	19	1	0	1	0	1	0	0	0	0	1	63.93232321
+45.2	5	11.7	16	0	1	1	0	1	0	0	0	0	1	45.32246771
+72.2	10	3.1	15	1	1	0	1	1	0	0	1	0	0	61.97809453
+75.2	12	14.4	18	1	1	1	0	0	0	1	0	0	1	57.2447436
+84.7	14	14.4	17	1	1	1	0	0	0	1	0	0	1	74.47263801
+65.9	4	18.8	20	0	1	0	0	0	0	1	0	1	0	49.18395766
+47.7	13	11	15	1	0	1	1	1	0	0	0	0	1	62.10276358
+57	9	6.1	20	1	1	1	0	0	1	0	0	1	0	83.60677737
+61.8	4	2.8	15	1	0	1	0	1	0	0	1	0	0	88.08098077
+78.8	9	9.5	19	1	1	0	0	1	0	0	1	0	0	61.8818772
+74.2	12	7.4	19	1	0	0	0	0	1	0	0	0	1	86.41081743
+61.4	4	15.7	19	1	1	0	0	1	0	0	1	0	0	68.38915664
+99.2	9	8.4	20	1	1	1	0	0	1	0	0	0	1	81.61529153
+76.3	11	19.1	18	1	0	1	0	0	0	1	1	0	0	81.67648554
+54.2	4	19.3	19	1	0	0	1	1	0	0	0	1	0	76.7887342
+46.1	2	13.2	15	1	0	1	1	0	1	0	0	1	0	54.5144885
+49.2	6	18.7	19	1	1	1	0	1	0	0	0	1	0	91.76512478
+54.8	5	15.7	16	1	0	0	1	1	0	0	0	1	0	66.03900325
+49.6	3	11.8	19	1	1	0	1	0	0	1	0	0	1	59.32592552
+51.2	1	5.2	20	0	1	1	0	0	1	0	1	0	0	2.034679564
+57.1	11	10.3	18	1	0	1	1	0	0	1	0	0	1	79.54464716
+50.4	8	12.1	16	1	0	1	0	0	0	1	0	1	0	83.87821809
+93.8	0	17.6	20	1	1	0	0	1	0	0	0	0	1	50.82939145
+44.8	12	10.7	20	1	1	0	0	0	0	1	1	0	0	75.60465291
+71.5	12	18.2	20	1	0	0	0	0	0	1	0	0	1	61.32478876
+64.6	10	14.1	15	1	0	0	0	0	0	1	1	0	0	82.25863952
+98.9	14	4.5	20	1	0	1	1	0	0	1	0	0	1	58.71832145
+46.7	13	19.9	15	0	1	0	0	1	0	0	1	0	0	34.47779313
+63.9	3	11.5	20	1	1	0	1	0	1	0	1	0	0	69.33676732
+98.2	0	9.1	17	1	1	0	0	1	0	0	0	1	0	96.83649944
+91.9	12	13.9	16	1	1	0	0	0	0	1	1	0	0	56.87604721
+89	5	4	17	1	1	0	0	1	0	0	0	1	0	67.05331755
+55.5	3	13.5	20	1	1	1	1	0	0	1	0	1	0	55.67367606
+50.3	4	11	16	1	0	1	0	0	0	1	0	1	0	96.23468091
+80.1	4	9.3	16	1	1	0	0	1	0	0	0	0	1	93.86696767
+95.8	8	19.2	18	0	1	1	0	0	1	0	0	0	1	12.87128722
+73.4	0	11.4	17	1	1	0	0	1	0	0	0	0	1	82.9992023
+74.3	12	5.9	18	1	0	0	1	0	0	1	0	0	1	90.86111001
+56.8	1	10.3	16	1	1	1	0	0	1	0	1	0	0	77.76004058
+86.2	12	18.5	15	1	1	1	1	0	0	1	1	0	0	76.48252892
+51.2	5	5.2	16	1	0	0	0	1	0	0	0	0	1	62.09261455
+59.4	4	5.9	18	1	1	0	1	0	1	0	1	0	0	54.65513839
+65.5	10	2.2	17	1	1	0	1	0	0	1	1	0	0	94.8607879
+70.5	6	2.3	20	1	1	1	0	0	0	1	0	1	0	95.02090286
+54.5	2	16.9	20	0	1	0	0	0	0	1	0	1	0	31.59176272
+46.9	2	15.2	17	1	1	0	1	0	1	0	0	1	0	66.95148955
+76.6	9	8.4	20	0	0	0	0	1	0	0	0	1	0	17.42555777
+57.3	1	14.6	20	0	0	1	0	1	0	0	1	0	0	36.22518838
+74.9	12	9.1	18	0	0	0	0	1	0	0	0	0	1	44.76580197
+49.3	2	19.2	17	1	1	0	1	1	0	0	1	0	0	94.35432121
+68.9	9	19.4	19	1	1	1	0	0	1	0	1	0	0	88.99377729
+72	0	9.1	15	1	1	0	0	1	0	0	1	0	0	82.10158231
+43.1	4	17.4	15	1	0	0	0	0	1	0	0	1	0	54.20699825
+60.2	13	15.9	20	1	1	1	1	0	1	0	0	1	0	58.0814357
+48.1	14	7.6	15	1	1	0	0	0	0	1	0	1	0	94.92770943
+43.8	11	6.2	17	1	0	1	1	0	0	1	0	0	1	80.32145298
+99.4	4	10.2	17	0	1	1	0	1	0	0	1	0	0	0.458932876
+59.3	11	16.1	16	1	0	0	1	0	0	1	0	0	1	55.07357714
+88.6	10	19.3	16	1	0	0	0	0	0	1	0	1	0	83.17508846
+55.3	6	15.7	15	1	0	0	0	0	0	1	0	0	1	50.25307919
+80.9	3	17.4	19	1	1	0	1	1	0	0	1	0	0	58.04040257
+85.6	2	12.9	16	0	1	1	1	0	0	1	1	0	0	27.38181609
+75.7	0	17	16	0	1	0	1	0	0	1	0	1	0	34.52557036
+68.3	11	16.1	17	1	1	1	0	0	1	0	0	1	0	82.59806298
+64.7	14	8.8	19	1	1	0	0	1	0	0	0	0	1	61.21346547
+60.9	7	11.9	20	0	1	0	0	0	0	1	0	1	0	35.53774315
+95.8	12	16.5	15	1	1	0	0	0	0	1	0	1	0	61.86245437
+89.8	2	2.8	16	0	0	1	1	0	1	0	1	0	0	16.23744494
+97.9	12	16.5	19	1	1	0	0	0	0	1	0	1	0	87.32457026
+47.5	14	5.2	19	1	0	0	0	0	0	1	0	1	0	82.48164495
+83.9	1	11.3	15	1	1	0	0	0	0	1	1	0	0	92.46117052
+96.3	10	16.5	19	0	1	0	0	1	0	0	1	0	0	32.81488333
+50.9	3	6.6	19	0	1	1	0	0	1	0	0	0	1	28.35859931
+44	2	6.4	19	1	0	0	0	0	0	1	0	1	0	54.68373839
+84.5	12	9.2	16	0	0	1	0	1	0	0	1	0	0	18.34901857
+74.5	0	18.1	15	1	0	1	1	0	0	1	0	0	1	63.26011838
+90.5	2	2	19	0	0	1	0	0	0	1	0	0	1	12.1750832
+48.4	11	18.2	19	1	1	1	0	0	0	1	0	1	0	98.65052774
+87.7	1	4.8	16	1	0	1	0	0	0	1	0	1	0	69.65488623
+52.1	7	19.8	15	1	1	1	0	1	0	0	0	0	1	94.60232776
+49.8	5	19.2	17	1	1	0	1	0	0	1	1	0	0	81.5569313
+49.9	8	10.9	16	1	0	1	1	1	0	0	0	0	1	89.74056518
+88.9	7	11.2	15	1	0	1	1	0	0	1	0	1	0	75.13185466
+79.9	9	10.7	19	1	0	1	1	0	0	1	1	0	0	78.84519423
+71.4	2	13.4	15	1	0	0	1	0	1	0	1	0	0	74.62588469
+61.5	4	3.6	15	0	0	0	1	0	0	1	0	0	1	9.742625091
+92.6	6	2.6	20	1	0	1	0	0	0	1	0	1	0	86.12260576
+63.5	4	3	15	1	0	0	1	1	0	0	0	0	1	64.03861812
+89	7	10	17	1	0	1	1	0	0	1	0	0	1	51.21579832
+66.3	11	7	15	1	1	1	0	1	0	0	0	0	1	82.2736148
+62.6	4	13.2	17	1	0	0	1	0	1	0	1	0	0	58.85553397
+67.8	0	19.9	19	1	0	1	0	1	0	0	1	0	0	97.02292922
+58.1	4	9	17	1	1	0	0	1	0	0	0	1	0	97.69642885
+84.9	3	12.3	19	1	0	0	1	1	0	0	0	1	0	95.74321951
+70.2	5	9.5	19	0	1	1	0	1	0	0	0	0	1	18.47091914
+53.9	2	17.3	17	1	1	1	1	1	0	0	0	0	1	50.77283083
+94	14	18.2	16	1	0	0	1	0	0	1	0	0	1	96.41592813
+63	10	17.8	18	0	1	1	0	0	1	0	0	1	0	21.366389
+72.6	4	19.5	15	1	1	1	0	0	1	0	1	0	0	98.33274095
+94.4	1	2.5	20	1	1	1	1	1	0	0	1	0	0	98.18099885
+77.5	10	17.1	18	0	1	0	0	0	0	1	0	0	1	42.56517183
+47	5	15.5	15	1	0	0	0	1	0	0	0	0	1	64.7224446
+96.4	12	6.1	15	1	1	1	1	0	0	1	0	0	1	69.25488643
+77.7	14	19.2	19	0	0	0	1	0	1	0	0	0	1	42.47171991
+60.1	11	4.7	15	1	1	0	0	0	1	0	0	1	0	65.84610026
+48.4	5	14.2	20	1	1	0	1	0	0	1	1	0	0	58.47463733
+87.6	4	6	15	1	1	0	1	0	0	1	0	0	1	77.84006312
+77.2	5	9.8	17	1	1	0	1	0	0	1	0	1	0	96.80773871
+72	10	14.9	18	1	0	1	1	0	0	1	0	0	1	84.80148983
+93.6	6	12.1	17	0	0	1	1	0	1	0	0	0	1	28.44605239
+87.3	11	9.7	20	1	1	1	1	0	0	1	1	0	0	54.85882469
+49.1	4	7.9	15	1	1	0	1	0	0	1	0	0	1	80.75036133
+58.7	0	17.1	20	1	0	0	0	1	0	0	1	0	0	99.50269251
+54.9	7	4.6	19	0	1	1	1	0	0	1	1	0	0	6.99019236
+84.6	3	9.7	17	1	1	0	0	0	0	1	1	0	0	75.91648262
+42	8	18.3	17	0	1	1	0	0	1	0	0	1	0	43.78091629
+74.2	13	17.2	16	1	0	1	0	0	1	0	0	1	0	87.03843089
+85.7	9	9.2	15	1	0	1	1	0	0	1	1	0	0	84.85078705
+92.6	11	15.7	19	1	0	0	1	0	0	1	0	0	1	85.1242042
+60.5	5	16.8	17	1	1	0	0	0	0	1	1	0	0	67.97455756
+89.3	0	18	17	1	1	1	1	0	0	1	0	0	1	64.67959221
+46.6	2	11.8	19	1	0	1	0	0	0	1	1	0	0	90.46805777
+90.8	2	5.7	20	1	0	1	1	1	0	0	0	0	1	90.50566973
+47.6	9	6.6	20	1	0	1	1	1	0	0	0	1	0	93.35361593
+63.8	11	7.3	15	1	0	0	0	0	1	0	0	0	1	95.66202763
+87.8	11	12.7	16	1	1	0	0	0	0	1	1	0	0	75.56711994
+49	3	2.6	17	1	0	1	0	0	1	0	0	1	0	75.07581473
+53.8	5	13.4	16	1	1	1	1	0	0	1	0	0	1	89.91475895
+83.3	14	8.6	20	1	0	0	0	1	0	0	0	0	1	82.49819654
+83.2	6	7.3	20	1	1	0	1	0	1	0	0	0	1	85.09834386
+78.5	9	17.8	18	1	0	1	1	0	0	1	0	0	1	89.78963347
+81.6	3	10.3	15	0	0	1	1	0	0	1	0	0	1	44.41126656
+72.6	5	3.7	18	1	0	1	0	1	0	0	0	1	0	66.89975784
+55.1	10	16.9	18	1	0	0	0	0	0	1	0	1	0	68.77914763
+60.7	0	2.9	18	1	1	0	0	0	1	0	0	1	0	54.69909699
+50.9	13	15.1	15	1	0	0	1	0	0	1	0	1	0	78.91400705
+94.5	7	15.9	15	1	1	1	1	0	0	1	1	0	0	51.79711369
+75	6	8.3	19	1	1	1	0	0	1	0	0	1	0	73.27990091
+64.1	14	16.8	16	1	1	0	1	0	0	1	0	0	1	77.13223174
+67.7	10	11.3	16	0	1	0	1	0	1	0	0	0	1	14.29840848
+96.8	10	10.3	19	1	0	1	0	0	1	0	0	1	0	79.54166303
+49.2	8	2.8	19	0	1	0	0	0	0	1	0	0	1	1.521962472
+75.2	2	7.2	20	1	1	0	0	0	1	0	0	1	0	51.86740944
+70.4	1	18.8	18	1	1	1	1	0	0	1	0	0	1	91.13002803
+76.7	0	9.1	19	1	0	0	1	0	0	1	1	0	0	68.00953207
+41.1	2	11.8	17	0	0	1	1	1	0	0	1	0	0	6.340319581
+92.3	4	11.6	16	0	0	1	1	0	0	1	0	1	0	26.05993868
+95.9	13	12.6	19	1	0	1	1	0	1	0	0	1	0	88.49967765
+73.9	10	3.1	17	0	1	1	0	0	1	0	0	1	0	10.76946927
+81.8	1	8.5	17	0	1	1	1	0	0	1	0	0	1	31.08223474
+95.3	11	15	17	0	0	1	1	1	0	0	0	1	0	4.258838503
+82.4	2	5.6	20	1	1	1	1	0	1	0	1	0	0	52.58408606
+49.2	14	5.7	20	1	1	0	0	1	0	0	0	0	1	76.56773158
+74.6	14	2.2	17	1	1	1	0	0	1	0	0	1	0	77.03175608
+76.4	14	9.9	20	1	0	1	0	0	0	1	0	0	1	81.87149507
+65.4	3	17.9	18	1	0	0	1	1	0	0	0	0	1	86.30456669
+84.2	6	2.9	17	1	1	0	0	1	0	0	0	1	0	98.79260397
+96.1	12	5.4	18	1	0	0	0	1	0	0	0	0	1	75.81501742
+95.5	2	7.6	18	1	0	1	0	1	0	0	1	0	0	66.14782365
+67.1	14	15.2	17	1	0	0	1	0	0	1	1	0	0	89.75930974
+46.8	8	13.5	16	0	0	1	0	1	0	0	0	0	1	13.51452934
+99.1	7	9.5	17	1	0	1	1	0	1	0	0	1	0	71.94857104
+90.3	3	15.7	17	1	1	1	1	1	0	0	0	0	1	53.92281907
+47.5	12	13	20	1	0	1	0	0	0	1	1	0	0	51.26753717
+95.3	0	18.1	17	0	1	0	1	1	0	0	0	0	1	48.03615589
+92.2	0	16.7	16	0	1	0	0	0	0	1	0	0	1	41.71540801
+71.1	0	6.6	20	1	0	1	1	0	0	1	1	0	0	84.7987103
+75.5	0	6.9	15	1	1	1	0	0	0	1	0	0	1	70.44764722
+63.9	7	4.3	15	1	1	1	0	1	0	0	0	0	1	58.664716
+43.3	2	8.1	18	1	1	0	0	0	1	0	0	1	0	57.82185213
+60.1	14	20	18	1	0	1	1	0	1	0	0	1	0	62.51214491
+88.2	5	9.3	16	1	0	1	0	0	0	1	1	0	0	77.46133324
+40.3	2	6	19	0	1	0	1	0	1	0	1	0	0	35.65833654
+60	10	15.7	15	1	0	0	0	1	0	0	1	0	0	83.00986884
+63.9	4	11.8	18	1	0	1	1	0	0	1	0	1	0	63.99669485
+72.2	12	4.7	15	1	0	0	1	1	0	0	1	0	0	97.74326403
+95.2	14	8.9	16	1	0	0	0	0	0	1	1	0	0	86.89484583
+60.8	13	9.5	16	0	1	1	0	0	1	0	1	0	0	27.66226722
+60.8	12	15.6	19	1	1	0	0	1	0	0	0	1	0	80.58603731
+84.3	14	2.4	19	1	0	1	0	0	0	1	0	0	1	70.98000312
+67.1	6	6.8	20	1	0	0	0	0	0	1	1	0	0	62.38654948
+53.5	1	11.3	16	1	1	1	1	0	0	1	0	0	1	67.79863393
+67.1	5	6.8	18	1	1	1	0	1	0	0	1	0	0	87.89230552
+48.5	12	13.3	15	1	0	1	0	0	0	1	0	0	1	50.71967443
+50.6	5	10.7	17	1	1	0	1	1	0	0	0	1	0	55.80363203
+69.9	10	8.5	19	1	0	1	0	1	0	0	0	1	0	52.3001321
+65.1	2	19.1	17	1	0	0	0	0	0	1	1	0	0	52.03644012
+94.9	5	13.4	18	0	1	1	1	0	1	0	0	0	1	42.68748314
+61.7	9	4.3	19	1	1	1	0	0	0	1	0	1	0	85.18289297
+74.8	9	12.1	17	1	0	0	0	0	1	0	1	0	0	73.70869145
+77.9	13	16.1	18	1	0	1	0	0	1	0	1	0	0	54.89170803
+40.8	4	14.8	15	1	1	1	1	0	0	1	0	1	0	74.58079376
+79.8	11	5.1	18	1	0	0	0	0	0	1	0	1	0	73.67358854
+50.7	1	19.5	20	1	1	1	1	1	0	0	1	0	0	58.6600935
+97.7	8	10.1	19	1	0	1	0	1	0	0	0	0	1	71.69258246
+48.9	7	4.9	16	1	1	1	1	1	0	0	0	0	1	69.92523672
+64.9	2	5.2	15	1	1	1	0	0	0	1	0	0	1	80.7925049
+45.1	7	3.8	17	0	1	0	1	0	0	1	1	0	0	31.69117318
+99.8	13	16.5	19	1	0	0	1	0	0	1	0	1	0	52.26520049
+70.1	8	4.2	16	1	0	1	1	1	0	0	1	0	0	68.73063073
+75.7	13	4.3	18	1	1	0	1	0	1	0	0	1	0	81.29299579
+44	14	17.3	16	1	0	1	1	1	0	0	0	0	1	75.15681293
+85	2	8.2	19	1	1	0	1	0	0	1	0	0	1	92.82449206
+52.6	2	2.6	19	1	1	1	0	0	0	1	0	1	0	82.93468158
+93.9	1	2.9	20	1	0	1	0	1	0	0	0	1	0	58.14672135
+52.3	7	4.6	20	1	0	1	1	0	0	1	1	0	0	53.52843737
+51.4	9	5.8	16	1	1	1	1	1	0	0	0	0	1	82.12096391
+42.2	0	14	18	1	0	1	1	1	0	0	1	0	0	51.32556553
+68.3	7	4.8	16	1	0	1	1	0	0	1	1	0	0	79.28877906
+73.9	6	4.1	19	1	1	0	0	0	0	1	1	0	0	97.01151207
+43.9	13	15.8	19	1	1	1	1	0	0	1	0	0	1	78.77370889
+86.5	6	14.1	17	1	0	0	0	1	0	0	1	0	0	69.40849631
+67.2	2	9.8	20	1	1	1	0	0	0	1	1	0	0	82.16441092
+71.5	0	11.9	17	1	1	0	1	0	0	1	1	0	0	72.91264452
+66.4	3	7.6	15	1	0	0	1	0	0	1	1	0	0	77.28083947
+64	8	10.7	19	1	1	0	0	1	0	0	1	0	0	97.07324044
+73.6	4	11.1	17	1	1	1	0	0	1	0	1	0	0	69.30513189
+49.3	0	9	16	0	0	1	1	1	0	0	0	0	1	47.96340913
+50.9	14	18.3	20	0	0	0	1	1	0	0	1	0	0	45.17699703
+91.7	4	2.3	20	0	1	1	1	0	1	0	0	1	0	9.769977626
+96.8	12	16.1	18	1	1	0	0	0	0	1	1	0	0	53.46806504
+62.4	7	4.2	16	1	0	1	0	1	0	0	1	0	0	55.03890007
+56.2	7	16.4	18	1	0	0	1	0	1	0	0	0	1	50.91109128
+78.6	4	13.1	17	1	0	0	0	1	0	0	0	0	1	54.72214804
+64.5	11	17.2	15	1	0	1	0	0	0	1	0	1	0	84.15033867
+41.5	8	3.8	16	1	1	0	1	0	0	1	0	1	0	53.55943242
+49.4	14	12.1	16	1	0	1	1	1	0	0	0	0	1	65.94878151
+83	0	11	16	1	0	0	0	0	0	1	0	0	1	92.24376555
+79.5	3	14.7	18	1	1	0	0	0	0	1	1	0	0	51.16359679
+41.6	2	11.6	17	1	0	1	1	0	0	1	0	0	1	90.72342413
+53.3	1	11.7	16	1	1	1	1	0	0	1	0	1	0	64.09273874
+53.9	14	9.7	16	1	0	1	1	0	1	0	1	0	0	55.90824138
+80.3	7	7.6	20	1	0	0	1	0	0	1	0	1	0	84.83685827
+41.2	6	10.7	15	1	0	1	1	1	0	0	1	0	0	81.44714234
+46.2	8	4.1	20	1	1	0	0	0	0	1	0	0	1	93.87360068
+88	1	19.3	20	0	1	0	0	0	0	1	0	1	0	36.68004509
+50.7	13	14.9	15	1	0	1	0	0	0	1	1	0	0	90.17404652
+79.2	13	19.1	17	0	1	1	0	1	0	0	1	0	0	14.07352517
+54.3	3	6.1	20	1	1	0	1	0	1	0	0	0	1	58.87197719
+46	13	17.8	17	1	1	0	1	1	0	0	0	0	1	87.53073758
+54.6	14	16.6	20	1	1	1	1	0	0	1	0	0	1	90.34173696
+83.3	5	14.2	19	0	1	1	0	0	0	1	0	1	0	49.42620659
+91.3	10	13.3	15	1	1	1	0	0	1	0	1	0	0	70.63088385
+89.8	2	7.7	20	1	0	1	0	0	1	0	0	0	1	68.60090429
+63.8	7	16.7	19	1	0	1	1	0	0	1	0	1	0	88.82064804
+80.1	2	11	18	1	1	0	0	0	0	1	0	1	0	67.04017701
+52.3	13	3.3	19	1	0	0	1	1	0	0	0	1	0	96.53786628
+57.6	11	7.6	16	1	0	0	1	0	0	1	0	0	1	92.92063759
+93.8	12	18.8	20	1	0	0	1	0	0	1	0	0	1	71.44970137
+40.8	12	17.3	19	1	0	1	1	0	0	1	1	0	0	87.54355339
+45.1	1	19.7	17	1	1	1	1	1	0	0	1	0	0	87.7271437
+52.5	12	13.3	18	1	0	1	1	0	1	0	0	0	1	55.15619344
+41.6	12	6.5	20	0	0	0	0	0	1	0	0	1	0	45.03739004
+50.9	2	4.9	16	1	1	0	1	0	1	0	0	1	0	75.26261862
+75	10	5.4	19	0	1	1	1	1	0	0	0	1	0	41.24022756
+65.3	5	2.4	18	1	0	1	0	0	0	1	1	0	0	66.00248005
+93.6	1	9	20	1	0	0	1	0	0	1	0	1	0	94.77616142
+89	7	5.4	18	1	0	0	0	1	0	0	1	0	0	69.46008394
+60.5	0	9.4	16	1	0	1	0	1	0	0	1	0	0	50.54188257
+55.6	6	18.8	19	1	0	1	0	0	0	1	0	1	0	95.26909882
+62.8	1	9.7	18	0	0	0	1	1	0	0	0	1	0	4.555205172
+75.4	9	17.8	18	1	1	1	1	0	0	1	0	0	1	65.96568188
+56.1	11	12.9	15	1	0	1	0	0	1	0	0	0	1	97.50309835
+77.4	5	6.4	18	1	0	1	1	0	0	1	0	1	0	97.53035735
+64.6	11	8.4	15	1	1	0	1	0	1	0	1	0	0	78.67189441
+73.1	1	3.5	19	1	1	0	0	0	0	1	1	0	0	81.59186061
+66.2	1	8	20	1	1	0	0	1	0	0	1	0	0	72.4222761
+57.7	9	14.2	20	1	1	0	1	0	1	0	1	0	0	64.66053858
+96.9	12	3.3	19	1	0	0	0	0	1	0	1	0	0	66.43322727
+85.8	7	5.7	19	1	0	0	0	0	0	1	0	0	1	83.6259228
+48.4	14	8.9	17	1	0	0	0	1	0	0	0	1	0	87.61872647
+92.1	14	19.7	19	1	0	1	1	0	0	1	0	0	1	89.57895219
+69.2	11	16.1	18	0	0	1	1	0	0	1	1	0	0	39.40194533
+93.7	1	15.2	20	1	0	1	1	0	1	0	1	0	0	54.56030515
+88	6	4.1	16	1	1	1	0	0	1	0	1	0	0	74.72101524
+65.5	2	16.1	20	1	0	1	1	1	0	0	1	0	0	52.877938
+41.3	7	16.1	15	0	1	1	0	1	0	0	0	1	0	27.42149123
+56.1	6	12.8	20	1	1	1	1	0	1	0	1	0	0	72.07652507
+72.5	13	19.8	17	1	0	0	1	1	0	0	0	1	0	94.38520914
+78	7	7.9	19	1	1	0	0	0	0	1	1	0	0	67.54575063
+55.5	13	18.9	19	0	0	1	1	1	0	0	0	1	0	5.84164412
+48.4	6	18.5	20	1	1	1	0	0	0	1	0	0	1	57.1495841
+90.1	10	2.2	16	1	0	0	1	0	0	1	1	0	0	88.07553159
+99.1	5	10.1	16	1	1	1	1	0	0	1	0	1	0	80.91090317
+71.5	12	19.6	17	1	0	1	0	0	0	1	0	0	1	55.05613381
+50.3	6	3.9	15	1	0	0	0	0	1	0	1	0	0	54.20534031
+56.3	4	11.9	20	1	0	1	0	0	1	0	1	0	0	85.04845657
+41.1	6	19.6	19	1	0	0	1	0	0	1	1	0	0	53.63815032
+94.9	0	12	20	1	0	1	1	1	0	0	0	1	0	91.09300296
+47.1	0	5.4	17	1	1	0	1	0	0	1	0	1	0	85.31211136
+74.6	8	12.5	18	0	1	0	0	0	0	1	0	0	1	4.059304154
+56.4	13	5.7	18	0	1	0	0	1	0	0	0	1	0	4.233401933
+73.3	4	11.4	17	1	0	1	0	0	1	0	0	1	0	99.33197893
+79.1	12	3.3	19	1	1	0	1	0	0	1	1	0	0	68.71353979
+89.8	4	12.9	17	1	0	1	1	0	0	1	1	0	0	68.53210735
+52.4	2	11.3	19	1	0	1	0	1	0	0	1	0	0	90.63997836
+40.7	4	15.3	16	1	1	1	1	0	1	0	1	0	0	97.36242887
+48.2	2	13.4	17	1	1	1	0	0	0	1	1	0	0	99.30005319
+94	8	11.9	19	0	0	0	1	1	0	0	1	0	0	37.59357144
+92.4	8	14.4	17	1	1	0	1	1	0	0	1	0	0	68.81297928
+75.8	5	4.6	17	1	0	1	0	0	0	1	0	0	1	54.17503583
+76	14	12.7	19	0	0	1	1	0	0	1	0	0	1	38.7796311
+79.9	0	5.1	19	1	0	0	1	0	0	1	0	0	1	77.92021249
+50.5	6	18.7	15	1	0	1	0	1	0	0	0	0	1	71.21110046
+94.9	6	3.2	17	1	0	0	0	0	0	1	1	0	0	95.31771925
+65.1	13	9.7	18	1	1	1	1	0	1	0	0	0	1	55.55987412
+63	9	14.5	17	1	1	1	0	1	0	0	1	0	0	74.63125521
+71.1	9	10.2	17	1	0	0	1	0	0	1	0	0	1	50.56768224
+42.8	3	3.7	19	1	0	1	0	0	0	1	0	1	0	73.4330321
+50	7	12	17	1	1	0	1	0	0	1	0	0	1	52.81516378
+84.3	5	13.5	20	1	1	1	1	0	0	1	0	0	1	55.94089581
+45	3	14.7	17	0	0	1	0	0	0	1	1	0	0	5.864559714
+76.2	3	8.7	20	1	1	1	1	0	0	1	0	0	1	82.46051511
+54.7	1	12.1	18	1	0	0	1	0	1	0	0	1	0	87.30224396
+63.4	13	10.1	19	1	1	1	0	0	0	1	1	0	0	79.16843825
+57.3	1	14.1	17	1	0	1	0	1	0	0	1	0	0	98.10862742
+61.3	11	12.5	20	1	1	1	1	0	1	0	0	0	1	68.74352898
+83.1	13	11.5	20	1	0	1	0	1	0	0	1	0	0	64.28560431
+57.8	3	6.5	20	1	1	0	0	0	0	1	1	0	0	93.42995641
+74	4	2	16	1	1	0	1	1	0	0	1	0	0	61.17979193
+68.6	7	5.1	15	0	0	1	1	1	0	0	1	0	0	48.06480472
+79.8	14	4.1	18	0	1	0	0	0	0	1	1	0	0	0.606508287
+96.2	5	10.1	17	1	0	1	0	1	0	0	1	0	0	98.49394134
+84	13	13	16	1	1	1	0	1	0	0	0	1	0	52.1579956
+52.9	14	5.8	17	1	0	1	1	0	0	1	0	0	1	94.55715568
+41.9	3	18.9	17	1	1	0	1	0	0	1	0	1	0	76.38505545
+55.7	12	2.1	19	1	0	0	1	0	0	1	1	0	0	99.64823981
+75.7	10	15.9	19	1	1	0	1	1	0	0	1	0	0	53.68982824
+43.1	6	13.3	19	1	0	0	1	1	0	0	0	0	1	77.69271422
+69.8	7	8.7	16	1	1	0	1	1	0	0	0	1	0	98.46512678
+75.8	1	2.9	17	1	0	0	1	0	0	1	0	0	1	76.15489221
+60.1	11	13.3	15	1	0	0	0	1	0	0	0	1	0	81.46993191
+86.3	6	8.9	18	1	0	0	0	0	1	0	1	0	0	84.78743445
+46.4	14	18.9	19	1	1	0	1	0	0	1	0	0	1	72.72705324
+44.5	13	11.8	19	1	0	1	1	0	1	0	0	0	1	81.377904
+83.7	1	18.9	17	0	1	0	1	0	0	1	1	0	0	29.15728416
+69.7	1	6	17	0	0	0	0	0	0	1	0	0	1	44.96778472
+81.3	7	15.1	16	1	1	0	1	0	0	1	0	1	0	52.27231902
+66.1	1	13.1	16	1	0	0	0	0	0	1	0	1	0	64.04815948
+54.8	14	15.3	19	1	1	0	0	0	0	1	0	1	0	97.5205742
+89.1	10	5.9	17	1	1	0	0	0	0	1	0	1	0	94.51318919
+88	8	14	15	1	0	0	0	0	0	1	1	0	0	72.78283764
+81.7	11	11	18	0	1	0	0	0	0	1	0	0	1	30.94461663
+56.3	0	15.4	17	1	1	0	1	0	0	1	0	1	0	63.86905915
+75.4	14	7.9	17	0	0	0	1	0	1	0	1	0	0	9.38724587
+61.7	8	18	20	1	1	0	0	0	0	1	0	0	1	73.18492025
+45.5	14	3.5	16	1	1	1	1	0	0	1	0	0	1	67.6676114
+95	0	16.5	18	1	1	1	0	0	0	1	1	0	0	79.18280559
+48.2	9	17.5	19	0	0	0	0	0	0	1	1	0	0	3.878958385
+97	12	16.7	17	0	1	0	1	0	0	1	0	1	0	48.6223009
+66.8	9	11.2	19	1	0	1	1	1	0	0	0	0	1	99.31053722

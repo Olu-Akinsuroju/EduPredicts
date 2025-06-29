@@ -1,24 +1,11 @@
 feature,importance
-<<<<<<< HEAD
-Absences,0.41133692870115934
-Study_Time_per_Week,0.3849194003648418
-Parent_Education_Level_Secondary,0.08403095360154032
-Motivation_Level_Medium,0.05255257004245881
-Extra_Courses_Yes,0.04107699598497992
-Previous_Grade,0.0260831513050198
-Internet_Access_Yes,0.0
-Parent_Education_Level_Tertiary,0.0
-Motivation_Level_Low,0.0
-Gender_Male,0.0
-=======
-num__Absences,0.20990728021978022
-num__Study_Time_per_Week,0.12168410633484161
-cat__Gender_Male,0.10286989795918365
-num__Previous_Grade,0.09375000000000001
-cat__Motivation_Level_Medium,0.09065934065934066
-cat__Parent_Education_Level_None,0.08243973768167323
-num__failures,0.07716836734693878
-num__Fedu,0.05442176870748302
-cat__romantic_yes,0.05315392285946636
-num__Medu,0.044642857142857144
->>>>>>> 6892cc541e30f89e0f1969b3aa0003bec65be790
+num__Absences,0.41133692870115934
+num__Study_Time_per_Week,0.3849194003648418
+cat__Parent_Education_Level_Secondary,0.08403095360154032
+cat__Motivation_Level_Medium,0.05255257004245881
+cat__Extra_Courses_Yes,0.04107699598497992
+num__Previous_Grade,0.0260831513050198
+cat__Parent_Education_Level_Tertiary,0.0
+cat__Gender_Male,0.0
+cat__Internet_Access_Yes,0.0
+cat__Motivation_Level_Low,0.0
