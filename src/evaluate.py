@@ -3,12 +3,21 @@ import joblib
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix
 
-# Assuming data_processing.py is in the same directory (src)
-# and the script is run from the project root or src directory is in PYTHONPATH.
+import numpy as np # Make sure numpy is imported for get_feature_importances if used there
+from sklearn.model_selection import train_test_split # For splitting data
+# No longer directly using preprocess_data from here for the main X_test, y_test
+# from src.data_processing import preprocess_data, create_target_variable # Keep create_target_variable if used for y_test derivation from raw
+
+# We need to load the raw data and apply transformations
+# Assuming data_processing.py's create_target_variable and missing value handling logic
+# should be applied to raw data before splitting and transforming test set.
+# For simplicity, we'll assume the data loading part of preprocess_data can be reused or simplified.
+# The core idea is to get raw X_test and y_test, then apply saved transformers.
+
 try:
-    from src.data_processing import preprocess_data
+    from src.data_processing import create_target_variable, preprocess_data # preprocess_data needed for main guard
 except ModuleNotFoundError:
-    from data_processing import preprocess_data
+    from data_processing import create_target_variable, preprocess_data # preprocess_data needed for main guard
 
 
 def load_model(path):
@@ -49,19 +58,114 @@ def evaluate_models():
     # Create directories if they don't exist
     os.makedirs('reports/figures', exist_ok=True)
     os.makedirs('models', exist_ok=True) # Ensure models dir exists, though train.py should create it
-    os.makedirs('data', exist_ok=True) # For preprocess_data
+    os.makedirs('data', exist_ok=True)
 
-    # 1. Load test data
-    print("Loading and preprocessing data for evaluation...")
-    # It will use/create 'data/student_data.csv' as defined in preprocess_data
-    dummy_data_path = 'data/student_data.csv'
-    if not os.path.exists(dummy_data_path):
-        print(f"'{dummy_data_path}' not found. data_processing.py will create a dummy CSV for evaluation.")
-        # data_processing.py handles dummy creation if file is missing.
+    # 1. Load raw data and prepare test set
+    print("Loading raw data for evaluation...")
+    data_path = 'data/student_data.csv' # Define data_path
+    if not os.path.exists(data_path):
+        print(f"Warning: {data_path} not found. Creating a dummy DataFrame for evaluation structure.")
+        # Recreate a similar dummy DataFrame structure as in data_processing.py
+        # This is for the script to run, actual evaluation needs real data and consistent train/test split.
+        dummy_data = {
+            'age': np.random.randint(15, 20, size=30), 'Medu': np.random.randint(0, 5, size=30),
+            'Fedu': np.random.randint(0, 5, size=30), 'studytime': np.random.randint(1, 5, size=30),
+            'failures': np.random.randint(0, 4, size=30), 'absences': np.random.randint(0, 93, size=30),
+            'G1': np.random.randint(0, 20, size=30), 'G2': np.random.randint(0, 20, size=30),
+            'G3': np.random.randint(0, 101, size=30), # Crucial for target (0-100 to allow for threshold 50)
+            'sex': np.random.choice(['F', 'M'], size=30), 'address': np.random.choice(['U', 'R'], size=30),
+            'famsize': np.random.choice(['LE3', 'GT3'], size=30), 'Pstatus': np.random.choice(['T', 'A'], size=30),
+            'Mjob': np.random.choice(['teacher', 'health', 'services', 'at_home', 'other'], size=30),
+            'Fjob': np.random.choice(['teacher', 'health', 'services', 'at_home', 'other'], size=30),
+            'reason': np.random.choice(['home', 'reputation', 'course', 'other'], size=30),
+            'guardian': np.random.choice(['mother', 'father', 'other'], size=30),
+            'schoolsup': np.random.choice(['yes', 'no'], size=30), 'famsup': np.random.choice(['yes', 'no'], size=30),
+            'paid': np.random.choice(['yes', 'no'], size=30), 'activities': np.random.choice(['yes', 'no'], size=30),
+            'nursery': np.random.choice(['yes', 'no'], size=30), 'higher': np.random.choice(['yes', 'no'], size=30),
+            'internet': np.random.choice(['yes', 'no'], size=30),'romantic': np.random.choice(['yes', 'no'], size=30)
+        }
+        df = pd.DataFrame(dummy_data)
+        # Minimal missing value handling for the dummy test data
+        for col in ['G1', 'Mjob', 'G3']: # G3 is important for target
+             if col in df.columns:
+                idx = df.sample(frac=0.05, random_state=42).index
+                df.loc[idx, col] = np.nan
+                if pd.api.types.is_numeric_dtype(df[col]): df[col].fillna(df[col].median(), inplace=True)
+                else: df[col].fillna(df[col].mode()[0], inplace=True)
+    else:
+        df = pd.read_csv(data_path)
+        print(f"Successfully loaded {data_path}")
+        # Minimal missing value handling for real data - should mirror train.py's data_processing
+        # For simplicity, applying median/mode imputation similar to data_processing.py's fallback
+        # A more robust solution would save the imputer objects from training or use a pipeline
+        for column in df.columns:
+            if df[column].isnull().sum() > 0:
+                if pd.api.types.is_numeric_dtype(df[column]):
+                    # Ideally, use median from training data if saved, else from current data
+                    df[column].fillna(df[column].median(), inplace=True)
+                else:
+                    # Ideally, use mode from training data if saved, else from current data
+                    df[column].fillna(df[column].mode()[0], inplace=True)
+        print("Applied basic missing value imputation to loaded data.")
 
-    X_train, X_test, y_train, y_test = preprocess_data(df_path=dummy_data_path)
-    print("Data loading and preprocessing complete for evaluation.")
-    print(f"X_test shape: {X_test.shape}, y_test shape: {y_test.shape}")
+
+    # Create target variable 'passed' using the G3 threshold of 50
+    df = create_target_variable(df, target_col_name='passed', grade_col_name='G3', threshold=50)
+    if 'passed' not in df.columns:
+        raise ValueError("Target column 'passed' could not be created or found in evaluation data.")
+
+    y = df['passed']
+    X_raw = df.drop(columns=['passed', 'G3'], errors='ignore') # Drop G3 as it's not a feature
+
+    # Load preprocessing artifacts
+    print("Loading preprocessing artifacts...")
+    try:
+        scaler = joblib.load('models/scaler.pkl')
+        numeric_cols = joblib.load('models/numeric_cols.pkl')
+        categorical_cols = joblib.load('models/categorical_cols.pkl')
+        x_train_columns = joblib.load('models/x_train_columns.pkl')
+        print("Successfully loaded scaler, numeric_cols, categorical_cols, and x_train_columns.")
+    except FileNotFoundError:
+        print("Error: Preprocessing artifact(s) not found. Make sure train.py has been run successfully.")
+        print("Skipping model evaluation as critical preprocessing info is missing.")
+        return pd.DataFrame(), {} # Return empty results
+
+    # IMPORTANT: We need to split the raw data (X_raw, y) to get X_test and y_test
+    # This split must use the same random_state and test_size as in data_processing.py during training
+    # to ensure we're evaluating on the correct unseen portion.
+    # This assumes that data_processing.py was run with test_size=0.25, random_state=42 for the main split.
+    # A more robust way would be to save X_test, y_test from train.py, but this is a common approach.
+    _, X_test_raw, _, y_test = train_test_split(X_raw, y, test_size=0.25, random_state=42, stratify=y)
+    print(f"Raw X_test_raw shape: {X_test_raw.shape}, y_test shape: {y_test.shape}")
+
+
+    # Apply transformations to X_test_raw
+    # 1. One-hot encode categorical features
+    if categorical_cols:
+        X_test_encoded = pd.get_dummies(X_test_raw, columns=categorical_cols, drop_first=True)
+    else:
+        X_test_encoded = X_test_raw.copy()
+    print("Applied one-hot encoding to test data's categorical features.")
+
+    # 2. Align columns with X_train_columns (handles missing/extra columns after dummification)
+    X_test_aligned = X_test_encoded.reindex(columns=x_train_columns, fill_value=0)
+    print("Aligned test data columns with training data columns.")
+
+    # 3. Scale numeric features using the loaded scaler
+    if numeric_cols and scaler: # Check if scaler was loaded (i.e. numeric_cols was not empty during training)
+        # Ensure only numeric_cols that are present in X_test_aligned are scaled
+        cols_to_scale = [col for col in numeric_cols if col in X_test_aligned.columns]
+        if cols_to_scale:
+            X_test_aligned[cols_to_scale] = scaler.transform(X_test_aligned[cols_to_scale])
+            print("Scaled numeric features in test data using loaded scaler.")
+        else:
+            print("No numeric columns to scale in test data or numeric_cols list is empty.")
+    else:
+        print("No numeric features to scale (either numeric_cols is empty or scaler was not loaded).")
+
+    X_test = X_test_aligned # This is the fully preprocessed test set
+    print(f"Final X_test shape for evaluation: {X_test.shape}")
+
 
     # 2. Define model paths and names
     model_paths = {
