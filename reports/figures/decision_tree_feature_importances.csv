@@ -1,24 +1,11 @@
 feature,importance
-<<<<<<< HEAD
-G3,1.0
-Previous_Grade_70.4,0.0
-Previous_Grade_70.2,0.0
-Previous_Grade_70.1,0.0
-Previous_Grade_69.9,0.0
-Previous_Grade_69.8,0.0
-Previous_Grade_69.7,0.0
-Previous_Grade_69.6,0.0
-Previous_Grade_69.2,0.0
-Previous_Grade_69.1,0.0
-=======
-G2,0.1906821452837218
-Medu,0.14134066142803933
-schoolsup_yes,0.13808017417097096
-absences,0.10909263592329417
-G1,0.10499247825494339
-activities_yes,0.09661959277307361
-Fedu,0.08844351025330165
-sex_M,0.08800970038354491
-Mjob_services,0.0427391015291101
-romantic_yes,0.0
->>>>>>> f3e2fbab760c66ed73ac930071e1b2182a5e7a25
+Absences,0.41133692870115934
+Study_Time_per_Week,0.3849194003648418
+Parent_Education_Level_Secondary,0.08403095360154032
+Motivation_Level_Medium,0.05255257004245881
+Extra_Courses_Yes,0.04107699598497992
+Previous_Grade,0.0260831513050198
+Internet_Access_Yes,0.0
+Parent_Education_Level_Tertiary,0.0
+Motivation_Level_Low,0.0
+Gender_Male,0.0
