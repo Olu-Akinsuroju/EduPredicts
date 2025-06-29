@@ -3,8 +3,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import os
+import joblib
 
-def create_target_variable(df, target_col_name='passed', grade_col_name='G3', threshold=10):
+def create_target_variable(df, target_col_name='passed', grade_col_name='G3', threshold=50):
     """
     Creates the target variable 'passed'.
     If target_col_name exists, it's used. Otherwise, it's derived from grade_col_name.
@@ -42,7 +43,7 @@ def preprocess_data(df_path='data/student_data.csv', target_col_name='passed', t
             'absences': np.random.randint(0, 93, size=100),
             'G1': np.random.randint(0, 20, size=100),
             'G2': np.random.randint(0, 20, size=100),
-            'G3': np.random.randint(0, 20, size=100), # Final grade
+            'G3': np.random.randint(0, 101, size=100), # Final grade (0-100 to allow for threshold 50)
             'sex': np.random.choice(['F', 'M'], size=100),
             'address': np.random.choice(['U', 'R'], size=100), # Urban/Rural
             'famsize': np.random.choice(['LE3', 'GT3'], size=100), # Family size
@@ -106,22 +107,35 @@ def preprocess_data(df_path='data/student_data.csv', target_col_name='passed', t
         print("All missing values handled.")
 
     # Create target variable 'passed'
-    df = create_target_variable(df, target_col_name=target_col_name, grade_col_name='G3')
+    # User specified threshold is 50 for G3
+    df = create_target_variable(df, target_col_name=target_col_name, grade_col_name='G3', threshold=50)
 
     if target_col_name not in df.columns:
          raise ValueError(f"Target column '{target_col_name}' could not be created or found.")
 
-    X = df.drop(columns=[target_col_name])
     y = df[target_col_name]
+    # Features X should not contain the target variable or the grade variable G3 used to create it.
+    X = df.drop(columns=[target_col_name, 'G3'], errors='ignore')
 
-    # Identify numeric and categorical columns (example lists, adjust based on actual data)
-    # These are potential columns, the actual ones will be derived from the dataframe
-    potential_numeric_cols = ['age', 'Medu', 'Fedu', 'studytime', 'failures', 'famrel', 'freetime', 'goout', 'Dalc', 'Walc', 'health', 'absences', 'G1', 'G2', 'G3']
+
+    # Identify numeric and categorical columns
+    # G3 should not be in potential_numeric_cols as it's used for target or already dropped
+    potential_numeric_cols = ['age', 'Medu', 'Fedu', 'studytime', 'failures', 'famrel', 'freetime', 'goout', 'Dalc', 'Walc', 'health', 'absences', 'G1', 'G2']
+    # Ensure G3 is not accidentally included if it was not dropped properly or if it's not the grade_col_name
+    if 'G3' in X.columns:
+        print("Warning: G3 column found in features X after target creation. Dropping it.")
+        X = X.drop(columns=['G3'], errors='ignore')
 
     numeric_cols = [col for col in X.columns if pd.api.types.is_numeric_dtype(X[col]) and col in potential_numeric_cols]
-    # Ensure G3 is not in numeric_cols if it was used to create 'passed' and then 'passed' was dropped from X
-    if 'G3' in numeric_cols and 'G3' not in X.columns: # G3 might have been dropped if it was the source of 'passed'
-        numeric_cols.remove('G3')
+    # For any other columns that are numeric but not in our 'potential' list, let's add them if they are truly numeric
+    # This makes it more robust if new numeric columns are added to the dataset
+    for col in X.columns:
+        if pd.api.types.is_numeric_dtype(X[col]) and col not in numeric_cols and col not in potential_numeric_cols:
+            # Add to numeric_cols only if it's not an ID or something obviously non-feature like
+            # For now, we assume all other numeric columns are features. This might need refinement.
+            print(f"Automatically identified additional numeric column: {col}")
+            numeric_cols.append(col)
+
 
     categorical_cols = [col for col in X.columns if col not in numeric_cols]
 
@@ -152,6 +166,20 @@ def preprocess_data(df_path='data/student_data.csv', target_col_name='passed', t
     print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
     print(f"X_test shape: {X_test.shape}, y_test shape: {y_test.shape}")
 
+    # Save the scaler, numeric_cols, categorical_cols, and X_train column names
+    # These will be used in evaluate.py to ensure consistent preprocessing
+    os.makedirs('models', exist_ok=True) # Ensure models directory exists
+    if numeric_cols: # Only save scaler if it was used
+        joblib.dump(scaler, 'models/scaler.pkl')
+        print("Saved StandardScaler to models/scaler.pkl")
+    joblib.dump(numeric_cols, 'models/numeric_cols.pkl')
+    print("Saved numeric_cols to models/numeric_cols.pkl")
+    joblib.dump(categorical_cols, 'models/categorical_cols.pkl')
+    print("Saved categorical_cols to models/categorical_cols.pkl")
+    joblib.dump(X_train.columns.tolist(), 'models/x_train_columns.pkl') # Save column names after dummification
+    print("Saved X_train_columns to models/x_train_columns.pkl")
+
+
     return X_train, X_test, y_train, y_test
 
 if __name__ == '__main__':
@@ -173,9 +201,9 @@ if __name__ == '__main__':
             'studytime': [2, 2, 2, 3, 1, 1, 2, 3, 2, 4] * 10,
             'failures': [0, 0, 3, 0, 0, 1, 0, 0, 0, 0] * 10,
             'absences': [6, 4, 10, 2, 4, 0, 2, 6, 0, 0] * 10,
-            'G1': [5, 5, 7, 15, 6, 10, 12, 14, 10, 15] * 10,
-            'G2': [6, 5, 8, 14, 10, 9, 12, 14, 10, 15] * 10,
-            'G3': [6, 6, 10, 15, 10, 9, 11, 14, 11, 16] * 10, # Used for 'passed' if not present
+            'G1': [5, 5, 7, 15, 6, 10, 12, 14, 10, 15] * 10, # Scores typically 0-20
+            'G2': [6, 5, 8, 14, 10, 9, 12, 14, 10, 15] * 10, # Scores typically 0-20
+            'G3': [np.random.randint(0, 101) for _ in range(100)], # Scores 0-100 for 'passed' threshold 50
             'sex': ['F', 'F', 'F', 'M', 'M', 'F', 'M', 'F', 'M', 'M'] * 10,
             'address': ['U', 'U', 'U', 'R', 'U', 'R', 'U', 'U', 'R', 'U'] * 10,
             'famsize': ['GT3', 'GT3', 'LE3', 'GT3', 'GT3', 'LE3', 'GT3', 'LE3', 'GT3', 'LE3'] * 10,
