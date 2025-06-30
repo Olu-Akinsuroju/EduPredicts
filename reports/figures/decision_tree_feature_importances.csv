@@ -1,11 +1,5 @@
 feature,importance
-num__Absences,0.41133692870115934
-num__Study_Time_per_Week,0.3849194003648418
-cat__Parent_Education_Level_Secondary,0.08403095360154032
-cat__Motivation_Level_Medium,0.05255257004245881
-cat__Extra_Courses_Yes,0.04107699598497992
-num__Previous_Grade,0.0260831513050198
-cat__Parent_Education_Level_Tertiary,0.0
-cat__Gender_Male,0.0
-cat__Internet_Access_Yes,0.0
-cat__Motivation_Level_Low,0.0
+num__Study_Time_per_Week,0.3643189099717386
+num__Previous_Grade,0.3513141917358482
+num__Age,0.15393253043900645
+num__Absences,0.1304343678534067

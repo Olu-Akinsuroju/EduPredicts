@@ -1,11 +1,5 @@
 feature,abs_coefficient
-cat__Motivation_Level_Medium,0.20780725912465128
-cat__Internet_Access_Yes,0.18919042076056627
-cat__Gender_Male,0.16809045752118046
-cat__Extra_Courses_Yes,0.14911916769343048
-cat__Parent_Education_Level_Tertiary,0.11538638655740407
-cat__Parent_Education_Level_Secondary,0.11207380238815824
-num__Absences,0.04614056246142086
-num__Study_Time_per_Week,0.03515781322998943
-cat__Motivation_Level_Low,0.03474268478649585
-num__Age,0.018801191430249293
+num__Age,0.2592525251087516
+num__Previous_Grade,0.15737036388028855
+num__Study_Time_per_Week,0.11818804616362757
+num__Absences,0.014522631307235684

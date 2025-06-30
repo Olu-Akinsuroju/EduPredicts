@@ -1,176 +1,104 @@
+import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-import os
-import joblib
+
 
 def create_target_variable(df, target_col_name='passed', grade_col_name='G3', threshold=50):
     """
     Creates the target variable 'passed'.
     If target_col_name exists, it's used. Otherwise, it's derived from grade_col_name.
     """
+    # Clean column names
+    df.columns = df.columns.str.strip()
+    print("Available columns for target creation:", df.columns.tolist())
+
     if target_col_name not in df.columns:
         if grade_col_name in df.columns:
-            print(f"'{target_col_name}' column not found. Creating it based on '{grade_col_name}' >= {threshold}.")
+            print(f"'{target_col_name}' not found; creating from '{grade_col_name}' >= {threshold}.")
             df[target_col_name] = (df[grade_col_name] >= threshold).astype(int)
         else:
-            raise ValueError(f"Neither '{target_col_name}' nor '{grade_col_name}' found in DataFrame. Cannot create target variable.")
+            raise ValueError(f"Neither '{target_col_name}' nor '{grade_col_name}' found in DataFrame.")
     else:
-        print(f"Using existing '{target_col_name}' column as target variable.")
+        print(f"Using existing '{target_col_name}' column.")
     return df
+
+
+def add_interaction_features(df):
+    """
+    Adds custom interaction features based on educational insights.
+    """
+    # 1. Study Time × Motivation Levels
+    df['study_high']   = df['Study_Time_per_Week'] * df['Motivation_Level_High']
+    df['study_med']    = df['Study_Time_per_Week'] * df['Motivation_Level_Medium']
+    df['study_low']    = df['Study_Time_per_Week'] * df['Motivation_Level_Low']
+
+    # 2. Previous Grade × Motivation Levels
+    df['grade_high']   = df['Previous_Grade'] * df['Motivation_Level_High']
+    df['grade_med']    = df['Previous_Grade'] * df['Motivation_Level_Medium']
+    df['grade_low']    = df['Previous_Grade'] * df['Motivation_Level_Low']
+
+    # 3. Absences × Internet Access
+    df['abs_int_net']  = df['Absences'] * df['Internet_Access_Yes']
+
+    # 4. Parent Education × Study Time
+    df['study_parent_pri'] = df['Study_Time_per_Week'] * df['Parent_Education_Level_Primary']
+    df['study_parent_sec'] = df['Study_Time_per_Week'] * df['Parent_Education_Level_Secondary']
+    df['study_parent_ter'] = df['Study_Time_per_Week'] * df['Parent_Education_Level_Tertiary']
+
+    # 5. Previous Grade × Age
+    df['grade_age']    = df['Previous_Grade'] * df['Age']
+
+    return df
+
 
 def preprocess_data(df_path='data/student_data.csv', target_col_name='passed', test_size=0.25, random_state=42):
     """
-    Loads, preprocesses the student data, and splits it into train/test sets.
+    Loads, cleans, derives target, adds interaction features, and splits student data into train/test sets.
     """
-    # Create directories if they don't exist
-    os.makedirs('data', exist_ok=True)
+    os.makedirs(os.path.dirname(df_path), exist_ok=True)
 
-    # Attempt to load data, handle if not found for now
+    # Load data
     try:
-        # Specify tab separation for the actual data file
-        df = pd.read_csv(df_path, sep='\t')
-        print(f"Successfully loaded {df_path} (using tab separator).")
-    except FileNotFoundError:
-        print(f"Warning: {df_path} not found. Creating a dummy DataFrame for structure demonstration.")
-        # Create a dummy DataFrame that aligns with new feature engineering requirements
-        data = {
-            # User-specified numeric features
-            'Age': np.random.randint(15, 20, size=100),
-            'Absences': np.random.randint(0, 93, size=100),
-            'Study_Time_per_Week': np.random.uniform(1, 10, size=100).round(1), # e.g., hours
-            'Previous_Grade': np.random.randint(0, 101, size=100), # Assuming 0-100 scale
+        df = pd.read_csv(df_path)
+        print(f"Loaded data from '{df_path}'.")
+    except Exception as e:
+        print(f"Error loading '{df_path}': {e}")
+        return None, None, None, None
 
-            # User-specified binary-encode features
-            'Gender': np.random.choice(['Male', 'Female'], size=100),
-            'Extra_Courses': np.random.choice(['Yes', 'No'], size=100),
-            'Internet_Access': np.random.choice(['Yes', 'No'], size=100),
-
-            # User-specified one-hot encode features
-            'Motivation_Level': np.random.choice(['Low', 'Medium', 'High', 'Very High'], size=100),
-            'Parent_Education_Level': np.random.choice(['None', 'HighSchool', 'College', 'Masters', 'PhD'], size=100),
-
-            # Target derivation column (will be dropped from features)
-            'G3': np.random.randint(0, 101, size=100),
-
-            # Other potential features from original dummy data (can be pruned if not needed)
-            'Medu': np.random.randint(0, 5, size=100), # Mother's education (can be mapped to Parent_Education_Level or kept)
-            'Fedu': np.random.randint(0, 5, size=100), # Father's education
-            'failures': np.random.randint(0, 4, size=100),
-            'schoolsup': np.random.choice(['yes', 'no'], size=100),
-            'famsup': np.random.choice(['yes', 'no'], size=100),
-            'activities': np.random.choice(['yes', 'no'], size=100),
-            'higher': np.random.choice(['yes', 'no'], size=100), # Wants to take higher education
-            'romantic': np.random.choice(['yes', 'no'], size=100)
-        }
-        df = pd.DataFrame(data)
-        # Introduce some missing values for testing imputation
-        # For new named columns and some old ones if kept
-        cols_for_nan = ['Age', 'Previous_Grade', 'Gender', 'Motivation_Level', 'Parent_Education_Level', 'Medu', 'failures']
-        for col in cols_for_nan:
-            if col in df.columns: # Ensure column exists before trying to make NaNs
-                idx = df.sample(frac=0.05, random_state=random_state).index # 5% missing
-                df.loc[idx, col] = np.nan
-        print("Created a new dummy DataFrame aligned with feature engineering specs, including G3 for target derivation.")
-
-    print("\nFirst 5 rows of the (potentially dummy) dataframe:")
+    # Optional: preview data
+    print("\nData preview:")
     print(df.head())
-    print("\nData types of columns:")
-    print(df.info())
-    print("\nSummary statistics:")
-    print(df.describe(include='all'))
 
-    print("\nMissing values count before handling:")
-    missing_values = df.isnull().sum()
-    print(missing_values[missing_values > 0])
-
-    # Handle missing values
-    for column in df.columns:
-        if df[column].isnull().sum() > 0:
-            if df[column].isnull().sum() / len(df) < 0.01: # if <1% missing, drop rows
-                print(f"Dropping rows with missing values in column '{column}' (less than 1% missing).")
-                df.dropna(subset=[column], inplace=True)
-            else: # otherwise impute
-                if pd.api.types.is_numeric_dtype(df[column]):
-                    median_val = df[column].median()
-                    print(f"Imputing missing values in numeric column '{column}' with median: {median_val}.")
-                    df[column].fillna(median_val, inplace=True)
-                else:
-                    mode_val = df[column].mode()[0]
-                    print(f"Imputing missing values in categorical column '{column}' with mode: {mode_val}.")
-                    df[column].fillna(mode_val, inplace=True)
-
-    print("\nMissing values count after handling:")
-    missing_values_after = df.isnull().sum()
-    print(missing_values_after[missing_values_after > 0])
-    if missing_values_after.sum() == 0:
-        print("All missing values handled.")
-
-    # Create target variable 'passed'
-    # User specified threshold is 50 for G3
+    # Derive target variable
     df = create_target_variable(df, target_col_name=target_col_name, grade_col_name='G3', threshold=50)
 
-    if target_col_name not in df.columns:
-         raise ValueError(f"Target column '{target_col_name}' could not be created or found.")
+    # Add interaction features
+    df = add_interaction_features(df)
+    print("Added interaction features:", [col for col in df.columns if col in [
+        'study_high','study_med','study_low',
+        'grade_high','grade_med','grade_low',
+        'abs_int_net',
+        'study_parent_pri','study_parent_sec','study_parent_ter',
+        'grade_age']])
 
+    # Prepare features and target
     y = df[target_col_name]
-    # Features X should not contain the target variable or the grade variable G3 used to create it.
     X = df.drop(columns=[target_col_name, 'G3'], errors='ignore')
-    print(f"Shape of X after dropping target and G3: {X.shape}")
+    print(f"Features shape after dropping target & G3: {X.shape}")
 
-    # Explicit encoding, scaling, and artifact saving are removed.
-    # This will be handled by ColumnTransformer in train.py.
-
-    # Split data into raw train and test sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state, stratify=y)
-    print(f"\nData split into raw train and test sets. Test size: {test_size}, Random state: {random_state}")
-
-    print(f"X_train raw shape: {X_train.shape}, y_train shape: {y_train.shape}")
-    print(f"X_test raw shape: {X_test.shape}, y_test shape: {y_test.shape}")
+    # Split into train/test
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, random_state=random_state, stratify=y
+    )
+    print(f"Split data: X_train {X_train.shape}, X_test {X_test.shape}")
+    print("Target distribution (train):\n", y_train.value_counts(normalize=True))
+    print("Target distribution (test):\n", y_test.value_counts(normalize=True))
 
     return X_train, X_test, y_train, y_test
 
+
 if __name__ == '__main__':
-    print("Running data_processing.py as main script...")
-    # This will use the dummy data generation if 'data/student_data.csv' is not found.
-    # To test with actual data, ensure 'data/student_data.csv' exists.
-
-    dummy_data_path = 'data/student_data.csv'
-    if not os.path.exists(dummy_data_path):
-        print(f"Creating a dummy '{dummy_data_path}' for test run as it's missing.")
-        os.makedirs('data', exist_ok=True) # Ensure data directory exists
-        # Updated dummy data to reflect new feature engineering names
-        dummy_df_data = {
-            'Age': np.random.randint(15, 20, size=100),
-            'Absences': np.random.randint(0, 93, size=100),
-            'Study_Time_per_Week': np.random.uniform(1, 10, size=100).round(1),
-            'Previous_Grade': np.random.randint(0, 101, size=100),
-            'Gender': np.random.choice(['Male', 'Female'], size=100),
-            'Extra_Courses': np.random.choice(['Yes', 'No'], size=100),
-            'Internet_Access': np.random.choice(['Yes', 'No'], size=100),
-            'Motivation_Level': np.random.choice(['Low', 'Medium', 'High', 'Very High'], size=100),
-            'Parent_Education_Level': np.random.choice(['None', 'HighSchool', 'College', 'Masters', 'PhD'], size=100),
-            'G3': [np.random.randint(0, 101) for _ in range(100)], # Target derivation
-            # Keeping a few old ones for broader initial dataset, can be pruned by ColumnTransformer
-            'Medu': np.random.randint(0, 5, size=100),
-            'Fedu': np.random.randint(0, 5, size=100),
-            'failures': np.random.randint(0, 4, size=100),
-        }
-        dummy_df = pd.DataFrame(dummy_df_data)
-        # Introduce some NaN values
-        cols_for_nan_main = ['Age', 'Previous_Grade', 'Gender', 'Motivation_Level', 'Medu']
-        for col in cols_for_nan_main:
-            idx = dummy_df.sample(frac=0.1, random_state=1).index
-            dummy_df.loc[idx, col] = np.nan
-        dummy_df.to_csv(dummy_data_path, index=False)
-        print(f"Dummy '{dummy_data_path}' created with new feature names and some missing values for testing.")
-
-    X_train_main, X_test_main, y_train_main, y_test_main = preprocess_data(df_path=dummy_data_path)
-
-    print("\n--- Main Script Test Output (Raw Data) ---")
-    print(f"X_train shape from main: {X_train_main.shape}")
-    print(f"X_test shape from main: {X_test_main.shape}")
-    print(f"y_train counts from main:\n{y_train_main.value_counts(normalize=True)}")
-    print(f"y_test counts from main:\n{y_test_main.value_counts(normalize=True)}")
-    print("Data processing script run complete.")
+    print("Running data preprocessing...")
+    X_train, X_test, y_train, y_test = preprocess_data()
+    print("Preprocessing complete.")
