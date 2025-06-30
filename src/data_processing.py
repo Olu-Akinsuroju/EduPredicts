@@ -107,7 +107,7 @@ def preprocess_data(df_path='data/student_data.csv', target_col_name='passed', t
     # Attempt to load data, handle if not found for now
     try:
         # Specify tab separation for the actual data file
-        df = pd.read_csv(df_path, sep='\t')
+        df = pd.read_csv(df_path)
         print(f"Successfully loaded {df_path} (using tab separator).")
     except FileNotFoundError:
         print(f"Warning: {df_path} not found. Creating a dummy DataFrame for structure demonstration.")
