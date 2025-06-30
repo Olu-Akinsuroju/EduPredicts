@@ -1,5 +1,11 @@
 feature,abs_coefficient
-num__Age,0.2592525251087516
-num__Previous_Grade,0.15737036388028855
-num__Study_Time_per_Week,0.11818804616362757
-num__Absences,0.014522631307235684
+num__study_high,0.04909241678884524
+num__study_parent_ter,0.048412137228239775
+num__Study_Time_per_Week,0.03679525577756431
+num__study_med,0.031520707397402745
+cat__famsup_yes,0.027348232797280415
+cat__Gender_Male,0.026805644442621013
+num__study_parent_pri,0.023469660984255913
+num__grade_low,0.022698879786040748
+num__grade_high,0.018786591279998936
+num__study_low,0.01837029383273356

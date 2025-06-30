@@ -1,5 +1,11 @@
 feature,importance
-num__Study_Time_per_Week,0.3643189099717386
-num__Previous_Grade,0.3513141917358482
-num__Age,0.15393253043900645
-num__Absences,0.1304343678534067
+num__Study_Time_per_Week,0.2730819963607609
+num__Previous_Grade,0.17060898803053082
+num__Absences,0.11342639176012154
+num__study_parent_pri,0.09275351713287353
+cat__Gender_Male,0.08003878450815023
+num__study_parent_ter,0.07901609175736447
+num__grade_age,0.07287921216043346
+cat__Motivation_Level_Very High,0.046834123049340474
+cat__romantic_yes,0.037744605747001427
+num__abs_int_net,0.0336162894934231

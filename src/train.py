@@ -10,10 +10,10 @@ from sklearn.impute import SimpleImputer
 # Assuming data_processing.py and models.py are in the same directory (src)
 # and the script is run from the project root or src directory is in PYTHONPATH.
 try:
-    from src.data_processing import preprocess_data, add_interaction_features, create_target_variable
+    from src.data_processing import preprocess_data, add_interaction_features # Added add_interaction_features
     from src.models import get_logistic_regression, get_decision_tree, get_random_forest
 except ModuleNotFoundError:
-    from data_processing import preprocess_data, add_interaction_features, create_target_variable
+    from data_processing import preprocess_data, add_interaction_features # Added add_interaction_features
     from models import get_logistic_regression, get_decision_tree, get_random_forest
 
 
@@ -27,41 +27,51 @@ def train_models():
     os.makedirs('models', exist_ok=True)
     os.makedirs('data', exist_ok=True)
 
-    # 1. Load raw data and add interaction features
+    # 1. Load raw data (preprocess_data now returns raw X_train, X_test)
     print("Loading raw data...")
-    dummy_data_path = 'data/student_data.csv'  # This path is used by preprocess_data
+    dummy_data_path = 'data/student_data.csv' # This path is used by preprocess_data
     X_train, X_test, y_train, y_test = preprocess_data(df_path=dummy_data_path)
-    print(f"X_train raw shape: {X_train.shape}, y_train shape: {y_train.shape}")
+    print("Raw data loading complete.")
 
-    # If preprocess_data doesn't include interactions, ensure they're added:
-    for df in [X_train, X_test]:
-        df = add_interaction_features(df)
-    
-    # 2. Define base feature lists
-    base_numeric = ['Age', 'Absences', 'Study_Time_per_Week', 'Previous_Grade']
-    # Define expected interaction columns from preprocessing
-    interaction_cols = [
-        'study_high','study_med','study_low',
-        'grade_high','grade_med','grade_low',
+    # Apply interaction features
+    # Important: Apply to a copy if X_train might be a slice, to avoid SettingWithCopyWarning
+    X_train = add_interaction_features(X_train.copy())
+    # We don't strictly need to transform X_test here as evaluate.py will do it,
+    # but if any part of train.py used X_test later (e.g. for quick validation), it should be transformed.
+    # X_test = add_interaction_features(X_test.copy())
+    print(f"X_train shape after interactions: {X_train.shape}")
+
+
+    # 2. Define feature lists (based on user spec and dummy data from data_processing.py)
+    # User-provided list of numeric features (including interactions)
+    numeric_features = [
+        'Age', 'Absences', 'Study_Time_per_Week', 'Previous_Grade',
+        'study_high', 'study_med', 'study_low',
+        'grade_high', 'grade_med', 'grade_low',
         'abs_int_net',
-        'study_parent_pri','study_parent_sec','study_parent_ter',
+        'study_parent_pri', 'study_parent_sec', 'study_parent_ter',
         'grade_age'
     ]
-    numeric_features = base_numeric + interaction_cols
 
-    # Binary/categorical features
+    # Categorical features remain as previously defined (or adjust if interactions change them)
     categorical_features = [
-        'Gender_Male', 'Extra_Courses_Yes', 'Internet_Access_Yes',
-        'Motivation_Level_High','Motivation_Level_Medium','Motivation_Level_Low',
-        'Parent_Education_Level_Primary','Parent_Education_Level_Secondary','Parent_Education_Level_Tertiary'
+        'Gender', 'Extra_Courses', 'Internet_Access',
+        'Motivation_Level', 'Parent_Education_Level',
+        'schoolsup', 'famsup', 'activities', 'higher', 'romantic'
     ]
 
     # Filter lists to only include columns present in X_train
     actual_numeric_features = [col for col in numeric_features if col in X_train.columns]
     actual_categorical_features = [col for col in categorical_features if col in X_train.columns]
 
-    print(f"Actual numeric features to be used: {actual_numeric_features}")
-    print(f"Actual categorical features to be used: {actual_categorical_features}")
+    # Ensure no overlap between numeric and categorical (though ColumnTransformer handles this by selection)
+    # This check is more for sanity.
+    overlap = set(actual_numeric_features) & set(actual_categorical_features)
+    if overlap:
+        print(f"Warning: Overlap detected between numeric and categorical features: {overlap}")
+
+    print(f"Actual numeric features for ColumnTransformer: {actual_numeric_features}")
+    print(f"Actual categorical features for ColumnTransformer: {actual_categorical_features}")
 
     # 3. Create preprocessing pipelines for numeric and categorical features
     numeric_transformer = Pipeline(steps=[
@@ -80,10 +90,11 @@ def train_models():
             ('num', numeric_transformer, actual_numeric_features),
             ('cat', categorical_transformer, actual_categorical_features)
         ],
-        remainder='drop'
+        remainder='drop' # Drop other columns not specified
     )
 
     # 5. Define models and hyperparameter grids for GridSearchCV
+    # Parameters now need to be prefixed with 'classifier__'
     models_to_train = {
         "Logistic Regression": {
             "estimator": get_logistic_regression(random_state=42),
@@ -107,6 +118,7 @@ def train_models():
     for model_name, model_config in models_to_train.items():
         print(f"\nTraining {model_name} with preprocessing pipeline...")
 
+        # Create the full pipeline: preprocessor + classifier
         full_pipeline = Pipeline(steps=[
             ('preprocessor', preprocessor),
             ('classifier', model_config["estimator"])
@@ -123,11 +135,12 @@ def train_models():
 
         grid_search.fit(X_train, y_train)
 
-        best_pipelines[model_name] = grid_search.best_estimator_
+        best_pipelines[model_name] = grid_search.best_estimator_ # This is the best *fitted pipeline*
 
         print(f"Best parameters for {model_name}: {grid_search.best_params_}")
         print(f"Best cross-validated accuracy for {model_name} (pipeline): {grid_search.best_score_:.4f}")
 
+        # 7. Serialize the best *pipeline*
         pipeline_filename = f"models/pipeline_{model_name.lower().replace(' ', '_')}.pkl"
         joblib.dump(grid_search.best_estimator_, pipeline_filename)
         print(f"Saved best {model_name} pipeline to {pipeline_filename}")
@@ -137,6 +150,8 @@ def train_models():
 
 if __name__ == '__main__':
     print("Running train.py as main script...")
+    # The train_models function handles data loading (including dummy data if necessary)
+    # and model training.
     trained_models = train_models()
 
     print("\n--- Main Script Test Output ---")

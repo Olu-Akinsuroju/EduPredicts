@@ -17,10 +17,11 @@ from sklearn.model_selection import train_test_split # For splitting data
 try:
     # preprocess_data is needed for the __main__ guard's dummy X_test_dummy generation.
     # create_target_variable is used in evaluate_models.
-    from src.data_processing import create_target_variable, preprocess_data
+    # add_interaction_features is now also needed.
+    from src.data_processing import create_target_variable, preprocess_data, add_interaction_features
     from src.models import get_logistic_regression, get_decision_tree, get_random_forest # For main guard dummy models
 except ModuleNotFoundError:
-    from data_processing import create_target_variable, preprocess_data
+    from data_processing import create_target_variable, preprocess_data, add_interaction_features
     from models import get_logistic_regression, get_decision_tree, get_random_forest # For main guard dummy models
 
 
@@ -163,7 +164,11 @@ def evaluate_models():
     else:
         _, X_test, _, y_test = train_test_split(X_raw, y, test_size=TEST_SIZE, random_state=RANDOM_STATE, stratify=y)
 
-    print(f"X_test raw shape for evaluation: {X_test.shape}, y_test shape: {y_test.shape}")
+    print(f"X_test raw shape (before interactions): {X_test.shape}, y_test shape: {y_test.shape}")
+
+    # Apply interaction features to X_test
+    X_test = add_interaction_features(X_test.copy())
+    print(f"X_test shape after interactions: {X_test.shape}")
 
     # Preprocessing artifacts are no longer loaded individually.
     # The full pipeline will handle transformations.
