@@ -4,11 +4,12 @@ from django.http import HttpResponse, FileResponse
 from django.contrib.auth.decorators import login_required
 from .forms import (
     StudentInfoForm, ModelSelectionForm, FileUploadForm,
-    STUDY_TIME_CHOICES, MOTIVATION_CHOICES, PARENT_EDUCATION_CHOICES # Import choices
+    STUDY_TIME_CHOICES, MOTIVATION_CHOICES, PARENT_EDUCATION_CHOICES, MODEL_CHOICES # Import choices
 )
-from .ml_utils import predict_student, batch_predict, get_sample_csv_data
+from .ml_utils import predict_student, batch_predict, get_sample_csv_data # Updated functions
 import pandas as pd
 import io
+import logging # Import logging
 import os
 from django.conf import settings
 from django.contrib import messages # For displaying messages
@@ -78,28 +79,36 @@ def student_predict_view(request):
         return redirect(reverse('core:student_select_model'))
 
     # This view is now accessed via GET after model_name is set in session by student_select_model_view's POST handler
-    prediction_result = predict_student(student_data, model_name)
 
-    # We can keep student_data and model_name in session if we want the user to be able
-    # to go back to select_model and pick a different model for the *same* data.
-    # Or clear them to force a full restart. Let's keep them for now.
-    # del request.session['student_data']
-    # del request.session['model_name']
+    # Call the updated predict_student function from ml_utils
+    # student_data is form.cleaned_data (a dict), model_name is 'lr', 'dt', or 'rf'
+    prediction_output = predict_student(student_data, model_name)
 
-    # Prepare context for the new student_result.html structure
-    passed_bool = prediction_result.get('passed', False)
-    probability_float = prediction_result.get('probability_score', 0.0)
+    logger.debug(f"Prediction output for student: {prediction_output}")
+
+    if prediction_output.get("error"):
+        messages.error(request, f"Prediction failed: {prediction_output['error']}")
+        # Redirect to model selection or form, allowing user to retry or change model
+        return redirect(reverse('core:student_select_model'))
+
+    # Successfully got prediction
+    passed_bool = prediction_output.get('passed', False)
+    probability_float = prediction_output.get('probability_score', 0.0)
+
+    # Determine model display name for the results page
+    model_display_name = dict(MODEL_CHOICES).get(model_name, "Selected Model")
+
 
     outcome_str = "Passed" if passed_bool else "Failed"
     probability_percent = round(probability_float * 100, 1)
 
-    input_summary_dict = _prepare_input_summary(student_data)
+    input_summary_dict = _prepare_input_summary(student_data) # Uses original student_data from session
 
     context = {
         'outcome': outcome_str,
         'probability': probability_percent,
         'input_summary': input_summary_dict,
-        'model_name': model_name,
+        'model_name': model_display_name, # Display user-friendly name
         # student_data is implicitly used by _prepare_input_summary,
         # but not directly needed by template if input_summary is comprehensive.
     }
@@ -175,9 +184,13 @@ def download_sample_csv(request):
 
 def researcher_upload_view(request):
     if request.method == 'POST':
-        form = FileUploadForm(request.POST, request.FILES)
+        form = FileUploadForm(request.POST, request.FILES) # This form now includes model_choice
         if form.is_valid():
-            uploaded_file = request.FILES['file']
+            uploaded_file = form.cleaned_data['csv_file'] # Get from cleaned_data
+            selected_model_key = form.cleaned_data['model_choice'] # Get selected model
+            selected_model_display_name = dict(MODEL_CHOICES).get(selected_model_key, "Selected Model")
+
+            logger.info(f"File uploaded: {uploaded_file.name}, Model selected for preview: {selected_model_key} ({selected_model_display_name})")
 
             try:
                 # Store the uploaded file's content in session.
@@ -203,10 +216,18 @@ def researcher_upload_view(request):
                 df_preview = pd.read_csv(temp_file_path, nrows=5)
                 preview_html = df_preview.to_html(classes=['min-w-full', 'divide-y', 'divide-gray-200', 'border', 'border-gray-300', 'table-auto'], border=0, justify='left', index=False)
 
+                # Store selected model key in session to be potentially used by researcher_results_view
+                # if we decide to not rely on the hidden field in the template.
+                # For now, template uses hidden field, but this is good for robustness.
+                request.session['selected_model_key_researcher'] = selected_model_key
+
+
                 return render(request, 'core/researcher_upload.html', {
-                    'form': form,
+                    'form': form, # Pass the form again, it might have errors if only one field was ok
                     'preview_html': preview_html,
-                    'file_uploaded': True
+                    'file_uploaded': True,
+                    'selected_model_key': selected_model_key, # For the hidden input in the second form
+                    'selected_model_display_name': selected_model_display_name # For display
                 })
 
             except Exception as e:
@@ -241,11 +262,41 @@ def researcher_results_view(request):
             messages.error(request, "Uploaded file not found. Please upload again.")
             return redirect(reverse('core:researcher_upload'))
 
+        # Researcher model selection:
+        # For now, let's allow the researcher to select a model via a POST parameter.
+        # If not provided, default to 'lr'.
+        # This assumes the form on researcher_upload.html will be updated to include model selection.
+        # A more robust implementation might involve a separate ModelSelectionForm for researchers.
+        selected_model_key = request.POST.get('model_choice', 'lr') # Default to 'lr'
+        model_display_name = dict(MODEL_CHOICES).get(selected_model_key, "Selected Model")
+
+        logger.info(f"Researcher selected model: {selected_model_key} ({model_display_name}) for batch prediction.")
+
         try:
-            results_df = batch_predict(file_path) # batch_predict reads from file_path
+            # Call the updated batch_predict function from ml_utils
+            results_df, error_message = batch_predict(file_path, selected_model_key)
+
+            if error_message:
+                messages.error(request, f"Batch prediction failed: {error_message}")
+                # Clean up uploaded file in case of error during prediction
+                if os.path.exists(file_path):
+                    os.remove(file_path)
+                request.session.pop('uploaded_file_path', None)
+                return redirect(reverse('core:researcher_upload'))
+
+            if results_df.empty:
+                messages.warning(request, "Batch prediction resulted in empty data. Please check the input file.")
+                # Clean up uploaded file
+                if os.path.exists(file_path):
+                    os.remove(file_path)
+                request.session.pop('uploaded_file_path', None)
+                return redirect(reverse('core:researcher_upload'))
 
             # Prepare results for display (e.g., top 50 rows)
-            results_preview_html = results_df.head(50).to_html(classes=['min-w-full', 'divide-y', 'divide-gray-200', 'border', 'border-gray-300', 'table-auto'], border=0, justify='left', index=False)
+            results_preview_html = results_df.head(50).to_html(
+                classes=['min-w-full', 'divide-y', 'divide-gray-200', 'border', 'border-gray-300', 'table-auto'],
+                border=0, justify='left', index=False
+            )
 
             # Save the full results DF to a new temporary CSV file for download
             temp_dir = os.path.join(settings.BASE_DIR, 'tmp')

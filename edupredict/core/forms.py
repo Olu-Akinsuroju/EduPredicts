@@ -138,16 +138,29 @@ class ModelSelectionForm(forms.Form):
         # then styling via widgets would be more relevant.
         pass # Keep __init__ simple as template handles rendering
 
+# Make MODEL_CHOICES globally available in this module for import by views.py
+MODEL_CHOICES = ModelSelectionForm.MODEL_CHOICES
 
 class FileUploadForm(forms.Form):
     csv_file = forms.FileField(
-        label="Upload Your CSV File", # Label for admin or if form is rendered directly
+        label="Upload Your CSV File",
         required=True,
         widget=forms.FileInput(attrs={
-            'id': 'file-upload', # Matching the ID in provided HTML and JS
-            # 'class': 'sr-only' # The template will handle sr-only if {{ form.csv_file }} is used.
-                                 # If pasting HTML, the input in HTML has sr-only.
+            'id': 'file-upload',
+            'class': 'block w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-sky-500 file:text-sky-50 hover:file:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-slate-800 disabled:opacity-50'
+            # Simplified classes, assuming direct rendering or that template will style the label separately
         })
+    )
+    # Add model_choice field for researcher CSV upload
+    model_choice = forms.ChoiceField(
+        label="Select Prediction Model",
+        choices=MODEL_CHOICES, # Reuse from ModelSelectionForm
+        required=True,
+        widget=forms.Select(attrs={ # Using Select for a more compact UI in this context
+            'class': SELECT_CLASSES, # Reuse existing styling
+        }),
+        initial='lr', # Default to Logistic Regression
+        help_text="Choose the model to use for predictions on the uploaded CSV data."
     )
 
     def clean_csv_file(self):

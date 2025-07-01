@@ -10,14 +10,31 @@
     Ensure your CSV matches the structure of the <a href="{% url 'core:download_sample_csv' %}" class="text-sky-400 hover:text-sky-300 underline">sample CSV</a>.
   </p>
 
-  <form method="post" enctype="multipart/form-data" class="space-y-6">
+  <form method="post" enctype="multipart/form-data" class="space-y-6" action="{% url 'core:researcher_upload' %}"> {# Ensure action points to the upload view for the first step #}
     {% csrf_token %}
+
+    {# File Upload Field #}
     <div>
-      <label for="{{ form.file.id_for_label }}" class="block text-sm font-medium text-slate-300 mb-1">{{ form.file.label }}</label>
-      {{ form.file }}
-      {% for error in form.file.errors %}
+      <label for="{{ form.csv_file.id_for_label }}" class="block text-sm font-medium text-slate-300 mb-1">{{ form.csv_file.label }}</label>
+      {{ form.csv_file }}
+      {% if form.csv_file.help_text %}
+        <p class="mt-1 text-xs text-slate-400">{{ form.csv_file.help_text }}</p>
+      {% endif %}
+      {% for error in form.csv_file.errors %}
         <p class="mt-1 text-xs text-red-400">{{ error }}</p>
       {% endfor %}
+    </div>
+
+    {# Model Selection Field #}
+    <div>
+        <label for="{{ form.model_choice.id_for_label }}" class="block text-sm font-medium text-slate-300 mb-1">{{ form.model_choice.label }}</label>
+        {{ form.model_choice }}
+        {% if form.model_choice.help_text %}
+            <p class="mt-1 text-xs text-slate-400">{{ form.model_choice.help_text }}</p>
+        {% endif %}
+        {% for error in form.model_choice.errors %}
+            <p class="mt-1 text-xs text-red-400">{{ error }}</p>
+        {% endfor %}
     </div>
 
     {% if form.non_field_errors %}
@@ -28,11 +45,12 @@
         </div>
     {% endif %}
 
-    <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+    <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 pt-2">
         <a href="{% url 'core:researcher_overview' %}" class="btn btn-secondary w-full md:w-auto">
             <span class="material-icons-outlined mr-2 text-sm">arrow_back</span>
             Back to Overview
         </a>
+        {# This button submits the file and model choice to researcher_upload_view for preview #}
         <button type="submit" name="action" value="upload_preview" class="btn btn-primary w-full md:w-auto">
             <span class="material-icons-outlined mr-2">cloud_upload</span>
             Upload and Preview
@@ -40,22 +58,34 @@
     </div>
   </form>
 
-  {% if preview_html %}
+  {% if preview_html and file_uploaded %}
   <div class="mt-10">
     <h2 class="text-2xl font-semibold text-sky-400 mb-4 text-center">CSV Preview (First 5 Rows)</h2>
-    <div class="table-container overflow-x-auto">
+    <div class="table-container overflow-x-auto mb-6">
       {{ preview_html|safe }}
     </div>
-    {% if file_uploaded %}
+
+    <h3 class="text-xl font-semibold text-slate-200 mb-2 text-center">Confirm Model for Full Prediction</h3>
+    <p class="text-center text-slate-400 mb-4">
+        The model selected for prediction is: <strong class="text-sky-400">{{ selected_model_display_name|default:"Not selected" }}</strong>.
+    </p>
+
+    {# This form submits to researcher_results_view to run predictions on the full file #}
     <form method="post" action="{% url 'core:researcher_results' %}" class="mt-6 text-center">
       {% csrf_token %}
+      {# Pass the uploaded file path and selected model key (from view context) to the next step #}
+      {# The file path is already in session, so only model_choice is needed here explicitly if not using session for it #}
+      {% if selected_model_key %}
+        <input type="hidden" name="model_choice" value="{{ selected_model_key }}">
+      {% endif %}
       <button type="submit" class="btn btn-primary text-lg px-8 py-3">
         <span class="material-icons-outlined mr-2">rocket_launch</span>
         Run Predictions on Full File
       </button>
     </form>
-    {% endif %}
   </div>
   {% endif %}
+</div>
+{% endblock %}
 </div>
 {% endblock %}
