@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse, FileResponse
-from django.contrib.auth.decorators import login_required # Added login_required
-from .forms import StudentInfoForm, ModelSelectionForm, FileUploadForm
+from django.contrib.auth.decorators import login_required
+from .forms import (
+    StudentInfoForm, ModelSelectionForm, FileUploadForm,
+    STUDY_TIME_CHOICES, MOTIVATION_CHOICES, PARENT_EDUCATION_CHOICES # Import choices
+)
 from .ml_utils import predict_student, batch_predict, get_sample_csv_data
 import pandas as pd
 import io
@@ -83,11 +86,48 @@ def student_predict_view(request):
     # del request.session['student_data']
     # del request.session['model_name']
 
-    return render(request, 'core/student_result.html', {
-        'result': prediction_result,
-        'student_data': student_data,
-        'model_name': model_name
-    })
+    # Prepare context for the new student_result.html structure
+    passed_bool = prediction_result.get('passed', False)
+    probability_float = prediction_result.get('probability_score', 0.0)
+
+    outcome_str = "Passed" if passed_bool else "Failed"
+    probability_percent = round(probability_float * 100, 1)
+
+    input_summary_dict = _prepare_input_summary(student_data)
+
+    context = {
+        'outcome': outcome_str,
+        'probability': probability_percent,
+        'input_summary': input_summary_dict,
+        'model_name': model_name,
+        # student_data is implicitly used by _prepare_input_summary,
+        # but not directly needed by template if input_summary is comprehensive.
+    }
+    return render(request, 'core/student_result.html', context)
+
+def _prepare_input_summary(student_data):
+    """
+    Transforms raw student data from session into a user-friendly summary dictionary.
+    """
+    if not student_data:
+        return {}
+
+    # Create display maps from choices
+    study_time_map = {k: v for k, v in STUDY_TIME_CHOICES if k}
+    motivation_map = {k: v for k, v in MOTIVATION_CHOICES if k}
+    parent_education_map = {k: v for k, v in PARENT_EDUCATION_CHOICES if k}
+
+    summary = {
+        "Previous Grade": student_data.get('previous_grade', 'N/A'),
+        "Absences": student_data.get('absences', 'N/A'),
+        "Weekly Study Time": study_time_map.get(student_data.get('study_time'), 'N/A'),
+        "Age": student_data.get('age', 'N/A'),
+        "Internet Access at Home": "Yes" if student_data.get('internet_access') else "No",
+        "Taking Extra Courses": "Yes" if student_data.get('extra_courses') else "No",
+        "Motivation Level": motivation_map.get(student_data.get('motivation_level'), 'N/A'),
+        "Highest Parent Education": parent_education_map.get(student_data.get('parent_education'), 'N/A'),
+    }
+    return summary
 
 @login_required(login_url=settings.LOGIN_URL)
 def student_upload_data(request):

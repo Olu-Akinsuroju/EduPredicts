@@ -12,29 +12,27 @@
 
   <section class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
     <div class="flex items-center mb-4">
-      <span class="material-icons text-blue-400 mr-3 text-3xl">info_outline</span>
-      <h2 class="text-2xl font-bold text-slate-100">Data Submission Guidelines</h2>
+      <span class="material-icons text-blue-400 mr-3 text-3xl">info_outline</span> {# Using text-blue-400 for info color (similar to --info-color) #}
+      <h2 class="text-2xl font-bold text-slate-100 section-title-dark">Data Submission Guidelines</h2> {# Added section-title-dark for potential specific dark theme title styling if needed, or just use text-2xl font-bold text-slate-100 #}
     </div>
-    <p class="text-slate-300 text-base leading-relaxed mb-4">
+    <p class="text-slate-300 text-base leading-relaxed mb-4 text-muted-dark"> {# text-muted-dark for consistency #}
       To ensure accurate predictions, your uploaded CSV file needs to adhere to a specific format. Please review the required columns and data types.
     </p>
   </section>
 
   <section class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
     <div class="flex items-center mb-4">
-      <span class="material-icons text-sky-400 mr-3 text-3xl">table_chart</span>
-      <h2 class="text-2xl font-bold text-slate-100">Required CSV Format</h2>
+      <span class="material-icons text-sky-400 mr-3 text-3xl">table_chart</span> {# text-sky-400 for primary color icon #}
+      <h2 class="text-2xl font-bold text-slate-100 section-title-dark">Required CSV Format</h2>
     </div>
-    <p class="text-slate-400 text-sm mb-3">
-      The following columns are mandatory in your CSV file. Ensure column headers match exactly. The final column, 'G3', is the target variable for prediction. Other columns may be required by the specific model you choose or by the general data processing pipeline.
+    <p class="text-slate-400 text-sm mb-3 text-muted-dark">
+      The following columns are mandatory in your CSV file. Ensure column headers match exactly. The final column, 'G3', is the target variable for prediction.
     </p>
-    <div class="bg-slate-900 p-4 rounded-md font-mono text-sm text-slate-200 border border-slate-700 overflow-x-auto mb-4">
+    <div class="bg-slate-900 p-3 rounded-md font-mono text-sm text-slate-300 border border-slate-600 overflow-x-auto mb-4 code-block-dark"> {# Mimicking .code-block styling with dark theme values #}
       <p><span class="font-semibold text-sky-300">Previous_Grade</span>, <span class="font-semibold text-sky-300">Absences</span>, <span class="font-semibold text-sky-300">Study_Time_per_Week</span>, <span class="font-semibold text-sky-300">Age</span>, ... <span class="font-semibold text-sky-300">G3</span></p>
-      {# Example for more columns based on StudentInfoForm #}
-      <p class="mt-2 text-xs text-slate-400">Full list of expected input features (order may vary in CSV, but names should match): previous_grade, absences, study_time, age, internet_access, extra_courses, motivation_level, parent_education.</p>
     </div>
 
-    <h3 class="text-xl font-semibold text-slate-200 mb-3 mt-6">Sample Data Preview:</h3>
+    <h3 class="text-lg font-semibold text-slate-100 mb-3 mt-6">Sample Data Preview:</h3> {# text-slate-100 instead of text-gray-700 #}
     <div class="overflow-x-auto rounded-lg border border-slate-700">
       <table class="min-w-full text-sm">
         <thead class="bg-slate-700">

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin/>
+    <link rel="stylesheet" as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Inter%3Awght%40400%3B500%3B700%3B900&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"/>
+    <title>Prediction Results</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+          --primary-color: #0c7ff2;
+          --success-color: #078838; /* Darker green for better contrast on white if needed, or use text-white with lighter green */
+          --danger-color:  #D32F2F;
+          --warning-color: #FFA000;
+          /* Additional for clarity, though Tailwind classes could be used directly */
+          --text-primary-dark: #1f2937; /* gray-800 */
+          --text-secondary-dark: #6b7280; /* gray-500 */
+          --text-tertiary-dark: #9ca3af; /* gray-400 */
+          --border-light: #e5e7eb; /* gray-200 */
+          --bg-subtle: #f9fafb; /* gray-50 */
+        }
+        body {
+            font-family: 'Inter', "Noto Sans", sans-serif;
+            background-color: #f3f4f6; /* Tailwind gray-100 for overall page background */
+        }
+    </style>
+</head>
+<body class="bg-gray-100"> {/* Applied page background */}
+
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto max-w-3xl flex items-center justify-between px-4 py-3">
+            <a href="#" class="p-2 rounded-full hover:bg-gray-100 active:bg-gray-200 transition-colors">
+                <span class="material-icons-sharp text-gray-600">arrow_back_ios_new</span>
+            </a>
+            <h1 class="flex-1 text-center text-lg font-semibold text-gray-900 tracking-tight">Prediction Results</h1>
+            <div class="w-10"></div> {/* Spacer to help center title with one-sided button */}
+        </div>
+    </header>
+
+    <main class="p-4 md:p-6">
+        <section class="bg-white rounded-xl shadow-xl p-6 md:p-8 max-w-md mx-auto sm:max-w-lg md:max-w-xl"> {/* Increased shadow and rounding */}
+
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-800">Prediction Outcome</h2>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-semibold text-white bg-[var(--success-color)]">
+                    <span class="material-icons-sharp mr-1.5 text-base sm:text-lg align-middle leading-none">check_circle</span>
+                    Passed
+                </span>
+                <!-- Example for "Failed"
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-semibold text-white bg-[var(--danger-color)]">
+                    <span class="material-icons-sharp mr-1.5 text-base sm:text-lg align-middle leading-none">cancel</span>
+                    Failed
+                </span>
+                -->
+            </div>
+
+            <div class="text-center my-8 md:my-10">
+                <p class="text-base text-gray-600">Probability Score</p>
+                <p class="text-5xl md:text-6xl font-bold text-[var(--primary-color)] mt-1 tracking-tight">82%</p>
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-3 my-8 md:my-10 overflow-hidden">
+                <div class="bg-[var(--primary-color)] h-3 rounded-full transition-all duration-500 ease-out" style="width: 82%;"></div>
+            </div>
+
+            <div class="mt-8 border-t border-gray-200 pt-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Input Summary</h3>
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center py-2.5">
+                        <span class="text-sm text-gray-500">Study Hours</span>
+                        <span class="text-sm font-bold text-gray-700">10-15 hrs/week</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-t border-gray-100">
+                        <span class="text-sm text-gray-500">Attendance</span>
+                        <span class="text-sm font-bold text-gray-700">95%</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-t border-gray-100">
+                        <span class="text-sm text-gray-500">Prior Grades</span>
+                        <span class="text-sm font-bold text-gray-700">88%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sticky bottom-0 bg-white border-t border-gray-200 p-4">
+        <div class="container mx-auto max-w-md sm:max-w-lg md:max-w-xl">
+            <button class="w-full flex items-center justify-center px-4 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:ring-offset-white transition-colors text-base">
+                <span class="material-icons-sharp mr-2">refresh</span>
+                New Prediction
+            </button>
+        </div>
+    </footer>
+
+</body>
+</html>
