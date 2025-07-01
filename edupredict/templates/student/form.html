@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %} <!-- Just in case any static assets are needed directly in the future, though Tailwind handles styling -->
+
+{% block title %}Student Information - EduPredict{% endblock %}
+
+{% block content %}
+<div class="mx-auto max-w-2xl px-4 py-6"> <!-- Increased max-w for better layout with 3 fieldsets -->
+  <!-- Stepper -->
+  <div class="mb-8 flex items-center justify-center">
+    <div class="flex items-center text-sky-400"> <!-- Active item styling -->
+      <div class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-sky-400 bg-sky-500/20 text-lg font-semibold">1</div>
+      <div class="ml-3 text-base font-medium">Academic & Personal</div>
+    </div>
+    <div class="mx-4 h-1 flex-1 border-b-2 border-slate-600"></div> <!-- Stepper line -->
+    <div class="flex items-center text-slate-500"> <!-- Inactive item styling -->
+      <div class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-600 text-lg font-semibold">2</div>
+      <div class="ml-3 text-base font-medium">Background & Model</div>
+    </div>
+     <div class="mx-4 h-1 flex-1 border-b-2 border-slate-600"></div> <!-- Stepper line -->
+    <div class="flex items-center text-slate-500"> <!-- Inactive item styling -->
+      <div class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-600 text-lg font-semibold">3</div>
+      <div class="ml-3 text-base font-medium">Prediction</div>
+    </div>
+  </div>
+
+  <div class="form-container"> <!-- Using existing class from base.html for consistency -->
+    <h2 class="text-2xl font-semibold text-slate-100 mb-6 text-center">
+      Enter your details to get a prediction
+    </h2>
+
+    <form method="post" action="{% url 'core:student_info' %}" class="space-y-6"> <!-- Action points to itself for POST handling -->
+      {% csrf_token %}
+
+      <!-- Academic Info -->
+      <fieldset class="rounded-lg border border-slate-600 p-5 bg-slate-800/50">
+        <legend class="px-2 text-base font-semibold text-sky-400">
+          Academic Information
+        </legend>
+        <div class="space-y-5 mt-3">
+          <div>
+            {{ form.previous_grade.label_tag }}
+            {{ form.previous_grade }}
+            {% if form.previous_grade.help_text %}
+              <p class="text-xs text-slate-400 mt-1">{{ form.previous_grade.help_text }}</p>
+            {% endif %}
+            {% for error in form.previous_grade.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ error }}</p>
+            {% endfor %}
+          </div>
+          <div>
+            {{ form.absences.label_tag }}
+            {{ form.absences }}
+            {% if form.absences.help_text %}
+              <p class="text-xs text-slate-400 mt-1">{{ form.absences.help_text }}</p>
+            {% endif %}
+            {% for error in form.absences.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ error }}</p>
+            {% endfor %}
+          </div>
+          <div>
+            {{ form.study_time.label_tag }}
+            {{ form.study_time }}
+            {% if form.study_time.help_text %}
+              <p class="text-xs text-slate-400 mt-1">{{ form.study_time.help_text }}</p>
+            {% endif %}
+            {% for error in form.study_time.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ error }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Personal Info -->
+      <fieldset class="rounded-lg border border-slate-600 p-5 bg-slate-800/50">
+        <legend class="px-2 text-base font-semibold text-sky-400">
+          Personal Information
+        </legend>
+        <div class="space-y-5 mt-3">
+          <div>
+            {{ form.age.label_tag }}
+            {{ form.age }}
+            {% if form.age.help_text %}
+              <p class="text-xs text-slate-400 mt-1">{{ form.age.help_text }}</p>
+            {% endif %}
+            {% for error in form.age.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ error }}</p>
+            {% endfor %}
+          </div>
+          <div>
+            {{ form.internet_access.label_tag }}
+            <div class="mt-1"> <!-- Wrapper for checkbox for better alignment -->
+              {{ form.internet_access }}
+            </div>
+            {% if form.internet_access.help_text %}
+              <p class="text-xs text-slate-400 mt-1">{{ form.internet_access.help_text }}</p>
+            {% endif %}
+            {% for error in form.internet_access.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ error }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Background Info -->
+      <fieldset class="rounded-lg border border-slate-600 p-5 bg-slate-800/50">
+        <legend class="px-2 text-base font-semibold text-sky-400">
+          Background Information
+        </legend>
+        <div class="space-y-5 mt-3">
+          <div>
+            {{ form.extra_courses.label_tag }}
+             <div class="mt-1"> <!-- Wrapper for checkbox for better alignment -->
+              {{ form.extra_courses }}
+            </div>
+            {% if form.extra_courses.help_text %}
+              <p class="text-xs text-slate-400 mt-1">{{ form.extra_courses.help_text }}</p>
+            {% endif %}
+            {% for error in form.extra_courses.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ error }}</p>
+            {% endfor %}
+          </div>
+          <div>
+            {{ form.motivation_level.label_tag }}
+            {{ form.motivation_level }}
+            {% if form.motivation_level.help_text %}
+              <p class="text-xs text-slate-400 mt-1">{{ form.motivation_level.help_text }}</p>
+            {% endif %}
+            {% for error in form.motivation_level.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ error }}</p>
+            {% endfor %}
+          </div>
+          <div>
+            {{ form.parent_education.label_tag }}
+            {{ form.parent_education }}
+            {% if form.parent_education.help_text %}
+              <p class="text-xs text-slate-400 mt-1">{{ form.parent_education.help_text }}</p>
+            {% endif %}
+            {% for error in form.parent_education.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ error }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Sticky Footer for Button -->
+      <!-- The prompt showed a sticky button, but base.html has its own footer.
+           Placing it directly before the end of the form.
+           For true stickiness at bottom of viewport, CSS position:sticky would be needed on this div,
+           and its parent (form-container) might need to be full height.
+           Given the overall page structure, a non-sticky button might be better.
+           Let's make it a standard button within the flow.
+      -->
+      <div class="pt-6 text-center"> <!-- Removed sticky classes, added padding top -->
+        <button type="submit" class="btn btn-primary w-full md:w-auto">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Minor script to ensure boolean fields (checkboxes) have some styling if needed,
+  // or to add Tailwind classes dynamically if they are not easily added via widgets.
+  document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+      // Tailwind forms plugin should style these, but we can add classes if needed.
+      // e.g., checkbox.classList.add('h-5', 'w-5', 'text-sky-600', 'border-slate-500', 'focus:ring-sky-500');
+    });
+
+    // Style select elements
+    const selects = document.querySelectorAll('select');
+    selects.forEach(function(select) {
+        // Tailwind forms plugin handles this well.
+        // select.classList.add('block', 'w-full', 'rounded-md', 'border-slate-600', 'bg-slate-700', 'py-2', 'px-3', 'shadow-sm', 'focus:border-sky-500', 'focus:outline-none', 'focus:ring-sky-500', 'sm:text-sm', 'text-slate-100');
+    });
+     const numberInputs = document.querySelectorAll('input[type="number"]');
+    numberInputs.forEach(function(input) {
+        // Tailwind forms plugin handles this well.
+        // input.classList.add('block', 'w-full', 'rounded-md', 'border-slate-600', 'bg-slate-700', 'py-2', 'px-3', 'shadow-sm', 'focus:border-sky-500', 'focus:outline-none', 'focus:ring-sky-500', 'sm:text-sm', 'text-slate-100');
+    });
+  });
+</script>
+{% endblock %}

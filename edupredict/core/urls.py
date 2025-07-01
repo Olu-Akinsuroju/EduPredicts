@@ -5,7 +5,7 @@ app_name = 'core'
 
 urlpatterns = [
     # Student Flow
-    path('student/', views.student_form_view, name='student_form'),
+    path('student/', views.student_info, name='student_info'), # Updated view and name
     path('student/select-model/', views.student_select_model_view, name='student_select_model'),
     path('student/predict/', views.student_predict_view, name='student_predict'),
 

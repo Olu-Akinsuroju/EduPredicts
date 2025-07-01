@@ -14,21 +14,32 @@ def landing_page(request):
     return render(request, 'landing.html')
 
 # Student Flow
-def student_form_view(request):
+def student_info(request): # Renamed from student_form_view, new template
     if request.method == 'POST':
         form = StudentInfoForm(request.POST)
         if form.is_valid():
-            request.session['student_data'] = form.cleaned_data
+            # Convert form data to a dictionary that is JSON serializable for the session
+            # For ChoiceFields, cleaned_data will give the 'key' (e.g., 1, 2, 3).
+            # For BooleanFields, it will be True/False.
+            # This is generally fine for session storage.
+            student_data_for_session = {}
+            for key, value in form.cleaned_data.items():
+                student_data_for_session[key] = value
+
+            request.session['student_data'] = student_data_for_session
+            messages.success(request, "Step 1 complete. Please select a model.")
             return redirect(reverse('core:student_select_model'))
+        else:
+            messages.error(request, "Please correct the errors below.")
     else:
         form = StudentInfoForm()
-    return render(request, 'core/student_form.html', {'form': form})
+    return render(request, 'student/form.html', {'form': form}) # Changed template path
 
 def student_select_model_view(request):
     student_data = request.session.get('student_data')
     if not student_data:
         messages.error(request, "Please submit your information first.")
-        return redirect(reverse('core:student_form'))
+        return redirect(reverse('core:student_info')) # Redirect to the new student_info view
 
     if request.method == 'POST':
         form = ModelSelectionForm(request.POST)
