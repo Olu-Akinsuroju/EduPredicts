@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction Result - EduPredict{% endblock %}
+
+{% block content %}
+<div class="form-container text-center">
+  <h1>Your Prediction Result</h1>
+
+  {% if result %}
+  <div class="my-8 p-6 bg-slate-700 rounded-lg shadow-inner">
+    <h2 class="text-2xl font-semibold text-sky-400 mb-2">Based on model: <span class="capitalize">{{ result.model_used|default:model_name }}</span></h2>
+    <p class="text-lg text-slate-300">
+      Predicted Outcome:
+      {% if result.passed %}
+        <span class="badge badge-success">Likely to Pass</span>
+      {% else %}
+        <span class="badge badge-danger">Likely to Not Pass</span>
+      {% endif %}
+    </p>
+    <p class="text-lg text-slate-300 mt-2">
+      Probability Score: <span class="font-bold text-sky-300">{{ result.probability_score|floatformat:3 }}</span>
+    </p>
+  </div>
+
+  {% if student_data %}
+  <div class="my-8 p-6 bg-slate-750 rounded-lg shadow-inner text-left">
+    <h3 class="text-xl font-semibold text-sky-500 mb-4">Summary of Your Information:</h3>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-slate-300">
+        <li><strong>Previous Grade:</strong> {{ student_data.previous_grade }}</li>
+        <li><strong>Absences:</strong> {{ student_data.absences }}</li>
+        <li><strong>Study Time (hrs/wk):</strong> {{ student_data.study_time }}</li>
+        <li><strong>Age:</strong> {{ student_data.age }}</li>
+        <li><strong>Internet Access:</strong> {% if student_data.internet_access %}Yes{% else %}No{% endif %}</li>
+        <li><strong>Extra Courses:</strong> {% if student_data.extra_courses %}Yes{% else %}No{% endif %}</li>
+        <li><strong>Motivation (1-5):</strong> {{ student_data.motivation }}</li>
+        <li><strong>Parent Education (1-5):</strong> {{ student_data.parent_education }}</li>
+    </ul>
+  </div>
+  {% endif %}
+
+  <p class="text-slate-400 mt-6">
+    This prediction is based on the data you provided and the selected model. It is not a guarantee but an estimate.
+  </p>
+  {% else %}
+  <p class="text-red-400 text-lg my-8">
+    There was an issue generating your prediction. Please try again.
+  </p>
+  {% endif %}
+
+  <div class="mt-10 space-y-4 md:space-y-0 md:space-x-4">
+    <a href="{% url 'core:student_form' %}" class="btn btn-primary">
+      <span class="material-icons-outlined mr-2">refresh</span>
+      New Prediction
+    </a>
+    <a href="{% url 'core:student_select_model' %}" class="btn btn-secondary">
+        <span class="material-icons-outlined mr-2">tune</span>
+        Change Model or Data
+    </a>
+  </div>
+</div>
+{% endblock %}

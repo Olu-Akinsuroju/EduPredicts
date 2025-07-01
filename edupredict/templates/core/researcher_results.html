@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Batch Prediction Results - EduPredict{% endblock %}
+
+{% block content %}
+<div class="form-container text-left">
+  <h1 class="text-center">Batch Prediction Results</h1>
+
+  {% if results_html %}
+    <p class="text-slate-300 mb-4">
+      Predictions have been generated for your dataset. Below is a preview of the results (up to 50 rows).
+      You can download the full CSV containing all original data and new prediction columns.
+    </p>
+    <div class="table-container overflow-x-auto">
+      {{ results_html|safe }}
+    </div>
+    {% if download_ready %}
+    <div class="mt-8 text-center">
+      <a href="{% url 'core:download_prediction_results_csv' %}" class="btn btn-primary text-lg px-8 py-3">
+        <span class="material-icons-outlined mr-2">file_download</span>
+        Download Full Results CSV ({{ results_filename|default:'prediction_results.csv' }})
+      </a>
+    </div>
+    {% endif %}
+  {% else %}
+    <p class="text-red-400 text-lg my-6 text-center">
+      There was an issue generating batch predictions or no results are available.
+      Please <a href="{% url 'core:researcher_upload' %}" class="text-sky-400 hover:text-sky-300 underline">try uploading your file again</a>.
+    </p>
+  {% endif %}
+
+  <div class="mt-10 text-center">
+    <a href="{% url 'core:researcher_upload' %}" class="btn btn-secondary">
+      <span class="material-icons-outlined mr-2">upload_file</span>
+      Upload Another File
+    </a>
+    <a href="{% url 'core:researcher_overview' %}" class="btn btn-outline ml-4">
+      <span class="material-icons-outlined mr-2">home</span>
+       Back to Researcher Portal
+    </a>
+  </div>
+</div>
+{% endblock %}

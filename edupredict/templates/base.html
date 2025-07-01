@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font + Material Icons + Tailwind CDN -->
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;600;700" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <title>{% block title %}EduPredict{% endblock %}</title>
+  <style type="text/tailwindcss">
+    body {
+      @apply bg-gradient-to-br from-slate-900 to-slate-700 text-slate-100 min-h-screen flex flex-col;
+    }
+    .main-gradient { /* Applied to body */
+      @apply bg-gradient-to-br from-slate-900 to-slate-700;
+    }
+    header {
+      @apply bg-slate-800/50 backdrop-blur-md shadow-lg p-4 sticky top-0 z-50;
+    }
+    header nav a {
+      @apply text-slate-300 hover:text-sky-400 px-3 py-2 rounded-md text-sm font-medium transition-colors;
+    }
+    header nav a.active {
+      @apply text-white bg-sky-500/20;
+    }
+    .brand-logo {
+      @apply text-2xl font-bold text-sky-400 flex items-center;
+    }
+    .brand-logo .material-icons-outlined {
+      @apply mr-2 text-3xl;
+    }
+    main {
+      @apply flex-grow; /* Ensures main content pushes footer down */
+    }
+    footer {
+      @apply bg-slate-800/50 text-slate-400 text-center p-4 mt-auto; /* mt-auto pushes footer to bottom */
+    }
+    .form-container {
+      @apply max-w-2xl mx-auto bg-slate-800 p-8 rounded-xl shadow-2xl my-10;
+    }
+    .form-container h1, .form-container h2 {
+      @apply text-3xl font-bold text-sky-400 mb-6 text-center;
+    }
+    label {
+      @apply block text-sm font-medium text-slate-300 mb-1;
+    }
+    /* Default input styling is handled by Tailwind Forms plugin, but we can add custom here */
+    /* Specific classes for form elements are added in forms.py or widgets for more control */
+    .btn {
+      @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800;
+    }
+    .btn-primary {
+      @apply bg-sky-600 hover:bg-sky-700 focus:ring-sky-500;
+    }
+    .btn-secondary {
+      @apply bg-slate-600 hover:bg-slate-700 focus:ring-slate-500;
+    }
+    .btn-outline {
+        @apply bg-transparent hover:bg-sky-500/10 text-sky-400 border-sky-500 hover:text-sky-300;
+    }
+    .badge {
+      @apply px-3 py-1 text-sm font-semibold rounded-full;
+    }
+    .badge-success {
+      @apply bg-green-500/20 text-green-300;
+    }
+    .badge-danger {
+      @apply bg-red-500/20 text-red-300;
+    }
+    .table-container {
+        @apply mt-6 bg-slate-800 p-6 rounded-lg shadow-xl;
+    }
+    table th {
+        @apply px-5 py-3 border-b-2 border-slate-700 bg-slate-700/50 text-left text-xs font-semibold text-sky-300 uppercase tracking-wider;
+    }
+    table td {
+        @apply px-5 py-5 border-b border-slate-700 bg-slate-800 text-sm text-slate-300;
+    }
+    .messages {
+        @apply list-none p-0 my-4;
+    }
+    .messages li {
+        @apply p-4 mb-4 border rounded-md;
+    }
+    .messages li.success {
+        @apply bg-green-500/20 border-green-600 text-green-300;
+    }
+    .messages li.error {
+        @apply bg-red-500/20 border-red-600 text-red-300;
+    }
+    .messages li.info {
+        @apply bg-sky-500/20 border-sky-600 text-sky-300;
+    }
+    .messages li.warning {
+        @apply bg-yellow-500/20 border-yellow-600 text-yellow-300;
+    }
+
+  </style>
+</head>
+<body class="main-gradient">
+  <header>
+    <nav class="container mx-auto flex items-center justify-between">
+      <a href="{% url 'landing_page' %}" class="brand-logo">
+        <span class="material-icons-outlined">school</span>
+        EduPredict
+      </a>
+      <div>
+        <a href="{% url 'landing_page' %}" class="{% if request.resolver_match.url_name == 'landing_page' %}active{% endif %}">Home</a>
+        <a href="{% url 'core:student_form' %}" class="{% if 'student' in request.resolver_match.app_names %}active{% endif %}">Student Portal</a>
+        <a href="{% url 'core:researcher_overview' %}" class="{% if 'researcher' in request.resolver_match.app_names or 'researcher' in request.path %}active{% endif %}">Researcher Portal</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mx-auto py-10 px-4">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; {% now "Y" %} EduPredict. All rights reserved.</p>
+    <p>Empowering educational insights through data.</p>
+  </footer>
+</body>
+</html>

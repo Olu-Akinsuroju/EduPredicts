@@ -1,0 +1,10 @@
+/* This file can be used for any additional global CSS if needed. */
+/* For now, most styling is handled by Tailwind via CDN and inline styles in base.html. */
+
+/* Example of a custom style if you weren't using Tailwind for everything:
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+*/

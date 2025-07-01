@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Researcher Portal - EduPredict{% endblock %}
+
+{% block content %}
+<div class="form-container text-left">
+  <h1 class="text-center">Researcher Portal</h1>
+  <p class="text-slate-300 mb-6">
+    Welcome to the Researcher Portal. This section allows you to perform batch predictions on student datasets.
+    You can upload a CSV file containing student information, and our system will process it to generate
+    predictions for each student.
+  </p>
+
+  <div class="bg-slate-700 p-6 rounded-lg shadow-inner mb-8">
+    <h2 class="text-2xl font-semibold text-sky-400 mb-3">How it Works</h2>
+    <ol class="list-decimal list-inside text-slate-300 space-y-2">
+      <li>
+        <strong>Prepare Your Data:</strong> Ensure your CSV file has the required columns. You can download a sample CSV template to see the expected format.
+        The required columns are: <code class="text-xs bg-slate-600 p-1 rounded">Previous Grade</code>, <code class="text-xs bg-slate-600 p-1 rounded">Absences</code>, <code class="text-xs bg-slate-600 p-1 rounded">Study Time</code>, <code class="text-xs bg-slate-600 p-1 rounded">Age</code>, <code class="text-xs bg-slate-600 p-1 rounded">Internet Access</code> (True/False), <code class="text-xs bg-slate-600 p-1 rounded">Extra Courses</code> (True/False), <code class="text-xs bg-slate-600 p-1 rounded">Motivation</code> (1-5), <code class="text-xs bg-slate-600 p-1 rounded">Parent Education</code> (1-5).
+      </li>
+      <li>
+        <strong>Upload CSV:</strong> Use the upload form to submit your data. You'll see a preview of the first 5 rows.
+      </li>
+      <li>
+        <strong>Run Predictions:</strong> Confirm the preview and click "Run Predictions". The system will process the entire file.
+      </li>
+      <li>
+        <strong>Download Results:</strong> Once processing is complete, you'll be able to download a CSV file containing the original data along with the added prediction columns.
+      </li>
+    </ol>
+  </div>
+
+  <div class="text-center space-y-4 md:space-y-0 md:space-x-4">
+    <a href="{% url 'core:download_sample_csv' %}" class="btn btn-secondary">
+      <span class="material-icons-outlined mr-2">download</span>
+      Download Sample CSV
+    </a>
+    <a href="{% url 'core:researcher_upload' %}" class="btn btn-primary">
+      <span class="material-icons-outlined mr-2">upload_file</span>
+      Proceed to Upload
+    </a>
+  </div>
+</div>
+{% endblock %}

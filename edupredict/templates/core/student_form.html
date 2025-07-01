@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Information - EduPredict{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <h1>Student Information</h1>
+  <p class="text-slate-400 mb-6 text-center">Please provide your details to get a prediction.</p>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="space-y-6">
+      {% for field in form %}
+      <div>
+        <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-slate-300 mb-1">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}
+          <p class="mt-2 text-xs text-slate-500">{{ field.help_text }}</p>
+        {% endif %}
+        {% for error in field.errors %}
+          <p class="mt-1 text-xs text-red-400">{{ error }}</p>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    {% if form.non_field_errors %}
+        <div class="mt-4 p-3 bg-red-500/20 text-red-300 rounded-md">
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="mt-8 text-center">
+      <button type="submit" class="btn btn-primary w-full md:w-auto">
+        Next: Select Model
+        <span class="material-icons-outlined ml-2 text-sm">arrow_forward</span>
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}
