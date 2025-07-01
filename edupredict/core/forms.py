@@ -140,16 +140,22 @@ class ModelSelectionForm(forms.Form):
 
 
 class FileUploadForm(forms.Form):
-    file = forms.FileField(label="Upload CSV File")
+    csv_file = forms.FileField(
+        label="Upload Your CSV File", # Label for admin or if form is rendered directly
+        required=True,
+        widget=forms.FileInput(attrs={
+            'id': 'file-upload', # Matching the ID in provided HTML and JS
+            # 'class': 'sr-only' # The template will handle sr-only if {{ form.csv_file }} is used.
+                                 # If pasting HTML, the input in HTML has sr-only.
+        })
+    )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field.widget.attrs.update({'class': 'mt-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100'})
-
-    def clean_file(self):
-        file = self.cleaned_data.get('file')
-        if file:
-            if not file.name.endswith('.csv'):
+    def clean_csv_file(self):
+        uploaded_file = self.cleaned_data.get('csv_file')
+        if uploaded_file:
+            if not uploaded_file.name.endswith('.csv'):
                 raise forms.ValidationError("Only CSV files are allowed.")
-        return file
+        # It's important to return the cleaned data, whether it's modified or not.
+        # If the file is valid or not present (and not required), return it.
+        # If it's None and required, FileField itself will raise a validation error.
+        return uploaded_file

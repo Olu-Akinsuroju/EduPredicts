@@ -97,6 +97,7 @@
     }
 
   </style>
+  {% block extra_head %}{% endblock extra_head %}
 </head>
 <body class="main-gradient">
   <header>
@@ -128,5 +129,6 @@
     <p>&copy; {% now "Y" %} EduPredict. All rights reserved.</p>
     <p>Empowering educational insights through data.</p>
   </footer>
+  {% block scripts %}{% endblock scripts %}
 </body>
 </html>

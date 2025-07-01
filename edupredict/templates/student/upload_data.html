@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Upload Student Data - EduPredict{% endblock %}
+
+{% block extra_head %}
+  <link href="{% static 'css/upload_data.css' %}" rel="stylesheet">
+  {# The provided HTML also loads Material Icons, but base.html already does.
+     If a specific variant like 'Material Icons Outlined' vs 'Material Icons' is crucial
+     and base.html has a different one, it might need adjustment.
+     base.html uses: "Material+Icons+Outlined"
+     Provided HTML uses: "Material+Icons|Material+Icons+Outlined" - this is fine.
+  #}
+{% endblock extra_head %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data" action="{% url 'core:student_upload_data' %}">
+  {% csrf_token %}
+
+  {# The prompt said: "paste the provided <body>…</body> here"
+     The provided HTML has <body class="bg-white" style='font-family: Inter, "Noto Sans", sans-serif;'>
+     This class will be overridden by base.html's body. The font might also be.
+     The root div in the provided HTML is:
+     <div class="relative flex size-full min-h-screen flex-col justify-between group/design-root overflow-x-hidden">
+     I will adapt this div and its children for the dark theme.
+  #}
+
+  <div class="relative flex size-full flex-col justify-between group/design-root overflow-x-hidden"> {# Root div from pasted body #}
+    <div class="flex-grow"> {# This div wraps header and main from pasted body #}
+
+      {# Header from pasted HTML - will adapt to dark theme and simplify #}
+      <header class="sticky top-0 z-10 bg-slate-800/80 backdrop-blur-md shadow-md"> {# Adapted: bg-white/80 -> bg-slate-800/80 #}
+        <div class="container mx-auto flex items-center p-4">
+          <a href="{% url 'core:student_info' %}" class="text-slate-100 p-2 -ml-2"> {# Adapted: text-[var(--text-primary)] -> text-slate-100, added back link #}
+            <span class="material-icons text-2xl">arrow_back_ios_new</span>
+          </a>
+          <h1 class="text-slate-100 text-lg font-semibold leading-tight tracking-tight flex-1 text-center pr-8">Upload Data</h1> {# Adapted #}
+        </div>
+      </header>
+
+      <main class="container mx-auto p-4 md:p-6"> {# Adapted: removed p-4 from main in pasted, using container's padding #}
+        <section class="mb-8">
+          <h2 class="text-slate-100 text-2xl font-bold leading-tight tracking-tight mb-2">Upload your student data</h2> {# Adapted #}
+          <p class="text-slate-300 text-base font-normal leading-relaxed mb-6"> {# Adapted #}
+            Upload your student data in CSV format. Ensure the file includes student information and performance metrics.
+            <a class="text-sky-400 hover:underline" href="{% static 'data/sample_student_data.csv' %}" download>Download sample CSV</a>. {# Adapted #}
+          </p>
+
+          {# Display Django form errors for the file field #}
+          {% if form.csv_file.errors %}
+            <div class="my-4 p-3 rounded-lg bg-red-700/30 border border-red-500 text-sm text-red-300 flex items-center gap-2">
+              <span class="material-icons-outlined">error_outline</span>
+              <span>{{ form.csv_file.errors|join:", " }}</span>
+            </div>
+          {% endif %}
+          {% if form.non_field_errors %}
+            <div class="my-4 p-3 rounded-lg bg-red-700/30 border border-red-500 text-sm text-red-300">
+                {% for error in form.non_field_errors %}
+                    <p class="flex items-center gap-2"><span class="material-icons-outlined">error_outline</span> {{ error }}</p>
+                {% endfor %}
+            </div>
+          {% endif %}
+
+
+          {# Dropzone - classes adapted for dark theme #}
+          <div class="flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-slate-600 hover:border-sky-400 p-8 text-center bg-slate-800 hover:bg-slate-700/70 transition-colors cursor-pointer" id="dropzone">
+            <div id="dropzone-initial">
+              <span class="material-icons-outlined text-5xl text-sky-400">upload_file</span> {# Adapted #}
+              <p class="text-slate-100 text-lg font-medium leading-tight">Drag and drop your CSV file here</p> {# Adapted #}
+              <p class="text-slate-400 text-sm font-normal">or</p> {# Adapted #}
+              <label class="mt-2 flex min-w-[84px] w-auto cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-sky-600 text-white text-sm font-medium leading-normal tracking-wide shadow-sm hover:bg-sky-700 transition-colors" for="file-upload"> {# Adapted for="file-upload", uses button style #}
+                <span class="material-icons mr-2 text-base">folder_open</span>
+                <span>Choose file</span>
+              </label>
+              {# The actual file input from Django form, styled sr-only. Name MUST be "csv_file" #}
+              {# The provided HTML has <input ... id="file-upload" type="file"/> - I will use this ID for the Django field #}
+              {{ form.csv_file }} {# This will render <input type="file" name="csv_file" class="sr-only" id="file-upload"> due to form definition #}
+              <p class="text-xs text-slate-500 mt-2">Maximum file size: 50MB. Supported format: .csv</p> {# Adapted #}
+            </div>
+            <div class="w-full hidden" id="upload-progress-container">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="material-icons text-xl text-sky-400 animate-spin" id="upload-spinner">autorenew</span> {# Adapted #}
+                <span class="material-icons text-xl text-green-400 hidden" id="upload-success-icon">check_circle</span> {# Adapted #}
+                <p class="text-slate-100 text-sm font-medium truncate" id="upload-filename"></p> {# Adapted #}
+              </div>
+              <div class="progress-bar-container"> {# Styled by upload_data.css #}
+                <div class="progress-bar" id="upload-progress-bar">0%</div>
+              </div>
+              <p class="text-xs text-slate-400 mt-1" id="upload-status-message"></p> {# Adapted #}
+            </div>
+          </div>
+
+          {# Client-side error/success messages controlled by JS - adapted for dark theme #}
+          <div class="mt-4 p-3 rounded-lg bg-red-700/30 border border-red-500 text-sm text-red-300 hidden items-center gap-2" id="upload-error-message">
+            <span class="material-icons-outlined">error_outline</span>
+            <span id="error-text"></span>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-green-700/30 border border-green-500 text-sm text-green-300 hidden items-center gap-2" id="upload-success-message">
+            <span class="material-icons-outlined">check_circle_outline</span>
+            <span id="success-text">File uploaded successfully! Preview below.</span>
+          </div>
+        </section>
+
+        <section class="mt-10">
+          <h3 class="text-slate-100 text-xl font-semibold leading-tight tracking-tight mb-2">Data Preview</h3> {# Adapted #}
+          <p class="text-slate-300 text-base font-normal leading-relaxed mb-4">Showing the first 5 rows of your uploaded data. Please verify the columns and data types.</p> {# Adapted #}
+
+          <div id="data-preview-table-container" class="overflow-x-auto rounded-lg border border-slate-700 bg-slate-800 shadow-md"> {# Adapted #}
+            <table class="w-full min-w-[600px] text-sm table-auto">
+              <thead class="bg-slate-700 text-left sticky top-0 z-[1]"> {# Adapted #}
+                <tr>
+                  {# These headers will be dynamically populated by JS if successful, or match dummy data #}
+                  <th class="p-3 font-semibold text-sky-300 whitespace-nowrap">Student ID</th> {# Adapted #}
+                  <th class="p-3 font-semibold text-sky-300 whitespace-nowrap">Course</th>
+                  <th class="p-3 font-semibold text-sky-300 whitespace-nowrap">Grade</th>
+                  <th class="p-3 font-semibold text-sky-300 whitespace-nowrap">Attendance (%)</th>
+                  <th class="p-3 font-semibold text-sky-300 whitespace-nowrap">Study Hours</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700" id="data-preview-body"> {# Adapted #}
+                {# JS will populate this. Example rows from provided HTML are for JS dummy data. #}
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center mt-6 p-6 border border-dashed border-slate-600 rounded-lg bg-slate-800" id="no-data-message"> {# Adapted #}
+            <span class="material-icons-outlined text-5xl text-slate-500 mb-2">dataset</span> {# Adapted #}
+            <p class="text-slate-300 font-medium">No data uploaded yet.</p> {# Adapted #}
+            <p class="text-slate-400 text-sm">Upload a CSV file to see the preview here.</p> {# Adapted #}
+          </div>
+
+          <div class="mt-6 p-4 bg-sky-800/30 border border-sky-700 rounded-lg"> {# Adapted #}
+            <h4 class="text-sm font-semibold text-sky-300 mb-1 flex items-center"> {# Adapted #}
+              <span class="material-icons-outlined mr-2 text-lg">info</span>
+              Important CSV Guidelines:
+            </h4>
+            <ul class="list-disc list-inside text-sm text-sky-200/80 space-y-1 pl-1"> {# Adapted #}
+              <li>The first row must contain column headers.</li>
+              <li>Ensure all required columns are present as per the sample CSV.</li>
+              <li>Check for consistent data types within columns.</li>
+              <li>Avoid special characters or formulas in your CSV file.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    {# Footer from pasted HTML - adapted for dark theme and as submit button #}
+    <footer class="sticky bottom-0 bg-slate-900/80 backdrop-blur-md border-t border-slate-700 p-4 mt-8"> {# Adapted #}
+      <div class="container mx-auto max-w-3xl">
+         <button type="submit" class="btn btn-primary w-full text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed" id="continue-button" disabled> {# Adapted to use base.html btn style #}
+          <span class="truncate">Upload and Continue</span> {# Text slightly adapted #}
+        </button>
+      </div>
+    </footer>
+  </div>{# End of root div from pasted body #}
+</form>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/upload_data.js' %}" defer></script>
+{% endblock scripts %}

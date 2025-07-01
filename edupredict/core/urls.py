@@ -6,8 +6,9 @@ app_name = 'core'
 urlpatterns = [
     # Student Flow
     path('student/', views.student_info, name='student_info'),
-    path('student/select-model/', views.student_select_model, name='student_select_model'), # Updated view function
+    path('student/select-model/', views.student_select_model, name='student_select_model'),
     path('student/predict/', views.student_predict_view, name='student_predict'),
+    path('student/upload/', views.student_upload_data, name='student_upload_data'), # New student upload URL
 
     # Researcher Flow
     path('researcher/', views.researcher_overview_view, name='researcher_overview'),

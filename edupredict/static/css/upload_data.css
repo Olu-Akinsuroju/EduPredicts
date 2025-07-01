@@ -1,0 +1,30 @@
+/* Styles for the file upload page, adapted for dark theme */
+
+/* Progress Bar */
+.progress-bar-container {
+  width: 100%;
+  background-color: #374151; /* Equivalent to Tailwind slate-700 or gray-700 */
+  border-radius: 0.5rem;    /* rounded-lg */
+  overflow: hidden;
+  height: 1rem;             /* h-4 */
+  margin-top: 1rem;         /* mt-4 */
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #3b82f6; /* Equivalent to Tailwind sky-500 or blue-500 */
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+  text-align: center;
+  line-height: 1rem;        /* leading-4, though direct line-height is fine */
+  color: white;
+  font-size: 0.75rem;       /* text-xs */
+}
+
+/* Dropzone Drag State */
+.dragover {
+  /* These will be applied by JS in addition to Tailwind classes on the dropzone */
+  /* Tailwind equivalent: border-sky-500 bg-sky-500/10 or bg-slate-700/50 */
+  border-color: #3b82f6 !important; /* Use !important if Tailwind utilities might override */
+  background-color: rgba(59, 130, 246, 0.1) !important;
+}

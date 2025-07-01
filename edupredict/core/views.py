@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse, FileResponse
+from django.contrib.auth.decorators import login_required # Added login_required
 from .forms import StudentInfoForm, ModelSelectionForm, FileUploadForm
 from .ml_utils import predict_student, batch_predict, get_sample_csv_data
 import pandas as pd
@@ -87,6 +88,34 @@ def student_predict_view(request):
         'student_data': student_data,
         'model_name': model_name
     })
+
+@login_required(login_url=settings.LOGIN_URL)
+def student_upload_data(request):
+    if request.method == 'POST':
+        form = FileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            uploaded_file = form.cleaned_data.get('csv_file') # Get from cleaned_data after validation
+            if uploaded_file: # Should always be true if form is_valid and field is required
+                messages.success(request, f"File '{uploaded_file.name}' received.") # Updated message
+            else:
+                # This case should ideally not be reached if FileField is required and form.is_valid() passed.
+                # However, as a fallback or if field was not required:
+                messages.error(request, "File processing error: No file found after validation.")
+            return redirect('core:student_upload_data')
+        else:
+            # Form is not valid. Errors are in form.errors.
+            # The template should display form.csv_file.errors.
+            # Adding a general message.
+            if 'csv_file' in form.errors and any('This field is required.' in e for e in form.errors['csv_file']):
+                 messages.error(request, "Upload failed: No file was submitted. Please choose a CSV file.")
+            elif 'csv_file' in form.errors and any('The submitted file is empty.' in e for e in form.errors['csv_file']):
+                 messages.error(request, "Upload failed: The submitted CSV file is empty.")
+            else:
+                 messages.error(request, "Upload failed. Please check errors or try a different CSV file.")
+    else:
+        form = FileUploadForm()
+
+    return render(request, 'student/upload_data.html', {'form': form})
 
 
 # Researcher Flow
