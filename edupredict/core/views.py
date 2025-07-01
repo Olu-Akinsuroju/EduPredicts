@@ -33,43 +33,33 @@ def student_info(request): # Renamed from student_form_view, new template
             messages.error(request, "Please correct the errors below.")
     else:
         form = StudentInfoForm()
-    return render(request, 'student/form.html', {'form': form}) # Changed template path
+    return render(request, 'student/form.html', {'form': form})
 
-def student_select_model_view(request):
+def student_select_model(request): # Renamed from student_select_model_view
     student_data = request.session.get('student_data')
-    if not student_data:
-        messages.error(request, "Please submit your information first.")
-        return redirect(reverse('core:student_info')) # Redirect to the new student_info view
+    if not student_data: # Ensure student data exists from previous step
+        messages.error(request, "Please submit your information first to select a model.")
+        return redirect(reverse('core:student_info'))
 
     if request.method == 'POST':
-        form = ModelSelectionForm(request.POST)
+        form = ModelSelectionForm(request.POST) # Uses the updated ModelSelectionForm
         if form.is_valid():
-            request.session['model_name'] = form.cleaned_data['model_name']
-            # The form in student_select_model.html should POST to student_predict_view
-            # So, this view prepares data, and the actual prediction happens in student_predict_view
-            # which is called by the form submission from student_select_model.html.
-            # Thus, we redirect to student_predict view which will handle the actual prediction
-            # based on the data now in session.
-            # Correction: The form in select_model.html should POST to student_predict.
-            # This view (student_select_model_view) is for GET display of the form,
-            # and if it receives a POST, it means the model was selected and it should
-            # prepare for the actual prediction call.
-            # The most straightforward way is to have student_select_model.html's form
-            # POST to student_predict. This view then is only for rendering the selection form.
-            # Let's adjust: student_select_model.html's form will POST to student_predict.
-            # This view just renders the form.
-            # No, the original plan was:
-            # Step 2: On POST, validate and redirect to /student/select-model/, where a user picks one of three radio options (Logistic, Tree, RF).
-            # Step 3: On POST to /student/predict/, call our existing ML pipeline
-            # This means student_select_model_view's form should POST to student_predict.
+            selected_model_key = form.cleaned_data['model_choice']
+            # Get the display name for the message
+            model_display_name = dict(form.fields['model_choice'].choices).get(selected_model_key, "Selected Model")
 
-            # Storing model in session and redirecting to predict view (which will be GET)
-            # This is one way, student_predict then reads from session.
-             return redirect(reverse('core:student_predict'))
+            request.session['model_name'] = selected_model_key # Store key 'lr', 'dt', 'rf'
+            messages.success(request, f"Model '{model_display_name}' selected. Proceeding to prediction.")
+            return redirect(reverse('core:student_predict')) # Redirect to the actual prediction view
+        else:
+            # Form is invalid, re-render the page with errors
+            messages.error(request, "Please correct the errors below and select a model.")
     else:
+        # GET request, display an empty form
         form = ModelSelectionForm()
 
-    return render(request, 'core/student_select_model.html', {'form': form})
+    # Render the new model selection page
+    return render(request, 'student/model_selection.html', {'form': form})
 
 
 def student_predict_view(request):

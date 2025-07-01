@@ -108,7 +108,7 @@
       <div>
         <a href="{% url 'landing_page' %}" class="{% if request.resolver_match.url_name == 'landing_page' %}active{% endif %}">Home</a>
         <a href="{% url 'core:student_info' %}" class="{% if request.resolver_match.url_name == 'student_info' or request.resolver_match.url_name == 'student_select_model' or request.resolver_match.url_name == 'student_predict' %}active{% endif %}">Student Portal</a>
-        <a href="{% url 'core:researcher_overview' %}" class="{% if 'researcher' in request.resolver_match.app_names or 'researcher' in request.path %}active{% endif %}">Researcher Portal</a>
+        <a href="{% url 'researcher:overview' %}" class="{% if request.resolver_match.app_name == 'researcher' or 'dashboard/researcher' in request.path %}active{% endif %}">Researcher Portal</a>
       </div>
     </nav>
   </header>

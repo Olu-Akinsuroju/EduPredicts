@@ -21,6 +21,7 @@ from core import views as core_views # Import core views for landing page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", core_views.landing_page, name="landing_page"), # Landing page
-    path("core/", include("core.urls")), # Include core app URLs
+    path("", core_views.landing_page, name="landing_page"),
+    path("core/", include("core.urls")),
+    path("dashboard/researcher/", include("researcher.urls")), # Added researcher app URLs
 ]

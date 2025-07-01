@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Researcher Overview - EduPredict{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4 md:p-6 space-y-8">
+  <header class="mb-10 text-center">
+    <h1 class="text-4xl font-bold text-slate-100">Researcher Overview</h1>
+    <p class="text-xl text-slate-300 mt-2">Guidelines and tools for data submission and analysis.</p>
+  </header>
+
+  <section class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
+    <div class="flex items-center mb-4">
+      <span class="material-icons text-blue-400 mr-3 text-3xl">info_outline</span>
+      <h2 class="text-2xl font-bold text-slate-100">Data Submission Guidelines</h2>
+    </div>
+    <p class="text-slate-300 text-base leading-relaxed mb-4">
+      To ensure accurate predictions, your uploaded CSV file needs to adhere to a specific format. Please review the required columns and data types.
+    </p>
+  </section>
+
+  <section class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
+    <div class="flex items-center mb-4">
+      <span class="material-icons text-sky-400 mr-3 text-3xl">table_chart</span>
+      <h2 class="text-2xl font-bold text-slate-100">Required CSV Format</h2>
+    </div>
+    <p class="text-slate-400 text-sm mb-3">
+      The following columns are mandatory in your CSV file. Ensure column headers match exactly. The final column, 'G3', is the target variable for prediction. Other columns may be required by the specific model you choose or by the general data processing pipeline.
+    </p>
+    <div class="bg-slate-900 p-4 rounded-md font-mono text-sm text-slate-200 border border-slate-700 overflow-x-auto mb-4">
+      <p><span class="font-semibold text-sky-300">Previous_Grade</span>, <span class="font-semibold text-sky-300">Absences</span>, <span class="font-semibold text-sky-300">Study_Time_per_Week</span>, <span class="font-semibold text-sky-300">Age</span>, ... <span class="font-semibold text-sky-300">G3</span></p>
+      {# Example for more columns based on StudentInfoForm #}
+      <p class="mt-2 text-xs text-slate-400">Full list of expected input features (order may vary in CSV, but names should match): previous_grade, absences, study_time, age, internet_access, extra_courses, motivation_level, parent_education.</p>
+    </div>
+
+    <h3 class="text-xl font-semibold text-slate-200 mb-3 mt-6">Sample Data Preview:</h3>
+    <div class="overflow-x-auto rounded-lg border border-slate-700">
+      <table class="min-w-full text-sm">
+        <thead class="bg-slate-700">
+          <tr>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-sky-300 uppercase tracking-wider">Previous_Grade</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-sky-300 uppercase tracking-wider">Absences</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-sky-300 uppercase tracking-wider">Study_Time_per_Week</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-sky-300 uppercase tracking-wider">Age</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-sky-300 uppercase tracking-wider">...</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-sky-300 uppercase tracking-wider">G3</th>
+          </tr>
+        </thead>
+        <tbody class="bg-slate-800">
+          <tr class="border-b border-slate-700">
+            <td class="px-5 py-4 text-slate-300">85</td>
+            <td class="px-5 py-4 text-slate-300">2</td>
+            <td class="px-5 py-4 text-slate-300">10</td>
+            <td class="px-5 py-4 text-slate-300">17</td>
+            <td class="px-5 py-4 text-slate-300">...</td>
+            <td class="px-5 py-4 text-slate-300">88</td>
+          </tr>
+          <tr class="border-b border-slate-700">
+            <td class="px-5 py-4 text-slate-300">70</td>
+            <td class="px-5 py-4 text-slate-300">5</td>
+            <td class="px-5 py-4 text-slate-300">5</td>
+            <td class="px-5 py-4 text-slate-300">18</td>
+            <td class="px-5 py-4 text-slate-300">...</td>
+            <td class="px-5 py-4 text-slate-300">75</td>
+          </tr>
+          <tr class="border-b border-slate-700">
+            <td class="px-5 py-4 text-slate-300">92</td>
+            <td class="px-5 py-4 text-slate-300">0</td>
+            <td class="px-5 py-4 text-slate-300">15</td>
+            <td class="px-5 py-4 text-slate-300">16</td>
+            <td class="px-5 py-4 text-slate-300">...</td>
+            <td class="px-5 py-4 text-slate-300">95</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-slate-400 text-xs mt-2 italic">This is a simplified preview. Your actual data may contain more columns and rows. Refer to the sample CSV for the full structure.</p>
+  </section>
+
+  <section class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
+    <div class="flex items-center mb-4">
+      <span class="material-icons text-green-400 mr-3 text-3xl">cloud_download</span>
+      <h2 class="text-2xl font-bold text-slate-100">Download Sample CSV</h2>
+    </div>
+    <p class="text-slate-300 text-base leading-relaxed mb-6">
+      Download a sample CSV file to understand the expected data structure and column names. This will help you prepare your data correctly for batch upload and prediction.
+    </p>
+    <a href="{% static 'data/sample_student_data.csv' %}" download class="btn btn-primary inline-flex items-center justify-center w-full sm:w-auto hover:shadow-lg text-base py-3 px-6">
+      <span class="material-icons mr-2">file_download</span>
+      Download Sample CSV
+    </a>
+  </section>
+
+  <section class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700 mt-8">
+    <div class="flex items-center mb-4">
+        <span class="material-icons text-sky-400 mr-3 text-3xl">upload_file</span>
+        <h2 class="text-2xl font-bold text-slate-100">Upload Batch Data</h2>
+    </div>
+    <p class="text-slate-300 text-base leading-relaxed mb-6">
+        Once your data is formatted according to the sample CSV, you can upload it for batch prediction.
+    </p>
+    <a href="{% url 'core:researcher_upload' %}" class="btn btn-outline inline-flex items-center justify-center w-full sm:w-auto text-base py-3 px-6">
+        <span class="material-icons mr-2">arrow_forward</span>
+        Go to Upload Page
+    </a>
+  </section>
+
+</div>
+{% endblock %}

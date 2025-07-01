@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Choose a Model - EduPredict{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto py-8 px-4">
+
+  <div class="mb-8">
+    <a href="{% url 'core:student_info' %}" class="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors duration-150 group">
+      <span class="material-icons-outlined mr-2 group-hover:-translate-x-1 transition-transform">arrow_back_ios</span>
+      Back to Your Information
+    </a>
+  </div>
+
+  <h1 class="text-4xl font-bold text-slate-100 mb-3 text-center">Choose a Model</h1>
+  <p class="text-lg text-slate-300 mb-10 text-center">Select a machine learning model to predict student performance.</p>
+
+  <form method="post" action="{% url 'core:student_select_model' %}" class="space-y-6"> <!-- Corrected form action -->
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="bg-red-700/50 border border-red-600 text-red-300 px-4 py-3 rounded-md mb-6">
+        {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if form.model_choice.errors %}
+      <div class="bg-red-700/50 border border-red-600 text-red-300 px-4 py-3 rounded-md mb-6">
+        {% for error in form.model_choice.errors %}
+          <p><strong>Model selection error:</strong> {{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="space-y-5">
+      {% for radio in form.model_choice %}
+      <label for="{{ radio.id_for_label }}" class="relative flex cursor-pointer items-start gap-4 rounded-xl border-2 border-solid border-slate-600 p-5 transition-all duration-300 ease-in-out bg-slate-800 shadow-md hover:shadow-xl
+                                                   has-[:checked]:bg-slate-700/80 has-[:checked]:border-sky-500 has-[:checked]:scale-[1.015] has-[:checked]:shadow-sky-500/20 has-[:checked]:shadow-lg group/label">
+        {{ radio.tag }} {# Let Django render the input tag; JS will add the class #}
+        <div class="flex grow flex-col">
+          <div class="flex items-center justify-between">
+            <p class="text-xl font-semibold text-slate-100 group-has-[:checked]/label:text-sky-300">{{ radio.choice_label }}</p>
+            <div class="absolute top-3 right-3 text-xs font-medium text-white bg-sky-500 px-2.5 py-1 rounded-full opacity-0 group-has-[:checked]/label:opacity-100 transition-opacity duration-300">Selected</div>
+          </div>
+
+          {% if radio.choice_label == "Logistic Regression" %}
+          <p class="text-slate-300 text-sm font-normal leading-relaxed mt-2">
+            A statistical model that predicts the probability of a binary outcome. It's straightforward to implement and interpret, working well with linearly separable data.
+          </p>
+          <p class="text-slate-400 text-sm font-normal leading-normal mt-3">Accuracy: <span class="font-medium text-sky-400">0.85</span>, ROC-AUC: <span class="font-medium text-sky-400">0.88</span></p>
+          {% elif radio.choice_label == "Decision Tree" %}
+          <p class="text-slate-300 text-sm font-normal leading-relaxed mt-2">
+            A tree-like model of decisions. Easy to visualize and understand, it can capture non-linear relationships and is robust to outliers. Good for categorical or numerical data.
+          </p>
+          <p class="text-slate-400 text-sm font-normal leading-normal mt-3">Accuracy: <span class="font-medium text-sky-400">0.78</span>, ROC-AUC: <span class="font-medium text-sky-400">0.82</span></p>
+          {% elif radio.choice_label == "Random Forest" %}
+          <p class="text-slate-300 text-sm font-normal leading-relaxed mt-2">
+            An ensemble learning method that constructs multiple decision trees. Offers high accuracy and handles complex datasets well, reducing overfitting. Suitable for high-dimensional data.
+          </p>
+          <p class="text-slate-400 text-sm font-normal leading-normal mt-3">Accuracy: <span class="font-medium text-sky-400">0.90</span>, ROC-AUC: <span class="font-medium text-sky-400">0.92</span></p>
+          {% endif %}
+        </div>
+      </label>
+      {% endfor %}
+    </div>
+
+    <div class="pt-8 text-center">
+      <button type="submit" class="btn btn-primary w-full md:w-1/2 lg:w-1/3 text-lg py-3.5">
+        Predict Performance
+      </button>
+    </div>
+  </form>
+</div>
+
+{# Inline style for the custom radio button appearance, adapted for dark theme #}
+<style>
+  .custom-radio-input {
+    margin-top: 0.375rem; /* mt-1.5 */
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+    flex-shrink: 0;
+    appearance: none;
+    border-radius: 9999px; /* rounded-full */
+    border-width: 2px;
+    background-color: transparent;
+    border-color: #4B5563; /* slate-600, fallback if not overridden by Tailwind */
+
+    outline: 2px solid transparent; /* focus:outline-none */
+    outline-offset: 2px;
+  }
+  .custom-radio-input:focus {
+    --tw-ring-color: #0ea5e9; /* sky-500 */
+    box-shadow: 0 0 0 2px #334155, 0 0 0 4px var(--tw-ring-color); /* focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-slate-800 (offset color from card bg) */
+  }
+  .custom-radio-input:checked {
+    border-color: #0ea5e9; /* sky-500 */
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%237dd3fc' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3.5'/%3e%3c/svg%3e"); /* sky-300 for dot on sky-500 border */
+    background-size: 65%; /* Adjust size of the dot */
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add the custom class to the Django-rendered radio inputs
+    const radioInputs = document.querySelectorAll('input[name="model_choice"][type="radio"]');
+    radioInputs.forEach(function(radio) {
+      radio.classList.add('custom-radio-input');
+      // The provided HTML has checked attribute on first input. Django handles this.
+      // Update: Django's radio.tag includes existing classes. We need to be careful.
+      // The filter logic for radio.tag above tries to preserve id, value, checked, etc.
+      // and then re-adds type, name, required, id.
+      // The custom-radio-input class is added by the filter now.
+    });
+
+    // The `has-[:checked]` utility should handle the label styling.
+    // If `has-[:checked]` is not supported or there are issues,
+    // JavaScript can be used as a fallback to add/remove classes on the parent label.
+    // Example JS fallback (only if has: is not working):
+    /*
+    radioInputs.forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        // Remove selected class from all labels
+        document.querySelectorAll('label.has-[:checked]:selected-card-dark').forEach(function(label) {
+          // adapt this part if using a specific class like 'selected-card-dark'
+        });
+        // Add selected class to the current one's parent label
+        if (this.checked) {
+          // adapt this part
+        }
+      });
+    });
+    */
+  });
+</script>
+
+{% endblock %}

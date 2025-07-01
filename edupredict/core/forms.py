@@ -119,24 +119,24 @@ class StudentInfoForm(forms.Form):
 
 class ModelSelectionForm(forms.Form):
     MODEL_CHOICES = [
-        ('logistic', 'Logistic Regression'),
-        ('tree', 'Decision Tree'),
+        ('lr', 'Logistic Regression'), # Value changed from 'logistic'
+        ('dt', 'Decision Tree'),       # Value changed from 'tree'
         ('rf', 'Random Forest'),
     ]
-    model_name = forms.ChoiceField(
-        label="Select Prediction Model",
+    model_choice = forms.ChoiceField(  # Field name changed from 'model_name'
+        label="Select Prediction Model", # This label won't be visible with manual template rendering
         choices=MODEL_CHOICES,
-        widget=forms.RadioSelect(attrs={'class': 'mr-2'})
+        widget=forms.RadioSelect, # Removed attrs as template will handle styling
+        error_messages={'required': 'Please select a model to continue.'}
     )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Tailwind styling for radio buttons is tricky with default widget rendering.
-        # For better control, one might render radio inputs manually in the template.
-        # This basic class attribute is a starting point.
-        for field_name, field in self.fields.items():
-             # General styling for the field container if needed
-            field.widget.attrs.update({'class': 'space-y-2'})
+        # Manual rendering in the template gives more control than trying to style RadioSelect here
+        # for the complex card layout.
+        # If we were using {{ form.model_choice.label_tag }} and {{ form.model_choice }},
+        # then styling via widgets would be more relevant.
+        pass # Keep __init__ simple as template handles rendering
 
 
 class FileUploadForm(forms.Form):
