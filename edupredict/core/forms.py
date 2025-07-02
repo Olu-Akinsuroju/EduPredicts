@@ -110,11 +110,15 @@ class StudentInfoForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Add aria-describedby for fields with help text for accessibility
-        for field_name, field in self.fields.items():
-            if field.help_text:
+        for field_name in self.fields: # Iterate over field names
+            bound_field = self[field_name] # Get the BoundField instance
+            # The actual field object (unbound) is self.fields[field_name]
+            # We check help_text on the unbound field, but use auto_id from BoundField
+            if self.fields[field_name].help_text:
                 # Construct an ID for the help text paragraph, assuming it follows a pattern in the template
                 # Or, ensure the template manually adds id="{{ form.field_name.id_for_label }}_help_text"
-                field.widget.attrs['aria-describedby'] = f'{field.auto_id}_help_text'
+                # bound_field.auto_id is an attribute of BoundField
+                bound_field.widget.attrs['aria-describedby'] = f'{bound_field.auto_id}_help_text'
 
 
 class ModelSelectionForm(forms.Form):
