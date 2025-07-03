@@ -169,10 +169,21 @@ class FileUploadForm(forms.Form):
 
     def clean_csv_file(self):
         uploaded_file = self.cleaned_data.get('csv_file')
-        if uploaded_file:
-            if not uploaded_file.name.endswith('.csv'):
-                raise forms.ValidationError("Only CSV files are allowed.")
-        # It's important to return the cleaned data, whether it's modified or not.
-        # If the file is valid or not present (and not required), return it.
-        # If it's None and required, FileField itself will raise a validation error.
+
+        if not uploaded_file:
+            # This check ensures that if, for some reason, the base FileField validation
+            # didn't catch a missing required file before this custom clean method is called,
+            # we explicitly raise an error. Normally, FileField(required=True).clean()
+            # should handle this. This makes the form more robust.
+            raise forms.ValidationError("No CSV file was uploaded. This field is required.")
+
+        # Now we can safely assume uploaded_file is an UploadedFile object
+        if not uploaded_file.name.endswith('.csv'):
+            raise forms.ValidationError("Only CSV files are allowed.")
+
+        # Further checks like file size or content could be done here if needed.
+        # For example, checking if the file is empty:
+        if not uploaded_file.size > 0:
+            raise forms.ValidationError("The submitted CSV file is empty.")
+
         return uploaded_file
