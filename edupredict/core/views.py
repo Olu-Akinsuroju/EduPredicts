@@ -40,6 +40,7 @@ def student_info(request): # Renamed from student_form_view, new template
         form = StudentInfoForm()
     return render(request, 'student/form.html', {'form': form})
 
+
 def student_select_model(request): # Renamed from student_select_model_view
     student_data = request.session.get('student_data')
     if not student_data: # Ensure student data exists from previous step
