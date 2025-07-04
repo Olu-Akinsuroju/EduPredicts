@@ -173,16 +173,16 @@ def _add_interaction_features_for_prediction(df):
     return df_out
 
 def predict_student(student_form_data, model_key):
-    """
-    Predicts student performance using a trained pipeline.
-    - student_form_data: dict from StudentInfoForm.cleaned_data
-    - model_key: 'lr', 'dt', or 'rf'
-    """
+    logger.debug(f"[DEBUG] Incoming model_key: {model_key}")
+
     if model_key not in MODEL_PATHS:
         logger.error(f"Invalid model key: {model_key}")
         return {"error": "Invalid model selected."}
 
     model_path = MODEL_PATHS[model_key]
+    logger.debug(f"[DEBUG] Resolved model path: {model_path}")
+    logger.debug(f"[DEBUG] File exists? {os.path.exists(model_path)}")
+
     if not os.path.exists(model_path):
         logger.error(f"Model file not found: {model_path}")
         return {"error": f"Model file not found for {model_key}."}
@@ -191,41 +191,29 @@ def predict_student(student_form_data, model_key):
         pipeline = joblib.load(model_path)
         logger.info(f"Loaded pipeline: {model_path}")
 
-        # 1. Map form data to expected feature names
+        # 1. Map form data to full feature dictionary
         mapped_data = _map_input_data_to_feature_names(student_form_data)
+        logger.debug(f"[DEBUG] Mapped input data: {mapped_data}")
 
-        # 2. Create a DataFrame with one row
-        # Ensure all EXPECTED_INPUT_COLUMNS are present, fill with NaN if not in mapped_data
-        # This is crucial because the pipeline's ColumnTransformer expects all columns it was trained on.
+        # 2. Build input DataFrame
         input_df_dict = {col: [mapped_data.get(col, np.nan)] for col in EXPECTED_INPUT_COLUMNS}
-
-        # Special handling for columns used by interaction features if they are not in EXPECTED_INPUT_COLUMNS
-        # but are base features for interactions (e.g. 'Study_Time_per_Week')
-        # The current EXPECTED_INPUT_COLUMNS includes the base features from the form.
-
         input_df = pd.DataFrame.from_dict(input_df_dict)
 
         # 3. Add interaction features
-        input_df_with_interactions = _add_interaction_features_for_prediction(input_df)
+        input_df = _add_interaction_features_for_prediction(input_df)
 
-        # Log the DataFrame being sent to the model
-        logger.debug(f"DataFrame for prediction (student):\n{input_df_with_interactions.to_string()}")
+        logger.debug(f"[DEBUG] Final input DataFrame columns: {input_df.columns.tolist()}")
+        logger.debug(f"[DEBUG] Final input DataFrame shape: {input_df.shape}")
+        logger.debug(f"[DEBUG] Final input DataFrame:\n{input_df.to_string(index=False)}")
 
-        # 4. Predict probability (class 1, i.e., "passed")
-        # predict_proba returns [[prob_class_0, prob_class_1]]
-        proba_array = pipeline.predict_proba(input_df_with_interactions)
+        # 4. Predict
+        proba_array = pipeline.predict_proba(input_df)
         probability_passed = proba_array[0, 1]
 
-        # 5. Predict class (0 or 1)
-        prediction = pipeline.predict(input_df_with_interactions)[0]
+        prediction = pipeline.predict(input_df)[0]
         passed = bool(prediction == 1)
 
         logger.info(f"Prediction for student using {model_key}: Passed={passed}, Probability={probability_passed:.4f}")
-        # Log which pipeline was used and basic stats (n_samples=1)
-        # Actual accuracy from training is not directly available here unless stored with the model or logged separately.
-        logger.info(f"Pipeline {model_key} used. n_samples=1.")
-
-
         return {
             "passed": passed,
             "probability_score": round(float(probability_passed), 3),
@@ -233,12 +221,10 @@ def predict_student(student_form_data, model_key):
             "error": None
         }
 
-    except FileNotFoundError:
-        logger.exception(f"Model file not found for {model_key} at {model_path}")
-        return {"error": f"Model file for {model_key} not found.", "passed": None, "probability_score": None}
     except Exception as e:
         logger.exception(f"Error during student prediction with model {model_key}: {e}")
         return {"error": f"Prediction error: {str(e)}", "passed": None, "probability_score": None}
+
 
 
 def batch_predict(file_path_or_buffer, model_key):

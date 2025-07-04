@@ -68,52 +68,56 @@ def student_select_model(request): # Renamed from student_select_model_view
     return render(request, 'student/model_selection.html', {'form': form})
 
 
+logger = logging.getLogger(__name__)
+
 def student_predict_view(request):
+    # Get data from session
     student_data = request.session.get('student_data')
     model_name = request.session.get('model_name')
 
     if not student_data:
         messages.error(request, "Student data not found. Please start over.")
         return redirect(reverse('core:student_form'))
+
     if not model_name:
         messages.error(request, "Model not selected. Please select a model.")
         return redirect(reverse('core:student_select_model'))
 
-    # This view is now accessed via GET after model_name is set in session by student_select_model_view's POST handler
-
-    # Call the updated predict_student function from ml_utils
-    # student_data is form.cleaned_data (a dict), model_name is 'lr', 'dt', or 'rf'
-    prediction_output = predict_student(student_data, model_name)
-
-    logger.debug(f"Prediction output for student: {prediction_output}")
-
-    if prediction_output.get("error"):
-        messages.error(request, f"Prediction failed: {prediction_output['error']}")
-        # Redirect to model selection or form, allowing user to retry or change model
+    try:
+        # Predict using ML model
+        prediction_output = predict_student(student_data, model_name)
+        logger.debug(f"Prediction output for student: {prediction_output}")
+    except Exception as e:
+        logger.exception("Error during prediction")
+        messages.error(request, "An unexpected error occurred while predicting.")
         return redirect(reverse('core:student_select_model'))
 
-    # Successfully got prediction
+    # Check if prediction returned an error
+    if not isinstance(prediction_output, dict) or prediction_output.get("error"):
+        error_msg = prediction_output.get("error", "Unknown prediction error.")
+        messages.error(request, f"Prediction failed: {error_msg}")
+        return redirect(reverse('core:student_select_model'))
+
+    # Extract prediction values
     passed_bool = prediction_output.get('passed', False)
     probability_float = prediction_output.get('probability_score', 0.0)
 
-    # Determine model display name for the results page
     model_display_name = dict(MODEL_CHOICES).get(model_name, "Selected Model")
-
-
     outcome_str = "Passed" if passed_bool else "Failed"
     probability_percent = round(probability_float * 100, 1)
 
-    input_summary_dict = _prepare_input_summary(student_data) # Uses original student_data from session
+    # Prepare input summary
+    input_summary_dict = _prepare_input_summary(student_data)
 
     context = {
         'outcome': outcome_str,
         'probability': probability_percent,
         'input_summary': input_summary_dict,
-        'model_name': model_display_name, # Display user-friendly name
-        # student_data is implicitly used by _prepare_input_summary,
-        # but not directly needed by template if input_summary is comprehensive.
+        'model_name': model_display_name,
     }
     return render(request, 'core/student_result.html', context)
+
+
 
 def _prepare_input_summary(student_data):
     """
