@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %} {# Though not strictly needed for this specific content now #}
+{% load static %}
 
 {% block title %}Prediction Results - EduPredict{% endblock %}
 
@@ -62,8 +62,13 @@
             Make a New Prediction
         </a>
     </div>
-    {% if model_name %}
-    <p class="text-center text-xs text-slate-500 mt-4">Prediction made using: <span class="font-medium capitalize">{{ model_name|replace:"lr","Logistic Regression"|replace:"dt","Decision Tree"|replace:"rf","Random Forest" }}</span> model.</p>
+
+    {% if model_display_name %}
+    <p class="text-center text-xs text-slate-500 mt-4">
+        Prediction made using:
+        <span class="font-medium capitalize">{{ model_display_name }}</span> model.
+    </p>
     {% endif %}
+
 </div>
 {% endblock %}

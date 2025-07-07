@@ -9,11 +9,10 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 # Define model paths relative to the BASE_DIR/models directory
-MODEL_DIR = os.path.join(settings.BASE_DIR, 'models')
 MODEL_PATHS = {
-    'lr': os.path.join(MODEL_DIR, 'pipeline_logistic_regression.pkl'),
-    'dt': os.path.join(MODEL_DIR, 'pipeline_decision_tree.pkl'),
-    'rf': os.path.join(MODEL_DIR, 'pipeline_random_forest.pkl'),
+    'lr': os.path.join(settings.BASE_DIR, 'models', 'pipeline_logistic_regression.pkl'),
+    'dt': os.path.join(settings.BASE_DIR, 'models', 'pipeline_decision_tree.pkl'),
+    'rf': os.path.join(settings.BASE_DIR, 'models', 'pipeline_random_forest.pkl'),
 }
 
 # Expected feature names by the training script (src/train.py)
@@ -175,11 +174,17 @@ def _add_interaction_features_for_prediction(df):
 def predict_student(student_form_data, model_key):
     logger.debug(f"[DEBUG] Incoming model_key: {model_key}")
 
+    MODEL_PATHS = {
+        'lr': os.path.join(settings.BASE_DIR, 'models', 'pipeline_logistic_regression.pkl'),
+        'dt': os.path.join(settings.BASE_DIR, 'models', 'pipeline_decision_tree.pkl'),
+        'rf': os.path.join(settings.BASE_DIR, 'models', 'pipeline_random_forest.pkl'),
+    }
+
     if model_key not in MODEL_PATHS:
         logger.error(f"Invalid model key: {model_key}")
         return {"error": "Invalid model selected."}
 
-    model_path = MODEL_PATHS[model_key]
+    model_path = MODEL_PATHS[model_key]  # ✅ Now defined before use
     logger.debug(f"[DEBUG] Resolved model path: {model_path}")
     logger.debug(f"[DEBUG] File exists? {os.path.exists(model_path)}")
 
@@ -209,11 +214,11 @@ def predict_student(student_form_data, model_key):
         # 4. Predict
         proba_array = pipeline.predict_proba(input_df)
         probability_passed = proba_array[0, 1]
-
         prediction = pipeline.predict(input_df)[0]
         passed = bool(prediction == 1)
 
         logger.info(f"Prediction for student using {model_key}: Passed={passed}, Probability={probability_passed:.4f}")
+
         return {
             "passed": passed,
             "probability_score": round(float(probability_passed), 3),
@@ -223,8 +228,11 @@ def predict_student(student_form_data, model_key):
 
     except Exception as e:
         logger.exception(f"Error during student prediction with model {model_key}: {e}")
-        return {"error": f"Prediction error: {str(e)}", "passed": None, "probability_score": None}
-
+        return {
+            "error": f"Prediction error: {str(e)}",
+            "passed": None,
+            "probability_score": None
+        }
 
 
 def batch_predict(file_path_or_buffer, model_key):

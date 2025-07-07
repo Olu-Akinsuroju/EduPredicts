@@ -70,6 +70,13 @@ def student_select_model(request): # Renamed from student_select_model_view
 
 logger = logging.getLogger(__name__)
 
+# Human-readable labels for display
+MODEL_LABELS = {
+    'lr': 'Logistic Regression',
+    'dt': 'Decision Tree',
+    'rf': 'Random Forest',
+}
+
 def student_predict_view(request):
     # Get data from session
     student_data = request.session.get('student_data')
@@ -87,7 +94,7 @@ def student_predict_view(request):
         # Predict using ML model
         prediction_output = predict_student(student_data, model_name)
         logger.debug(f"Prediction output for student: {prediction_output}")
-    except Exception as e:
+    except Exception:
         logger.exception("Error during prediction")
         messages.error(request, "An unexpected error occurred while predicting.")
         return redirect(reverse('core:student_select_model'))
@@ -102,7 +109,8 @@ def student_predict_view(request):
     passed_bool = prediction_output.get('passed', False)
     probability_float = prediction_output.get('probability_score', 0.0)
 
-    model_display_name = dict(MODEL_CHOICES).get(model_name, "Selected Model")
+    # Determine readable name
+    model_display_name = MODEL_LABELS.get(model_name, "Selected Model")
     outcome_str = "Passed" if passed_bool else "Failed"
     probability_percent = round(probability_float * 100, 1)
 
@@ -113,8 +121,10 @@ def student_predict_view(request):
         'outcome': outcome_str,
         'probability': probability_percent,
         'input_summary': input_summary_dict,
-        'model_name': model_display_name,
+        'model_name': model_name,  # keep raw value for logic if needed
+        'model_display_name': model_display_name,  # for display in template
     }
+
     return render(request, 'core/student_result.html', context)
 
 
@@ -130,6 +140,7 @@ def _prepare_input_summary(student_data):
     study_time_map = {k: v for k, v in STUDY_TIME_CHOICES if k}
     motivation_map = {k: v for k, v in MOTIVATION_CHOICES if k}
     parent_education_map = {k: v for k, v in PARENT_EDUCATION_CHOICES if k}
+
 
     summary = {
         "Previous Grade": student_data.get('previous_grade', 'N/A'),

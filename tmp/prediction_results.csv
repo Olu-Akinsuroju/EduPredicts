@@ -1,0 +1,6 @@
+Previous Grade,Absences,Study Time,Age,Internet Access,Extra Courses,Motivation,Parent Education,predicted_passed_lr,predicted_probability_lr
+75,2,10,17,True,False,4,3,False,0.001
+88,0,15,18,True,True,5,4,False,0.008
+60,5,8,17,False,False,3,2,False,0.0
+92,1,20,19,True,True,5,5,False,0.005
+78,3,12,18,True,False,4,3,False,0.0
