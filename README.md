@@ -92,8 +92,8 @@ This project is licensed under the MIT License. This license allows you to use, 
 
 For questions about the project's design or implementation, feel free to reach out to me. As the solution architect, I'm always open to discussing the architecture and potential improvements.
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Email**: olu-akinsurojumaxwell@gmail.com
+  
 
 ## Tech Stack
 
